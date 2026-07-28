@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holmes Consulting Partners — Spezialisierte Personalberatung für Bau &amp; Immobilien</title>
+  <meta name="description" content="Holmes Consulting Partners besetzt Schlüsselpositionen in der Bau- und Immobilienbranche mit Persönlichkeiten, die fachlich überzeugen und menschlich passen — deutschlandweit und im DACH-Raum." />
+
+  <!-- Brand fonts (Cormorant Garamond + Lato) are self-hosted via @font-face in styles.css -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+
+  <!-- Scroll-Reveal vorbereiten: Timeline-Elemente vor dem ersten Paint ausblenden,
+       damit sie sauber per GSAP eingeblendet werden. Bei prefers-reduced-motion nichts ausblenden. -->
+  <script>
+    (function () {
+      try {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("gsap-anim");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="page-home">
+
+  <!-- ====================================================================
+       Header (Startseite) — Logo · Navigation · Doppel-CTA (Figma 00)
+       ==================================================================== -->
+  <!-- Dünne Kontaktleiste über dem Header -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__contact">
+        <a href="mailto:kontakt@holmes-partners.berlin">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          kontakt@holmes-partners.berlin
+        </a>
+        <a class="topbar__phone" href="tel:+493012345678">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          +49 30 1234 5678
+        </a>
+      </div>
+      <div class="topbar__social">
+        <a href="#" aria-label="Holmes auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+        </a>
+        <a href="#" aria-label="Holmes auf Xing">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+        <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
+        <a class="nav__link" href="ueber-uns.html">Über uns</a>
+        <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
+        <a class="nav__link" href="stellenangebote.html">Stellenangebote</a>
+        <a class="nav__link" href="#jobfit">Persönlichkeitstest</a>
+        <a class="nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+        <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================================
+         01 · Hero — Foto links, Text rechts (Figma 01)
+         ================================================================ -->
+    <section class="hero hero--home">
+      <!-- Hero-Bild full-bleed links (Figma 01): Beratungs-/Business-Szene -->
+      <div class="hero__media">
+        <img src="assets/img/hero-home.jpg?v=2" alt="Beraterin und Kandidat analysieren gemeinsam Kennzahlen am Laptop" class="hero__img" />
+      </div>
+
+      <div class="hero__panel">
+        <p class="eyebrow">Spezialisierte Personalberatung</p>
+        <h1>Spezialisierte Personalberatung<br /><em>für Bau &amp; Immobilien</em></h1>
+        <!-- Fließtext aus dem Figma-Hero übernommen (kleine Passagen für Web geglättet). -->
+        <p class="hero__lead">
+          Wir besetzen Schlüsselpositionen mit Persönlichkeiten, die nicht nur
+          fachlich überzeugen — sondern wirklich passen. Mit feinem Branchen­verständnis,
+          direkter Ansprache und strukturierten Prozessen finden wir Menschen,
+          die nachhaltig überzeugen und langfristig bleiben.
+        </p>
+        <div class="hero__actions">
+          <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+          <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         02 · Claim-Band „Sustainable performance built on trust." (Figma 02)
+         ================================================================ -->
+    <section class="section section--skynet claimband">
+      <div class="container">
+        <div class="claimband__pill">
+          <p>Sustainable performance built on trust.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         03 · Team — zwei Managing Partner (Figma 03)
+         ================================================================ -->
+    <section class="section section--material">
+      <div class="container">
+        <div class="team">
+          <article class="team__card">
+            <div class="team__photo">
+              <img src="assets/img/jason.jpg?v=1" alt="Jason Holmes, Managing Partner" style="object-position: center 30%;" />
+            </div>
+            <h3 class="team__name">Jason Holmes</h3>
+            <p class="team__role">Managing Partner</p>
+            <p class="team__bio">
+              Verbindet unternehmerisches Verständnis mit einem klaren Blick für
+              Menschen und Strukturen. Sein Fokus liegt auf der Besetzung
+              anspruchsvoller Positionen in der Bau- und Immobilienbranche.
+            </p>
+            <!-- Vollständige Biografie — wird im Zoom-/Detail-Overlay angezeigt -->
+            <div class="team__full" hidden>
+              <p>Jason Holmes ist Managing Partner und Founder der Holmes Consulting Partners GmbH mit Sitz in Berlin – einer auf die Bau- und Immobilienwirtschaft spezialisierten Personalberatung, die er gemeinsam mit seiner Frau Paulin Holmes gegründet hat.</p>
+              <p>Nach einigen Jahren als Immobilienbewerter wurde ihm früh klar, dass ihn nicht die Immobilie selbst am meisten fasziniert, sondern die Menschen dahinter. Diejenigen, die Projekte entwickeln, Portfolios steuern und Märkte bewegen. Diese Erkenntnis, zusammen mit einer kleinen Portion Glück und Zufall, führten ihn 2016 in die spezialisierte Personalberatung.</p>
+              <p>Bei zwei der führenden Personalberatungen der Bau- und Immobilienbranche sammelte er umfassende Markterfahrung und übernahm zunehmend Verantwortung. In den letzten rund fünf Jahren davon war er maßgeblich am Aufbau und der Weiterentwicklung der Berliner Niederlassung seines damaligen Arbeitgebers beteiligt – eine Erfahrung, die ihm ein tiefes Verständnis für wachsende Organisationen, Marktstrukturen und die Anforderungen seiner Klienten vermittelte, und die den Grundstein für den nächsten konsequenten Schritt legte.</p>
+              <p>Die Gründung des eigenen Unternehmens gemeinsam mit Paulin Holmes war genau dieser Schritt. Mehr als 300 erfolgreich besetzte Positionen deutschlandweit – von spezialisierten Fachkräften bis hin zu Führungspositionen in den Bereichen Asset, Center, Construction, Fund, Investment, Leasing, Portfolio, Project, Property und Transaction Management, Projektleitung, Projektsteuerung, Research &amp; Analysis, sowie die Projektentwicklung von Immobilien aller Nutzungsklassen.</p>
+              <p>Seine Arbeitsweise verbindet strukturierte, hoch effiziente datengestützte Prozesse mit einem ausgeprägten Marktverständnis, menschlicher Intuition und einem über viele Jahre persönlich gewachsenen deutschlandweiten Netzwerk quer durch alle relevanten Segmente der Branche. Was Jason Holmes von anderen unterscheidet, ist die Kombination aus einem eigenen immobilienwirtschaftlichen Hintergrund, ausgezeichneter Marktkenntnis und einem analytisch-strategischen Ansatz – verbunden mit dem Verständnis, dass hinter jeder Besetzung ein Mensch mit einem individuellen Skill-Set, einer einzigartigen Persönlichkeit und besonderen Wünschen steht. Datengestützte Marktanalysen, ein präzises Gespür für Strukturen und Anforderungen sowie ein tiefes Verständnis für die langfristige Passung von Kandidaten und Unternehmen bilden dabei das Fundament seiner Arbeit. Dieses Zusammenspiel aus Fachkenntnis, Methodik und Menschlichkeit schafft eine Beratungsqualität, die sowohl Unternehmen jeder Größenordnung als auch Kandidaten überzeugt und die Grundlage für eine Zusammenarbeit legt, die von Offenheit, Verlässlichkeit und echtem partnerschaftlichem Erfolg geprägt ist.</p>
+              <p>Jason Holmes studierte Immobilienwirtschaft an der HTW Berlin, mit einem Auslandssemester an der QUT in Brisbane, Australien. Er lebt mit seiner Frau und zwei Kindern in Berlin und spricht Deutsch sowie Englisch.</p>
+            </div>
+            <div class="team__foot">
+              <button type="button" class="team__more" data-member-more>mehr erfahren →</button>
+              <div class="team__links">
+                <a href="#" aria-label="Jason Holmes auf LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+                </a>
+                <a href="#" aria-label="Jason Holmes auf Xing">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="team__card">
+            <div class="team__photo">
+              <img src="assets/img/paula.jpg?v=1" alt="Paulin Holmes, Managing Partner" style="object-position: center 18%;" />
+            </div>
+            <h3 class="team__name">Paulin Holmes</h3>
+            <p class="team__role">Managing Partner</p>
+            <p class="team__bio">
+              Bringt langjährige Erfahrung in der Direktansprache und im Aufbau
+              nachhaltiger Netzwerke mit. Spezialisiert auf passgenaue Besetzungen
+              und langfristige Partnerschaften.
+            </p>
+            <!-- Vollständige Biografie — wird im Zoom-/Detail-Overlay angezeigt -->
+            <div class="team__full" hidden>
+              <p>Paulin Holmes ist Mitgründerin und Managing Partner von Holmes Consulting Partners GmbH, einer auf die Bau- und Immobilienbranche spezialisierten Personalberatung.</p>
+              <p>Durch ihr immobilienwirtschaftliches Studium sowie ihre berufliche Erfahrung im Property- und Asset Management kennt sie die kaufmännischen Strukturen und Anforderungen der Immobilienbranche aus der Praxis. Diese Einblicke prägen bis heute ihr Verständnis dafür, welche Kompetenzen und Profile in der Immobilienwirtschaft gefragt sind.</p>
+              <p>Über mehrere Jahre war sie zudem im Umfeld einer auf die Immobilienbranche spezialisierten Personalberatung tätig. Dort war sie insbesondere im Back Office, im Research sowie in der Ansprache neuer Kunden und der Betreuung bestehender Kontakte eingebunden.</p>
+              <p>Bei Holmes Consulting Partners verantwortet Paulin Holmes vor allem die organisatorischen und operativen Abläufe des Unternehmens, die Strukturierung interner Prozesse sowie den Austausch mit neuen und bestehenden Geschäftspartnern.</p>
+              <p>Durch ihre offene und kommunikative Art sowie ihre Freude am Netzwerken pflegt sie den persönlichen Austausch innerhalb der Branche und baut langfristige Beziehungen zu Kunden und Partnern auf.</p>
+              <p>Gemeinsam mit Jason Holmes verfolgt sie das Ziel, Unternehmen der Bau- und Immobilienwirtschaft langfristig mit den passenden Persönlichkeiten zusammenzubringen und vertrauensvolle Partnerschaften aufzubauen.</p>
+            </div>
+            <div class="team__foot">
+              <button type="button" class="team__more" data-member-more>mehr erfahren →</button>
+              <div class="team__links">
+                <a href="#" aria-label="Paulin Holmes auf LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+                </a>
+                <a href="#" aria-label="Paulin Holmes auf Xing">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         05 · Branchenkompetenz + Chip-Wolke (Figma 05)
+         ================================================================ -->
+    <section class="section section--paper" id="kompetenz">
+      <div class="container expertise">
+        <div class="expertise__text">
+          <h2>Tiefes Branchenverständnis statt<br />oberflächlicher Vermittlung</h2>
+          <p>
+            Wir kennen die Anforderungen der Bau- und Immobilienbranche im Detail —
+            von Projektentwicklung über Bauleitung bis hin zur Geschäftsführung.
+            Dieses Verständnis ermöglicht es uns, Positionen präzise zu besetzen und
+            Persönlichkeiten zu identifizieren, die langfristig in bestehenden
+            Strukturen funktionieren.
+          </p>
+          <a href="spezialisierungen.html" class="btn btn--primary">Unsere Spezialisierungen</a>
+        </div>
+        <div class="chips">
+          <span class="chip">Fund Management</span>
+          <span class="chip">Asset Management</span>
+          <span class="chip">Project Management</span>
+          <span class="chip">Property Management</span>
+          <span class="chip">Projektentwicklung</span>
+          <span class="chip">Investment &amp; Transaction</span>
+          <span class="chip">Construction Management</span>
+          <span class="chip">Portfolio Management</span>
+          <span class="chip">Research &amp; Analysis</span>
+          <span class="chip">Facility Management</span>
+          <span class="chip">Wohnungswirtschaft</span>
+          <span class="chip">Projektsteuerung</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         04 · Für Unternehmen / Für Kandidaten (Figma 04) — Beton + Hexagon-Netz
+         ================================================================ -->
+    <section class="section section--beton">
+      <div class="container">
+        <div class="duo">
+          <article class="duocard">
+            <h3>Für Unternehmen</h3>
+            <p class="duocard__sub">Die richtigen Persönlichkeiten für nachhaltigen Erfolg</p>
+            <p>
+              Wir identifizieren Führungs- und Fachpersönlichkeiten, die fachlich
+              überzeugen und menschlich zu Ihrem Unternehmen passen — für
+              Besetzungen, die langfristig Bestand haben.
+            </p>
+            <a href="lead-funnel.html" class="btn btn--primary">Mandat anfragen</a>
+          </article>
+          <article class="duocard">
+            <h3>Für Kandidaten</h3>
+            <p class="duocard__sub">Positionen, die wirklich zu Ihnen passen</p>
+            <p>
+              Wir begleiten Sie vertraulich zu Positionen, die zu Ihren Zielen,
+              Werten und Stärken passen — auf Augenhöhe und mit echtem Interesse
+              an Ihrer Situation.
+            </p>
+            <a href="kontakt.html" class="btn btn--ghost">Initiativ bewerben</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         06 · Leistungen / Werte-Reihe (Figma 06)
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="values__head">
+          <p class="eyebrow">Unser Selbstverständnis</p>
+          <h2>Nicht die lauteste Personalberatung.<em>Die verlässlichste.</em></h2>
+          <p>
+            Gute Personalberatung ist kein Standardprozess – sie ist anspruchsvolle Beratungsarbeit.<br />
+            Sie erfordert Markenkenntnis, Erfahrung, Fingerspitzengefühl und Integrität.<br />
+            Wir glauben an die bewusste Verbindung von Mensch und Technologie –<br />
+            für Lösungen, die langfristig Bestand haben.
+          </p>
+        </div>
+
+        <!-- Werte-Reihe (Figma 06): 4 Fotos mit eingebranntem Label (Serif, kursiv) -->
+        <div class="value-row">
+          <div class="value"><img src="assets/img/wert-menschlichkeit.jpg" alt="Menschlichkeit" /></div>
+          <div class="value"><img src="assets/img/wert-integritaet.jpg" alt="Integrität" /></div>
+          <div class="value"><img src="assets/img/wert-vertrauen.jpg" alt="Vertrauen" /></div>
+          <div class="value"><img src="assets/img/wert-partnerschaft.jpg" alt="Partnerschaft" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         07 · Recruiting-Prozess — Wochen-Timeline (Figma 07)
+         ================================================================ -->
+    <!-- Trenn-Streifen (open sky @ 50 %), mittig auf der Grenze zwischen Werte- und Prozess-Sektion -->
+    <div class="band-strip band-strip--center"></div>
+
+    <section class="section section--skyflat">
+      <div class="container">
+        <div class="weeks__head">
+          <p class="eyebrow">Unser Prozess</p>
+          <h2>Strukturiert. Transparent. Verlässlich.</h2>
+          <p class="weeks__sub">8–12 Wochen bis zur Besetzung.</p>
+        </div>
+
+        <!-- Recruiting-Prozess als horizontale Timeline — Design wie „Unser
+             Prozess" auf Für Unternehmen (Nummern-Quadrate + Serif-Titel +
+             Fließtext), nur horizontal: Strahl läuft durch die Quadrate.
+             Scroll-Reveal via GSAP (timeline-reveal.js), Strahl wächst mit. -->
+        <div class="weeks-line">
+          <div class="weeks-line__rail" aria-hidden="true"></div>
+          <article class="weeks-step">
+            <span class="weeks-step__num">1</span>
+            <h3>Woche 1</h3>
+            <p>Verstehen der Position und Anforderungen</p>
+          </article>
+          <article class="weeks-step">
+            <span class="weeks-step__num">2</span>
+            <h3>Woche 2–3</h3>
+            <p>Identifikation geeigneter Persönlichkeiten</p>
+          </article>
+          <article class="weeks-step">
+            <span class="weeks-step__num">3</span>
+            <h3>Woche 3–4</h3>
+            <p>Vorauswahl und Direktansprache</p>
+          </article>
+          <article class="weeks-step">
+            <span class="weeks-step__num">4</span>
+            <h3>Woche 4–7</h3>
+            <p>Persönliche Gespräche und Bewertung</p>
+          </article>
+          <article class="weeks-step">
+            <span class="weeks-step__num">5</span>
+            <h3>Woche 8–12</h3>
+            <p>Präsentation geeigneter Kandidaten</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bildband — Berliner Fernsehturm-Foto (1440×418) mit Hexagon-Netz @ 28 % darüber -->
+    <section class="section--tower">
+      <img class="tower-band__img" src="assets/img/tower-photo.jpg?v=1"
+           alt="Berliner Fernsehturm vor hellblauem Himmel" />
+    </section>
+
+    <!-- Trenn-Streifen (open sky @ 50 %), mittig auf der Grenze zwischen Turm- und weißer Sektion -->
+    <div class="band-strip band-strip--center"></div>
+
+    <!-- ================================================================
+         08 · Job-Fit Persönlichkeitsanalyse (Figma 08)
+         ================================================================ -->
+    <section class="section section--white" id="jobfit">
+      <div class="container">
+        <div class="jobfit__head">
+          <p class="eyebrow">Unser Mehrwert</p>
+          <h2>Job Fit Persönlichkeitsanalyse</h2>
+          <p class="jobfit__sub">kostenfrei &amp; einzigartig</p>
+          <p>
+            Mit unserer eigens entwickelten Analyse betrachten wir nicht nur
+            Qualifikationen, sondern auch Persönlichkeit, Motivation und kulturelle
+            Passung. So entstehen Entscheidungen, die langfristig tragen.
+          </p>
+        </div>
+
+        <div class="duo">
+          <article class="duocard">
+            <h3>Für Unternehmen</h3>
+            <p>Treffen Sie fundierte Entscheidungen auf Basis von Persönlichkeit, nicht nur von Lebensläufen.</p>
+            <a href="fuer-unternehmen.html" class="btn btn--primary">Mehr erfahren</a>
+          </article>
+          <article class="duocard">
+            <h3>Für Kandidaten</h3>
+            <p>Verstehen Sie, welche Position wirklich zu Ihnen passt — und wo Sie Ihr Potenzial optimal entfalten können.</p>
+            <a href="fuer-kandidaten.html" class="btn btn--ghost">Mehr erfahren</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         09 · Aktuelle Positionen — Job-Karten (Figma 09)
+         ================================================================ -->
+    <section class="section" id="positionen">
+      <div class="container">
+        <div class="section__head section__head--line">
+          <h2>Aktuelle Stellenangebote<br /><em>diskret &amp; professionell</em></h2>
+          <p>Ausgewählte Positionen in der Bau- und Immobilienbranche — deutschlandweit und im gesamten DACH-Raum.</p>
+        </div>
+
+        <div class="jobs">
+          <article class="job">
+            <h3>Projektmanager (m/w/d)</h3>
+            <p class="job__meta">Berlin</p>
+            <p class="job__desc">Verantwortung für Projekte im Bereich Immobilienentwicklung.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+          <article class="job">
+            <h3>Bauleiter (m/w/d)</h3>
+            <p class="job__meta">Hamburg</p>
+            <p class="job__desc">Planung und Überwachung von Bauprojekten.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+          <article class="job">
+            <h3>Immobilienberater (m/w/d)</h3>
+            <p class="job__meta">München</p>
+            <p class="job__desc">Beratung und Vermittlung von Immobilien.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+          <article class="job">
+            <h3>Asset Manager (m/w/d)</h3>
+            <p class="job__meta">Frankfurt</p>
+            <p class="job__desc">Steuerung und Optimierung von Immobilienportfolios.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+        </div>
+
+        <div class="jobs__more">
+          <a href="stellenangebote.html" class="btn btn--block job__allbtn">Alle Stellenangebote ansehen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bildband (Figma Filler-2) — zwei Bilder nebeneinander, full-bleed (872 / 568 px) -->
+    <section class="imgband">
+      <img class="imgband__img" src="assets/img/band2-links.jpg?v=2"
+           alt="Beratungsgespräch am Tisch vor einem Panoramafenster" />
+      <img class="imgband__img" src="assets/img/band2-rechts.jpg?v=1"
+           alt="Architektonische Bauzeichnung mit Bleistift und Lineal" />
+    </section>
+
+    <!-- ================================================================
+         10 · FAQ-Accordion (Figma 10)
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container faq">
+        <div class="faq__head">
+          <h2>Häufig gestellte Fragen</h2>
+        </div>
+
+        <!-- HINWEIS: Fragen 1:1 aus dem Figma-Original; Antworttexte sind
+             markenkonforme Platzhalter — bitte final bestätigen/ergänzen. -->
+        <details class="faq__item">
+          <summary>Auf welche Bereiche der Bau- und Immobilienbranche sind Sie spezialisiert?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            Wir besetzen Fach- und Führungspositionen entlang der gesamten
+            Wertschöpfungskette — von Projektentwicklung, Bauleitung und Asset-
+            bis hin zu Property- und Fund-Management.
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Wie lange dauert eine Besetzung in der Regel?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            In der Regel rechnen wir mit 8 bis 12 Wochen — vom ersten Briefing bis
+            zur erfolgreichen Besetzung. Tempo richtet sich immer nach Qualität.
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Übernehmen Sie auch vertrauliche Suchen?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            Ja. Diskretion ist die Grundlage unserer Arbeit — sowohl gegenüber
+            Unternehmen als auch gegenüber Kandidatinnen und Kandidaten.
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Wie läuft der Recruiting-Prozess ab?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            Strukturiert in klaren Schritten: Briefing &amp; Anforderungsprofil,
+            Direktansprache, Gespräche und Vorauswahl, Persönlichkeitsanalyse und
+            Präsentation bis zur Entscheidung und Besetzung.
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Welche Kosten entstehen für Unternehmen?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            Unser Honorarmodell ist transparent und erfolgsorientiert. Die konkreten
+            Konditionen besprechen wir individuell im Erstgespräch.
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Was unterscheidet Sie von klassischen Jobbörsen?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer">
+            Wir vermitteln nicht oberflächlich, sondern beraten. Statt Streuung
+            setzen wir auf Direktansprache, tiefes Branchenverständnis und die
+            persönliche Passung zwischen Mensch und Unternehmen.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         11 · Kontakt (Figma 11)
+         ================================================================ -->
+    <section class="section" id="kontakt">
+      <div class="container contact">
+        <div class="contact__left">
+          <img class="contact__photo" src="assets/img/contact-haende.jpg?v=1" alt="Zwei Menschen reichen sich vertrauensvoll die Hände" />
+          <h2 class="contact__lead">Lassen Sie uns sprechen.</h2>
+          <p class="contact__lead-sub">Ob Unternehmen oder Kandidat — wir freuen uns auf Ihre Anfrage und beraten Sie gerne persönlich.</p>
+        </div>
+
+        <div class="contact__rows">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s7-5.6 7-11a7 7 0 0 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+            <p>Holmes Consulting Partners<br />Güntzelstraße 48<br />10717 Berlin</p>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+            <p><a href="https://www.holmes-partners.berlin">www.holmes-partners.berlin</a></p>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+            <p><a href="mailto:kontakt@holmes-partners.berlin">kontakt@holmes-partners.berlin</a></p>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+            <p><a href="#">Holmes auf LinkedIn</a></p>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+            <p><a href="#">Holmes auf Xing</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         12 · CTA — Match-Band + Dual-Karten (Figma 12)
+         ================================================================ -->
+    <section class="section section--match">
+      <div class="container">
+        <div class="matchband">
+          <span class="matchband__claim">Das richtige Match beginnt hier.</span>
+        </div>
+
+        <div class="duo">
+          <article class="duocard">
+            <h3>Für Unternehmen</h3>
+            <p>
+              Die besten Fach- und Führungskräfte finden nicht — sie werden gefunden.
+              Wir identifizieren Menschen, die fachlich überzeugen und menschlich zu
+              Ihrem Unternehmen passen.
+            </p>
+            <a href="fuer-unternehmen.html" class="btn btn--primary">Suchauftrag starten</a>
+          </article>
+          <article class="duocard">
+            <h3>Für Kandidaten</h3>
+            <p>
+              Karriere entsteht oft, bevor eine Position ausgeschrieben wird.
+              Wir begleiten Sie vertraulich zu Positionen, die zu Ihren Zielen,
+              Werten und Stärken passen.
+            </p>
+            <a href="fuer-kandidaten.html" class="btn btn--ghost">Profil einreichen</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       13 · Footer (Figma 13) — HOLMES · 4 Spalten · Social
+       ==================================================================== -->
+  <footer class="site-footer site-footer--home">
+    <div class="container">
+      <div class="footer__grid footer__grid--home">
+        <div class="footer__brand">
+          <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+            <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+          </a>
+          <p class="footer__tagline">Spezialisierte Personalberatung für Bau &amp; Immobilien</p>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
+          <ul>
+            <li><a href="fuer-unternehmen.html">Mandat anfragen</a></li>
+            <li><a href="#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-kandidaten.html">Für Kandidaten</a></h4>
+          <ul>
+            <li><a href="fuer-kandidaten.html">Initiativ bewerben</a></li>
+            <li><a href="#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="ueber-uns.html">Über Holmes</a></h4>
+          <ul>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <h4>Folgen Sie uns</h4>
+          <div class="social">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+            </a>
+            <a href="#" aria-label="Xing">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © 2026 Holmes Consulting Partners. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       Team-Mitglied — Zoom-/Detail-Overlay (öffnet auf derselben Seite)
+       Wird per JS aus der jeweiligen .team__card befüllt.
+       ==================================================================== -->
+  <div class="member-modal" id="member-modal" hidden role="dialog" aria-modal="true" aria-labelledby="member-modal-name">
+    <div class="member-modal__backdrop" data-close></div>
+    <div class="member-modal__dialog" role="document">
+      <button class="member-modal__close" type="button" aria-label="Schließen" data-close>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="member-modal__media">
+        <img class="member-modal__img" src="" alt="" />
+      </div>
+      <div class="member-modal__body">
+        <h3 class="member-modal__name" id="member-modal-name"></h3>
+        <p class="member-modal__role"></p>
+        <div class="member-modal__bio"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=2"></script>
+
+  <!-- GSAP + ScrollTrigger (CDN) → Scroll-Reveal der Prozess-Timeline -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/timeline-reveal.js?v=4"></script>
+</body>
+</html>

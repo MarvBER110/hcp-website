@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Holmes Consulting Partners</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+</head>
+<body class="page-admin">
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+        <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+      </a>
+      <div class="header-mid">
+        <span class="admin-user" id="admin-user"></span>
+        <button id="logout-btn" class="btn header-cta" hidden>Abmelden</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <!-- Ladezustand -->
+        <div id="admin-loading" class="jobs-empty"><p class="jobs-loading">Wird geladen …</p></div>
+
+        <!-- Login -->
+        <div id="admin-login" class="admin-login" hidden>
+          <h1>Admin-Bereich</h1>
+          <p class="admin-login__sub">Bitte melden Sie sich an, um Stellen und Bewerbungen zu verwalten.</p>
+          <form id="login-form">
+            <div class="field">
+              <label for="login-email">E-Mail</label>
+              <input type="email" id="login-email" autocomplete="username" required />
+            </div>
+            <div class="field">
+              <label for="login-pass">Passwort</label>
+              <input type="password" id="login-pass" autocomplete="current-password" required />
+            </div>
+            <button type="submit" class="btn btn--primary" id="login-btn">Anmelden</button>
+            <p class="applyform__status" id="login-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="admin-dash" hidden>
+          <div class="admin-tabs" role="tablist">
+            <button class="admin-tab is-active" data-tab="jobs" role="tab">Stellen verwalten</button>
+            <button class="admin-tab" data-tab="apps" role="tab">Bewerbungen</button>
+            <button class="admin-tab" data-tab="initiativ" role="tab">Initiativbewerbungen</button>
+            <button class="admin-tab" data-tab="contacts" role="tab">Kontaktanfragen</button>
+          </div>
+
+          <!-- Bereich 1: Stellen -->
+          <section id="tab-jobs" class="admin-panel">
+            <div class="admin-panel__head">
+              <h2>Stellenangebote</h2>
+              <button class="btn btn--primary" id="new-job-btn">Neue Stelle anlegen</button>
+            </div>
+            <div class="admin-filter" role="group" aria-label="Stellen filtern">
+              <button type="button" class="admin-filter__btn is-active" data-filter="all">Alle <span class="admin-filter__count" id="jf-count-all"></span></button>
+              <button type="button" class="admin-filter__btn" data-filter="active">Aktiv <span class="admin-filter__count" id="jf-count-active"></span></button>
+              <button type="button" class="admin-filter__btn" data-filter="inactive">Inaktiv <span class="admin-filter__count" id="jf-count-inactive"></span></button>
+            </div>
+            <div id="jobs-admin-list" class="admin-table-wrap"></div>
+          </section>
+
+          <!-- Bereich 2: Bewerbungen (auf konkrete Stellen) -->
+          <section id="tab-apps" class="admin-panel" hidden>
+            <div class="admin-panel__head">
+              <h2>Bewerbungen</h2>
+            </div>
+            <div id="apps-admin-list" class="admin-table-wrap"></div>
+          </section>
+
+          <!-- Bereich 2b: Initiativbewerbungen (ohne konkrete Stelle) -->
+          <section id="tab-initiativ" class="admin-panel" hidden>
+            <div class="admin-panel__head">
+              <h2>Initiativbewerbungen</h2>
+            </div>
+            <div id="initiativ-admin-list" class="admin-table-wrap"></div>
+          </section>
+
+          <!-- Bereich 3: Kontaktanfragen -->
+          <section id="tab-contacts" class="admin-panel" hidden>
+            <div class="admin-panel__head">
+              <h2>Kontaktanfragen</h2>
+            </div>
+            <div id="contacts-admin-list" class="admin-table-wrap"></div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Stelle anlegen/bearbeiten -->
+  <div id="job-modal" class="admin-modal" hidden>
+    <div class="admin-modal__backdrop" data-close="job"></div>
+    <div class="admin-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="job-modal-title">
+      <div class="admin-modal__head">
+        <h3 id="job-modal-title">Neue Stelle</h3>
+        <button class="admin-modal__close" data-close="job" aria-label="Schließen">×</button>
+      </div>
+      <form id="job-form" class="admin-modal__body">
+        <input type="hidden" id="jf-id" />
+        <div class="applyform__grid">
+          <div class="field">
+            <label for="jf-titel">Titel <span class="req">*</span></label>
+            <input type="text" id="jf-titel" required />
+          </div>
+          <div class="field">
+            <label for="jf-ref">Referenznummer <span class="req">*</span></label>
+            <input type="text" id="jf-ref" required />
+          </div>
+
+          <div class="field field--full">
+            <span class="field__label">Slug (automatisch)</span>
+            <input type="text" id="jf-slug" readonly />
+          </div>
+
+          <div class="field field--full">
+            <label for="jf-teaser">Teaser (Kurzbeschreibung)</label>
+            <input type="text" id="jf-teaser" />
+          </div>
+
+          <div class="field field--full">
+            <label for="jf-beschreibung">Beschreibung</label>
+            <textarea id="jf-beschreibung" rows="9"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="jf-anstellung">Anstellungsart</label>
+            <select id="jf-anstellung"></select>
+          </div>
+          <div class="field">
+            <label for="jf-erfahrung">Berufserfahrung</label>
+            <select id="jf-erfahrung"></select>
+          </div>
+
+          <div class="field field--full">
+            <label for="jf-orte">Ort(e) <span class="field__hint">— mehrere mit Komma trennen</span></label>
+            <input type="text" id="jf-orte" placeholder="z. B. Berlin, Potsdam" />
+          </div>
+
+          <div class="field field--full">
+            <span class="field__label">Bundesländer (Mehrfachauswahl)</span>
+            <div class="checkgrid" id="jf-bundeslaender"></div>
+          </div>
+
+          <div class="field field--full">
+            <span class="field__label">Fachgebiete (Mehrfachauswahl)</span>
+            <div class="checkgrid" id="jf-fachgebiete"></div>
+          </div>
+
+          <div class="field field--full">
+            <div class="checkbox">
+              <input type="checkbox" id="jf-aktiv" checked />
+              <label for="jf-aktiv">Stelle ist aktiv (öffentlich sichtbar)</label>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal__foot">
+          <button type="button" class="btn btn--ghost" data-close="job">Abbrechen</button>
+          <button type="submit" class="btn btn--primary" id="jf-save">Speichern</button>
+        </div>
+        <p class="applyform__status" id="jf-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Bewerbungs-Detail -->
+  <div id="app-modal" class="admin-modal" hidden>
+    <div class="admin-modal__backdrop" data-close="app"></div>
+    <div class="admin-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
+      <div class="admin-modal__head">
+        <h3 id="app-modal-title">Bewerbung</h3>
+        <button class="admin-modal__close" data-close="app" aria-label="Schließen">×</button>
+      </div>
+      <div class="admin-modal__body" id="app-detail"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Kontaktanfrage-Detail -->
+  <div id="contact-modal" class="admin-modal" hidden>
+    <div class="admin-modal__backdrop" data-close="contact"></div>
+    <div class="admin-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <div class="admin-modal__head">
+        <h3 id="contact-modal-title">Kontaktanfrage</h3>
+        <button class="admin-modal__close" data-close="contact" aria-label="Schließen">×</button>
+      </div>
+      <div class="admin-modal__body" id="contact-detail"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/admin.js?v=5"></script>
+</body>
+</html>

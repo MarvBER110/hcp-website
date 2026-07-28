@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Für Kandidaten — Holmes Consulting Partners</title>
+  <meta name="description" content="Holmes Consulting Partners begleitet Fach- und Führungskräfte in der Bau- und Immobilienbranche – vertraulich, persönlich und auf Augenhöhe." />
+
+  <!-- Brand fonts (Cormorant Garamond + Lato) are self-hosted via @font-face in styles.css -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+
+  <!-- Scroll-Reveal vorbereiten: Timeline-Elemente schon vor dem ersten Paint
+       ausblenden, damit sie sauber per GSAP eingeblendet werden (verhindert
+       Flackern). Bei prefers-reduced-motion wird NICHTS ausgeblendet. -->
+  <script>
+    (function () {
+      try {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("gsap-anim");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="page-plain">
+
+  <!-- ====================================================================
+       Header (shared across subpages)
+       ==================================================================== -->
+  <!-- Dünne Kontaktleiste über dem Header -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__contact">
+        <a href="mailto:kontakt@holmes-partners.berlin">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          kontakt@holmes-partners.berlin
+        </a>
+        <a class="topbar__phone" href="tel:+493012345678">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          +49 30 1234 5678
+        </a>
+      </div>
+      <div class="topbar__social">
+        <a href="#" aria-label="Holmes auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+        </a>
+        <a href="#" aria-label="Holmes auf Xing">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+        <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
+        <a class="nav__link" href="ueber-uns.html">Über uns</a>
+        <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
+        <a class="nav__link" href="stellenangebote.html">Stellenangebote</a>
+        <a class="nav__link" href="index.html#jobfit">Persönlichkeitstest</a>
+        <a class="nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+        <a href="fuer-kandidaten.html" class="btn btn--ghost" aria-current="page">Für Kandidaten</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================================
+         1 · Hero
+         ================================================================ -->
+    <section class="hero hero--plain">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Vertraulich · Persönlich · Auf Augenhöhe</p>
+          <h1 class="hero__h1--2lines">Ihr nächster Karriereschritt<br /><em>mit dem richtigen Partner.</em></h1>
+          <p class="hero__lead">
+            Wir begleiten Fach- und Führungskräfte in der Bau- und Immobilienbranche
+            zu Positionen, die wirklich zu ihnen passen. Vertraulich und auf Augenhöhe.
+          </p>
+          <div class="hero__actions">
+            <a href="kontakt.html" class="btn btn--primary">Jetzt Profil einreichen</a>
+            <a href="#prozess" class="btn btn--ghost">Wie wir arbeiten</a>
+          </div>
+        </div>
+        <!-- Hero-Bild: moderne Bau- & Immobilienarchitektur (Hochformat) -->
+        <div class="hero__media">
+          <img src="assets/img/hero-kandidaten.jpg?v=1" alt="Schaufensterscheibe mit der Aufschrift „don’t spend another year doing the same shit.“" class="hero__img" />
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ================================================================
+         2 · Warum Kandidaten uns vertrauen
+         ================================================================ -->
+    <section class="section section--white section--photo">
+      <div class="container">
+        <div class="section__head">
+          <h2>Warum Kandidaten uns vertrauen</h2>
+        </div>
+        <div class="cards-4">
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="1.2" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M8 10V7.5a4 4 0 0 1 8 0V10" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <h3>Diskrete Begleitung</h3>
+              <p>Ihre Suche bleibt vertraulich. Wir handeln immer in Ihrem Interesse.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 20V9l5-3 5 3v11M14 20V11l5-3v12" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M3 20h18" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <h3>Echtes Branchenwissen</h3>
+              <p>Wir kennen den Markt, die Unternehmen und worauf es wirklich ankommt.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Kein Bewerbungsmarathon</h3>
+              <p>Wir bringen Sie gezielt zu den richtigen Unternehmen — ohne Streuverlust.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="8.5" cy="8.5" r="3.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="m11 11 8 8M15.5 15.5l2-2M18 18l2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Zugang zu nicht öffentlichen Positionen</h3>
+              <p>Wir öffnen Ihnen Türen zu Rollen, die nie öffentlich ausgeschrieben werden.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4.5 6.5A1.5 1.5 0 0 1 6 5h12a1.5 1.5 0 0 1 1.5 1.5v7A1.5 1.5 0 0 1 18 15H10l-3.5 3v-3H6a1.5 1.5 0 0 1-1.5-1.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M8 9h8M8 11.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <h3>Ehrliches, konstruktives Feedback</h3>
+              <p>Klare Rückmeldung auf Augenhöhe — offen, wertschätzend und ehrlich.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 3.8h6.5L18 8.3V19.5a.7.7 0 0 1-.7.7H7.7a.7.7 0 0 1-.7-.7V4.5a.7.7 0 0 1 .7-.7Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M13.5 3.8V8h4M9.5 12.5h5M9.5 15.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Beratung zu Vertragskonditionen</h3>
+              <p>Wir unterstützen Sie bei Gehalt, Konditionen und der Verhandlung.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="9.5" cy="12" r="4.3" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="14.5" cy="12" r="4.3" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <h3>Langfristige Partnerschaft über die Vermittlung hinaus</h3>
+              <p>Wir bleiben an Ihrer Seite — auch nach der erfolgreichen Besetzung.</p>
+            </article>
+
+            <article class="card">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.5 18.5C6.5 12 17.5 13 17.5 6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="6.5" cy="18.5" r="1.7" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="17.5" cy="6.5" r="1.7" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <h3>Persönliche Begleitung von Anfang bis Ende</h3>
+              <p>Ein fester Ansprechpartner begleitet Sie durch den gesamten Prozess.</p>
+            </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ================================================================
+         3 · So begleiten wir Sie — Schritt für Schritt (6 Schritte, docx)
+         ================================================================ -->
+    <section class="section section--skyband" id="prozess">
+      <div class="container">
+        <div class="section__head">
+          <h2>So begleiten wir Sie — Schritt für Schritt.</h2>
+          <p>Einfach, transparent und immer auf Ihre Ziele ausgerichtet.</p>
+          <p style="margin-top: 22px;">
+            Ein Karriereschritt ist eine der wichtigsten Entscheidungen im Berufsleben.
+            Wir nehmen das ernst – und begleiten Sie durch diesen Prozess so, wie wir es
+            selbst erwarten würden: offen, diskret, professionell und mit echtem Interesse
+            an Ihrer Situation.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="step step--left">
+            <div class="step__body">
+              <h3>Erstes Gespräch – ohne Druck, ohne Verpflichtung</h3>
+              <p>Der erste Schritt ist unkompliziert. Sie melden sich bei uns – ob mit einer
+                konkreten Idee, einem latenten Wunsch nach Veränderung oder einfach aus Neugier.
+                Wir hören zu. Kein Standardfragebogen, kein Verkaufsgespräch. Sondern ein
+                ehrlicher Austausch darüber, wo Sie stehen und wo Sie hinwollen.</p>
+            </div>
+            <div class="step__num">1</div>
+          </article>
+
+          <article class="step step--right">
+            <div class="step__num">2</div>
+            <div class="step__body">
+              <h3>Wir lernen Sie wirklich kennen</h3>
+              <p>Ein Lebenslauf sagt vieles – aber längst nicht alles. Deshalb nehmen wir uns
+                die Zeit, Sie als Person zu verstehen: Ihre Stärken, Ihre Werte, Ihre Vorstellungen
+                von einer guten Arbeitsumgebung. Nur so können wir Positionen identifizieren, die
+                nicht nur auf dem Papier passen, sondern auch im Alltag.</p>
+            </div>
+          </article>
+
+          <article class="step step--left">
+            <div class="step__body">
+              <h3>Zugang zu Positionen, die Sie nicht finden</h3>
+              <p>Die besten Stellen werden selten öffentlich ausgeschrieben. Durch unser
+                deutschlandweites Netzwerk in der Bau- und Immobilienwirtschaft haben wir Zugang
+                zu Vakanzen und Unternehmen, die für Sie anderweitig teilweise nicht sichtbar
+                wären. Wir bringen Sie ins Gespräch – gezielt, nicht wahllos.</p>
+            </div>
+            <div class="step__num">3</div>
+          </article>
+
+          <article class="step step--right">
+            <div class="step__num">4</div>
+            <div class="step__body">
+              <h3>Ehrliches Briefing vor jedem Gespräch</h3>
+              <p>Bevor Sie ein Unternehmen treffen, wissen Sie, was Sie erwartet. Wir bereiten
+                Sie gründlich vor: Wer sind Ihre Gesprächspartner? Was treibt das Unternehmen an?
+                Wo liegen mögliche Stolpersteine? Sie gehen informiert und selbstsicher in jedes
+                Gespräch.</p>
+            </div>
+          </article>
+
+          <article class="step step--left">
+            <div class="step__body">
+              <h3>Begleitung durch den gesamten Prozess</h3>
+              <p>Wir sind nicht nach dem ersten Gespräch verschwunden. Wir begleiten Sie durch
+                alle Gesprächsrunden, geben Ihnen ehrliches Feedback und stehen Ihnen als
+                Sparringspartner zur Verfügung – auch in schwierigen Momenten des Prozesses.</p>
+            </div>
+            <div class="step__num">5</div>
+          </article>
+
+          <article class="step step--right">
+            <div class="step__num">6</div>
+            <div class="step__body">
+              <h3>Unterstützung bis zum ersten Arbeitstag</h3>
+              <!-- HINWEIS: Im Quelldokument ohne Fließtext — markenkonformer Platzhalter, bitte bestätigen. -->
+              <p>Auch nach der Unterschrift bleiben wir an Ihrer Seite: bei Vertragsdetails,
+                Onboarding und allen Fragen rund um den Wechsel – bis zu Ihrem gelungenen Start
+                und darüber hinaus.</p>
+            </div>
+          </article>
+
+          <article class="step step--left">
+            <div class="step__body">
+              <h3>Eine Beziehung, die bleibt</h3>
+              <p>Unser Interesse an Ihnen endet nicht mit dem Vertragsabschluss. Wir bleiben in
+                Kontakt, verfolgen Ihre Entwicklung und stehen Ihnen auch langfristig als
+                Ansprechpartner zur Verfügung. Denn gute Beratung endet nicht mit dem Onboarding.</p>
+            </div>
+            <div class="step__num">7</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bildband über die volle Breite zwischen Prozess und Positionen -->
+    <div class="band-image" role="img" aria-label="Bau- und Immobilienmotiv"></div>
+
+    <!-- ================================================================
+         4 · Aktuelle Positionen für Sie
+         ================================================================ -->
+    <section class="section" id="positionen">
+      <div class="container">
+        <div class="section__head section__head--line">
+          <h2>Aktuelle Stellenangebote<br /><em>diskret &amp; professionell</em></h2>
+          <p>Ausgewählte Positionen, die zu Ihren Zielen und Stärken passen — handverlesen für Sie.</p>
+        </div>
+
+        <div class="jobs">
+          <article class="job">
+            <h3>Projektmanager (m/w/d)</h3>
+            <p class="job__meta">Berlin</p>
+            <p class="job__desc">Verantwortung für Projekte im Bereich Immobilienentwicklung.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+
+          <article class="job">
+            <h3>Bauleiter (m/w/d)</h3>
+            <p class="job__meta">Hamburg</p>
+            <p class="job__desc">Planung und Überwachung von Bauprojekten.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+
+          <article class="job">
+            <h3>Immobilienberater (m/w/d)</h3>
+            <p class="job__meta">München</p>
+            <p class="job__desc">Beratung und Vermittlung von Immobilien.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+
+          <article class="job">
+            <h3>Asset Manager (m/w/d)</h3>
+            <p class="job__meta">Frankfurt</p>
+            <p class="job__desc">Steuerung und Optimierung von Immobilienportfolios.</p>
+            <span class="job__rule"></span>
+            <a href="stellenangebote.html" class="btn job__btn">Position ansehen</a>
+          </article>
+        </div>
+
+        <div class="jobs__more">
+          <a href="stellenangebote.html" class="btn btn--block job__allbtn">Alle Stellenangebote ansehen</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ================================================================
+         5 · Kennen Sie Ihre Stärken? (Persönlichkeitstest)
+         ================================================================ -->
+    <section class="section section--wall">
+      <div class="container split">
+        <div class="split__text">
+          <h2>Kennen Sie Ihre Stärken?</h2>
+          <p>Unser Persönlichkeitstest hilft Ihnen, Ihre Kernkompetenzen zu verstehen — und
+            uns, Sie noch besser zu empfehlen.</p>
+          <a href="persoenlichkeitstest.html" class="btn btn--primary">Zum Test</a>
+        </div>
+        <!-- Bild „Kennen Sie Ihre Stärken" -->
+        <div class="split__media">
+          <img src="assets/img/sektion-unten.jpg" alt="Kandidat im Anzug — Fokus auf Persönlichkeit und Stärken" class="split__img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         6 · Final CTA — Bereit für den nächsten Schritt?
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container cta">
+        <h2>Bereit für den nächsten Schritt?</h2>
+        <p>Reichen Sie Ihr Profil ein — vertraulich, unverbindlich, kostenlos.</p>
+        <a href="kontakt.html" class="btn btn--primary">Jetzt Profil einreichen</a>
+        <p class="cta__note">Wir melden uns innerhalb von 48 Stunden bei Ihnen.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       Footer (shared across subpages)
+       ==================================================================== -->
+  <footer class="site-footer site-footer--home">
+    <div class="container">
+      <div class="footer__grid footer__grid--home">
+        <div class="footer__brand">
+          <a href="index.html" class="brand" aria-label="Holmes Consulting Partners">
+            <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+          </a>
+          <p class="footer__tagline">Spezialisierte Personalberatung für Bau &amp; Immobilien</p>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
+          <ul>
+            <li><a href="fuer-unternehmen.html">Mandat anfragen</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-kandidaten.html">Für Kandidaten</a></h4>
+          <ul>
+            <li><a href="fuer-kandidaten.html">Initiativ bewerben</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="ueber-uns.html">Über Holmes</a></h4>
+          <ul>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <h4>Folgen Sie uns</h4>
+          <div class="social">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Xing">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © 2026 Holmes Consulting Partners. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=2"></script>
+
+  <!-- GSAP + ScrollTrigger (CDN) — Staggered Fade-up Reveal der Prozess-Timeline -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/timeline-reveal.js?v=4"></script>
+  <script src="assets/js/cards-carousel.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über uns — Holmes Consulting Partners</title>
+  <meta name="description" content="Holmes Consulting Partners ist eine spezialisierte Personalberatung für die Bau- und Immobilienwirtschaft – getragen von Menschlichkeit, Vertrauen und langfristiger Partnerschaft." />
+
+  <!-- Brand fonts (Cormorant Garamond + Lato) are self-hosted via @font-face in styles.css -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+
+  <!-- Scroll-Reveal vorbereiten: Feature-Spalten vor dem ersten Paint ausblenden,
+       damit sie beim Scrollen sauber (links zuerst, rechts versetzt) erscheinen.
+       Bei prefers-reduced-motion bleibt alles sofort sichtbar. -->
+  <script>
+    (function () {
+      try {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("reveal-anim");
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="page-about">
+
+  <!-- ====================================================================
+       Header (shared across subpages)
+       ==================================================================== -->
+  <!-- Dünne Kontaktleiste über dem Header -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__contact">
+        <a href="mailto:kontakt@holmes-partners.berlin">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          kontakt@holmes-partners.berlin
+        </a>
+        <a class="topbar__phone" href="tel:+493012345678">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          +49 30 1234 5678
+        </a>
+      </div>
+      <div class="topbar__social">
+        <a href="#" aria-label="Holmes auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+        </a>
+        <a href="#" aria-label="Holmes auf Xing">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+        <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
+        <a class="nav__link is-active" href="ueber-uns.html" aria-current="page">Über uns</a>
+        <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
+        <a class="nav__link" href="stellenangebote.html">Stellenangebote</a>
+        <a class="nav__link" href="index.html#jobfit">Persönlichkeitstest</a>
+        <a class="nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+        <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================================
+         1 · Hero — Vollbild-Foto der beiden Managing Partner + Text-Overlay
+         ================================================================ -->
+    <section class="hero--about">
+      <img class="hero--about__bg" src="assets/img/ueber-hero.jpg?v=2" alt="Die Gründer von Holmes Consulting Partners" />
+      <div class="container hero--about__inner">
+        <p class="eyebrow">Holmes Consulting Partners</p>
+        <h1>Über uns</h1>
+        <p class="hero--about__lead">
+          Eine spezialisierte Personalberatung für die Bau- und Immobilienwirtschaft —
+          getragen von Menschlichkeit, Vertrauen und echter Verbindung.
+        </p>
+        <div class="hero--about__actions">
+          <a href="kontakt.html" class="btn btn--on-dark">Gespräch vereinbaren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         2 · Wer wir sind. Wofür wir stehen.
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="section__head">
+          <h2>Wer wir sind. Wofür wir stehen.</h2>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature__media">
+            <img class="about-feature__img" src="assets/img/ueber-wer-wir-sind.jpg?v=1" alt="Betonwand mit Schriftzug „We were better in the future“" />
+          </div>
+          <div class="about-feature__text">
+            <p>
+              Holmes Consulting Partners ist eine spezialisierte Personalberatung für die Bau-
+              und Immobilienwirtschaft – gegründet von Jason und Paulin Holmes mit einer klaren
+              Überzeugung: Dass nachhaltige Personalentscheidungen mehr erfordern als Prozesse,
+              Datenbanken und Netzwerke. Sie erfordern echtes Interesse am Menschen.
+            </p>
+            <p>
+              Als familiengeführtes Unternehmen mit Sitz in Berlin verbinden wir das, was in der
+              Branche oft als Gegensatz gilt: analytische Präzision und emotionale Intelligenz.
+              Datengestützte einzigartige Marktkenntnis und menschliche Intuition. Professionelle
+              Effizienz und echte, langfristige Partnerschaft. Für uns ist das kein Widerspruch –
+              es ist unser Fundament.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         3 · Zwei Marken-Sprüche — versetzt, weißer Grund, ohne Rahmen
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="sayings">
+          <blockquote class="saying saying--left">
+            <p>„Holmes is built around people.<br />It’s not only a service. It’s a partnership.“</p>
+          </blockquote>
+          <blockquote class="saying saying--right">
+            <p>„Structure and humanity in balance.<br />Clarity on the outside, depth within.“</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         4 · Unsere Werte (6 Karten — Form wie „Für Kandidaten")
+         ================================================================ -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="section__head">
+          <h2>Unsere Werte</h2>
+        </div>
+        <div class="cards-3">
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5C19 15.6 12 20 12 20Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+            <h3>Menschlichkeit</h3>
+            <p>Wir begegnen Menschen stets mit Respekt, Toleranz und Offenheit. Jede Zusammenarbeit beginnt mit Zuhören.</p>
+          </article>
+
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3l7 3v5c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="m9 11.5 2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Vertrauen</h3>
+            <p>Vertrauen entsteht durch Transparenz, Verbindlichkeit, Ehrlichkeit und Haltung, nicht durch Worte allein. Schließlich ist Vertrauen die härteste Währung.</p>
+          </article>
+
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="8" cy="9" r="2.6" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="16" cy="9" r="2.6" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M3.5 19c0-2.6 2-4.2 4.5-4.2M16 14.8c2.5 0 4.5 1.6 4.5 4.2M9.5 19c0-2.2 1.1-3.6 2.5-3.6s2.5 1.4 2.5 3.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <h3>Partnerschaft</h3>
+            <p>Wir verstehen uns als langfristiger Partner, nicht als kurzfristiger Dienstleister.</p>
+          </article>
+
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 20V8l8-4 8 4v12" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M3 20h18M10 20v-5h4v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Professionalität</h3>
+            <p>Ein ausgezeichnetes Marktverständnis, eine überdurchschnittlich hohe fachliche Kompetenz, klare, effiziente Prozesse und eine sorgfältige Arbeitsweise sind für uns selbstverständlich.</p>
+          </article>
+
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21c4-2.5 6-5.6 6-9a6 6 0 0 0-6-6 6 6 0 0 0-6 6c0 3.4 2 6.5 6 9Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M12 21V8M12 10c-1.6-1.4-3.2-1-3.2-1M12 12c1.6-1.4 3.2-1 3.2-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <h3>Nachhaltigkeit</h3>
+            <p>Wir denken in langfristigen, partnerschaftlichen Beziehungen, nicht bloß in Abschlüssen. Qualität geht stets vor Quantität, wobei es unser Anspruch ist, beides im Gleichgewicht zu behalten.</p>
+          </article>
+
+          <article class="card">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v18M12 5 5 8v3c0 2.2 1.6 3.5 3.5 3.5S12 13.2 12 11M12 5l7 3v3c0 2.2-1.6 3.5-3.5 3.5S8.5 13.2 8.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Integrität</h3>
+            <p>Wir handeln konsequent, ehrlich und verantwortungsvoll, auch dann, wenn es der einfachere Weg wäre, es nicht zu tun.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         5 · Unsere Motivation — zentrierte H2 + 4 alternierende Punkte
+              (gemeinsamer linen-Hintergrund · Scroll-Reveal links→rechts)
+         ================================================================ -->
+    <section class="section section--linen">
+      <div class="container">
+        <div class="section__head">
+          <h2>Unsere Motivation</h2>
+        </div>
+
+        <!-- Punkt 1 · Was uns antreibt (Bild links · Text rechts) -->
+        <div class="about-feature">
+          <div class="about-feature__media">
+            <div class="media"><span class="media__label">Bild folgt</span></div>
+          </div>
+          <div class="about-feature__text">
+            <h3>Was uns antreibt</h3>
+            <p>
+              Unser Anspruch zeigt sich in der Qualität unserer Arbeit sowie den Ergebnissen für
+              unsere Klienten und Kandidaten. Was uns wirklich antreibt, ist die Überzeugung, dass
+              die richtige Verbindung zwischen Mensch und Unternehmen länger wirkt als jede einzelne
+              Besetzung und dass Vertrauen die Grundlage dafür ist, diese Verbindung herzustellen.
+            </p>
+            <p>
+              Wir investieren in Beziehungen, nicht in schnelle Abschlüsse. In Tiefe, nicht in
+              Breite. Und in eine Zusammenarbeit, die auf Augenhöhe stattfindet. Mit Unternehmen
+              jeder Größenordnung und mit Kandidaten in jeder Phase ihrer Karriere.
+            </p>
+          </div>
+        </div>
+
+        <!-- Punkt 2 · Berlin. Vernetzt. Deutschlandweit aktiv. (Text links · Bild rechts) -->
+        <div class="about-feature about-feature--reverse">
+          <div class="about-feature__text">
+            <h3>Berlin. Verwurzelt. Vernetzt.<br />Deutschlandweit aktiv.</h3>
+            <p>
+              In Berlin geboren, aufgewachsen und gegründet – unsere Heimatstadt ist mehr als ein
+              Standort. Sie steht für Offenheit, Direktheit und den Mut, Dinge anders zu denken.
+              Genau diese Haltung bringen wir in unsere Arbeit ein. Unser Netzwerk erstreckt sich
+              durch alle relevanten Segmente der Bau- und Immobilienwirtschaft im gesamten
+              deutschsprachigen Raum – gewachsen über Jahre, gepflegt mit Sorgfalt.
+            </p>
+          </div>
+          <div class="about-feature__media">
+            <div class="media"><span class="media__label">Bild folgt</span></div>
+          </div>
+        </div>
+
+        <!-- Punkt 3 · Unsere Haltung (Bild links · Text rechts + Hervorhebung) -->
+        <div class="about-feature">
+          <div class="about-feature__media">
+            <div class="media"><span class="media__label">Bild folgt</span></div>
+          </div>
+          <div class="about-feature__text">
+            <h3>Unsere Haltung</h3>
+            <p>
+              Wir leben in einer Welt stetiger Beschleunigung. Technologischer Fortschritt,
+              künstliche Intelligenz und datengetriebene Systeme verändern, wie wir arbeiten,
+              entscheiden und kommunizieren. Informationen und Wissen sind in einer nie dagewesenen
+              Vielfalt jederzeit verfügbar, Prozesse werden automatisiert, Wahrheiten sind nicht
+              mehr statisch.
+            </p>
+            <p>In dieser Dynamik bleibt eines konstant: Der Mensch.</p>
+            <p>
+              Technologie ist kein Gegenpol zur Menschlichkeit, sondern eine notwendige Ergänzung.
+              Vertrauen, Verbundenheit, Verlässlichkeit, Authentizität, Respekt, Zuversicht und
+              Neugier sind die Grundlagen stabiler Beziehungen – und sie lassen sich nicht
+              automatisieren. Sie entstehen durch zwischenmenschliche Interaktionen, Kommunikation,
+              Haltung, Erfahrung und echtes Interesse am Gegenüber.
+            </p>
+            <p>
+              Genau darauf bauen wir unsere Arbeit als Personalberater auf, denn im Kern dreht sich
+              unser Job um Menschen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Punkt 4 · Unser Selbstverständnis (Text links · Bild rechts) -->
+        <div class="about-feature about-feature--reverse">
+          <div class="about-feature__text">
+            <h3>Unser Selbstverständnis</h3>
+            <p>
+              Wir glauben an die bewusste Verbindung von Mensch und Technologie. Moderne Werkzeuge
+              wie unser Talent Matcher unterstützen uns dabei, effizienter, fundierter und präziser
+              zu arbeiten. Denn so sehr wir den menschlichen Faktor auch schätzen und in den
+              Mittelpunkt unserer Arbeit stellen, wissen wir zugleich, aufgrund unserer jahrelangen
+              Erfahrungen, um die Fehlbarkeit menschlicher Recruiting-Entscheidungen.
+            </p>
+            <p>
+              Wir streben nicht nach schnellen, kurzfristigen Erfolgen, sondern nach Lösungen,
+              Beziehungen und Matches, die langfristigen Bestand haben. Ein Höchstmaß an
+              professioneller, partnerschaftlicher, lösungsorientierter und zielgerichteter Arbeit
+              auf Augenhöhe ist für uns kein inhaltsloses Versprechen, sondern das Fundament unseres
+              Handelns.
+            </p>
+            <p>
+              Wir wollen mit unserer Arbeit Klarheit schaffen für Unternehmen wie für Kandidaten.
+              Sie soll helfen, Entscheidungen bewusster, fundierter und nachhaltiger zu treffen.
+              Wir wollen nicht die lauteste Personalberatung sein. Sondern die verlässlichste.
+            </p>
+            <p>
+              Eine Boutique, die Menschlichkeit lebt, Technologie sinnvoll einsetzt und langfristige
+              Partnerschaften aufbaut – für eine Branche, die Stabilität, Vertrauen und Verantwortung
+              braucht.
+            </p>
+          </div>
+          <div class="about-feature__media">
+            <div class="media"><span class="media__label">Bild folgt</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       Footer (open sky — wie Haupt- & Unternehmen-Seite)
+       ==================================================================== -->
+  <footer class="site-footer site-footer--home">
+    <div class="container">
+      <div class="footer__grid footer__grid--home">
+        <div class="footer__brand">
+          <a href="index.html" class="brand" aria-label="Holmes Consulting Partners">
+            <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+          </a>
+          <p class="footer__tagline">Spezialisierte Personalberatung für Bau &amp; Immobilien</p>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
+          <ul>
+            <li><a href="fuer-unternehmen.html">Mandat anfragen</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="fuer-kandidaten.html">Für Kandidaten</a></h4>
+          <ul>
+            <li><a href="fuer-kandidaten.html">Initiativ bewerben</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4><a href="ueber-uns.html">Über Holmes</a></h4>
+          <ul>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <h4>Folgen Sie uns</h4>
+          <div class="social">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+            </a>
+            <a href="#" aria-label="Xing">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © 2026 Holmes Consulting Partners. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=2"></script>
+  <!-- Scroll-Reveal: linke Spalte zuerst, rechte versetzt (IntersectionObserver) -->
+  <script src="assets/js/about-reveal.js?v=1"></script>
+</body>
+</html>

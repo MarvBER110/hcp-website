@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead-Funnel Muster · Holmes Consulting Partners</title>
+  <meta name="description" content="Design-Muster: Lead-Funnel „Für Unternehmen" für Holmes Consulting Partners. Noch ohne Verknüpfung — reines Layout- und Designkonzept." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Design-System der Hauptseite (Fonts, Farben, Buttons) -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+
+  <style>
+    /* ==================================================================
+       Lead-Funnel „Für Unternehmen" (Muster) — bewusst groß & reduziert.
+       Nutzt ausschließlich die bestehenden Design-Tokens aus styles.css.
+       Die Fragen digitalisieren Phase „Woche 1: Verstehen der Position
+       und Anforderungen" aus dem Recruiting-Prozess der Startseite.
+       ================================================================== */
+    body.page-funnel {
+      background-color: #ffffff;          /* wie die Unterseiten: deckend weiß */
+      background-image: none;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Kopfleiste: „Zurück zur Information" klar sichtbar ─────────── */
+    .funnel-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .funnel-topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 18px;
+    }
+    .funnel-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 17px;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+    .funnel-back svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .funnel-back:hover { color: var(--stone); }
+    .funnel-topbar__note {
+      font-size: 14px;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 640px) { .funnel-topbar__note { display: none; } }
+
+    /* ── Marke mittig über dem Funnel ───────────────────────────────── */
+    .funnel-brand {
+      display: flex;
+      justify-content: center;
+      padding-block: clamp(28px, 4vw, 48px) 0;
+    }
+    .funnel-brand img { width: clamp(180px, 22vw, 240px); height: auto; }
+
+    /* ── Funnel-Bühne ───────────────────────────────────────────────── */
+    .funnel {
+      width: 100%;
+      max-width: 880px;
+      margin-inline: auto;
+      padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(64px, 8vw, 110px);
+      flex: 1;
+    }
+
+    /* Fortschritt: „Schritt X von 8" + Balken in open sky */
+    .funnel-progress { margin-bottom: clamp(36px, 5vw, 56px); }
+    .funnel-progress__label {
+      font-size: 16px;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .funnel-progress__bars {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 8px;
+    }
+    .funnel-progress__bars span {
+      height: 5px;
+      border-radius: 999px;
+      background: var(--paper-deep);
+      transition: background-color .3s ease;
+    }
+    .funnel-progress__bars span.is-done { background: var(--sky); }
+
+    /* Schritt-Panels: nur der aktive ist sichtbar, weicher Fade-up */
+    .funnel-step { display: none; }
+    .funnel-step.is-active { display: block; animation: funnelIn .45s ease both; }
+    @keyframes funnelIn {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Große, klare Typografie */
+    .funnel-step .eyebrow { text-align: center; font-size: 15px; }
+    .funnel-step h1 {
+      text-align: center;
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.1;
+      margin-top: 14px;
+      text-wrap: balance;
+    }
+    .funnel-step .funnel-lead {
+      text-align: center;
+      font-size: clamp(19px, 2.2vw, 23px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 56ch;
+      margin: 18px auto 0;
+    }
+
+    /* Antwort-Karten: große Klickflächen im Karten-Design der Hauptseite */
+    .funnel-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2.5vw, 24px);
+      margin-top: clamp(36px, 5vw, 52px);
+    }
+    @media (max-width: 720px) { .funnel-options { grid-template-columns: 1fr; } }
+    .funnel-option {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      text-align: left;
+      padding: clamp(22px, 3vw, 30px) clamp(22px, 3vw, 32px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease, background-color .25s ease;
+    }
+    .funnel-option--wide { grid-column: 1 / -1; justify-content: center; text-align: center; }
+    .funnel-option:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
+      border-color: var(--sky);
+    }
+    .funnel-option.is-selected {
+      background: var(--sky);
+      border-color: var(--sky);
+    }
+    .funnel-option.is-selected .funnel-option__title,
+    .funnel-option.is-selected .funnel-option__sub { color: #ffffff; }
+    .funnel-option.is-selected .funnel-option__chip {
+      background: #ffffff;
+      color: var(--ink);
+      border-color: #ffffff;
+    }
+    .funnel-option__chip {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--ink);
+      transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+    }
+    .funnel-option__title {
+      display: block;
+      font-size: clamp(19px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .funnel-option__sub {
+      display: block;
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-top: 5px;
+      line-height: 1.45;
+    }
+
+    /* Navigation unter den Optionen (Zurück innerhalb des Funnels) */
+    .funnel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: clamp(32px, 4vw, 44px);
+    }
+
+    /* ── Kontakt-Schritt: große Formularfelder + optionaler Freitext ── */
+    .funnel-form {
+      margin-top: clamp(36px, 5vw, 52px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2.5vw, 22px);
+    }
+    @media (max-width: 720px) { .funnel-form { grid-template-columns: 1fr; } }
+    .funnel-field { display: flex; flex-direction: column; gap: 8px; }
+    .funnel-field--full { grid-column: 1 / -1; }
+    .funnel-field label {
+      font-size: 16px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    .funnel-field label .opt { color: var(--ink-soft); }
+    .funnel-field input,
+    .funnel-field textarea {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--ink);
+      padding: 18px 20px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color .25s ease, box-shadow .25s ease;
+      width: 100%;
+      resize: vertical;
+    }
+    .funnel-field input::placeholder,
+    .funnel-field textarea::placeholder { color: #A9A5A0; }
+    .funnel-field input:focus,
+    .funnel-field textarea:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 4px rgba(192, 202, 206, 0.35);
+    }
+    .funnel-submit {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .funnel-submit .btn { font-size: 16px; padding: 19px 56px; }
+    .funnel-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 26px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+    .funnel-trust span { display: inline-flex; align-items: center; gap: 9px; }
+    .funnel-trust svg { width: 17px; height: 17px; color: var(--sky); }
+
+    /* ── Danke-Schritt inkl. Wochen-Ablauf („So geht es jetzt weiter") ── */
+    .funnel-done { text-align: center; }
+    .funnel-done__badge {
+      width: 88px; height: 88px;
+      margin: 0 auto clamp(24px, 3vw, 36px);
+      display: grid;
+      place-items: center;
+      background: var(--sky);
+      border-radius: 50%;
+      color: #ffffff;
+    }
+    .funnel-done__badge svg { width: 40px; height: 40px; }
+    .funnel-done h2 {
+      font-size: clamp(24px, 2.6vw, 30px);
+      margin-top: clamp(48px, 6vw, 64px);
+    }
+    .done-weeks {
+      position: relative;
+      max-width: 620px;
+      margin: clamp(28px, 3.5vw, 40px) auto 0;
+      text-align: left;
+      display: grid;
+      gap: 26px;
+    }
+    .done-weeks::before {                 /* vertikaler Strahl durch die Wochen-Kästchen */
+      content: "";
+      position: absolute;
+      left: 61px;
+      top: 10px; bottom: 10px;
+      width: 1px;
+      background: var(--line);
+    }
+    .done-week {
+      display: grid;
+      grid-template-columns: 122px 1fr;
+      column-gap: 24px;
+      align-items: center;
+    }
+    .done-week__badge {
+      display: grid;
+      place-items: center;
+      height: 46px;
+      background: var(--sky);             /* Wochen-Kästchen wie die Prozess-Quadrate der Unterseite */
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .done-week p {
+      font-size: 17px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    @media (max-width: 560px) {
+      .done-weeks::before { display: none; }
+      .done-week { grid-template-columns: 1fr; row-gap: 8px; justify-items: start; }
+      .done-week__badge { padding-inline: 16px; }
+    }
+
+    /* Muster-Hinweis unten */
+    .funnel-note {
+      text-align: center;
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding: 26px var(--gutter);
+      border-top: 1px solid var(--line);
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body class="page-funnel">
+
+  <!-- ══ Kopfleiste: jederzeit raus aus dem Funnel ══════════════════════ -->
+  <div class="funnel-topbar">
+    <div class="container funnel-topbar__inner">
+      <a class="funnel-back" href="fuer-unternehmen.html">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Zurück zur Information
+      </a>
+      <span class="funnel-topbar__note">Vertraulich · Unverbindlich · DSGVO-konform</span>
+    </div>
+  </div>
+
+  <!-- Marke -->
+  <div class="funnel-brand">
+    <img src="assets/img/logo.png" alt="Holmes Consulting Partners" />
+  </div>
+
+  <main class="funnel">
+
+    <!-- Fortschritt -->
+    <div class="funnel-progress" aria-hidden="true">
+      <p class="funnel-progress__label">Schritt <span id="prog-current">1</span> von 8</p>
+      <div class="funnel-progress__bars">
+        <span class="is-done"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- ══ 1 · Was wird gesucht? ══════════════════════════════════════ -->
+    <section class="funnel-step is-active" data-step="1">
+      <p class="eyebrow">Für Unternehmen · Personalberatung Bau &amp; Immobilien</p>
+      <h1>Wen dürfen wir für Sie finden?</h1>
+      <p class="funnel-lead">
+        In zwei Minuten zum unverbindlichen Erstgespräch. Je genauer wir Ihre
+        Situation verstehen, desto gezielter können wir für Sie suchen.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Eine Führungskraft</span>
+            <span class="funnel-option__sub">Geschäftsführung, Bereichsleitung oder Projektleitung</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Eine Spezialistin oder einen Spezialisten</span>
+            <span class="funnel-option__sub">Erfahrene Expertinnen und Experten für Schlüsselrollen</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Mehrere Positionen</span>
+            <span class="funnel-option__sub">Teamaufbau oder laufender Personalbedarf</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Noch unklar? Erst einmal beraten lassen</span>
+            <span class="funnel-option__sub">Wir sortieren gemeinsam, was Sie wirklich brauchen</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══ 2 · Fachbereich ════════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="2">
+      <p class="eyebrow">Ihr Fachbereich</p>
+      <h1>In welchem Bereich ist die Position angesiedelt?</h1>
+      <p class="funnel-lead">
+        Wir sind auf die Bau- und Immobilienbranche spezialisiert.
+        Wählen Sie einfach den Bereich, der am besten passt.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Projektentwicklung &amp; Bau</span>
+            <span class="funnel-option__sub">Projektentwicklung, Bauleitung, Projektsteuerung, Construction Management</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Asset, Property &amp; Facility Management</span>
+            <span class="funnel-option__sub">Bestand, Betrieb, Wohnungswirtschaft und Wertsteigerung</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Investment, Fund &amp; Transaktion</span>
+            <span class="funnel-option__sub">Fund Management, Portfolio, Research, Ankauf und Verkauf</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Anderer Bereich</span>
+            <span class="funnel-option__sub">Wir prüfen offen, ob wir der richtige Partner sind</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 3 · Standort der Position ══════════════════════════════════ -->
+    <section class="funnel-step" data-step="3">
+      <p class="eyebrow">Standort</p>
+      <h1>Wo ist die Position zu besetzen?</h1>
+      <p class="funnel-lead">
+        Der Standort bestimmt Suchradius und Ansprache.
+        Wir arbeiten deutschlandweit und im gesamten DACH-Raum.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Berlin &amp; Umland</span>
+            <span class="funnel-option__sub">Unser Heimatmarkt</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Andere Region in Deutschland</span>
+            <span class="funnel-option__sub">z. B. Hamburg, Frankfurt, München oder das Ruhrgebiet</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Österreich / Schweiz</span>
+            <span class="funnel-option__sub">Besetzungen im DACH-Raum</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Mehrere Standorte oder flexibel</span>
+            <span class="funnel-option__sub">Verteilte Teams oder flexible Modelle</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 4 · Zeitrahmen & Dringlichkeit ═════════════════════════════ -->
+    <section class="funnel-step" data-step="4">
+      <p class="eyebrow">Zeithorizont</p>
+      <h1>Wie schnell soll die Position besetzt sein?</h1>
+      <p class="funnel-lead">
+        So können wir Dringlichkeit und Vorgehen richtig einordnen.
+        Im Schnitt besetzen wir eine Position in 8 bis 12 Wochen.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">So schnell wie möglich</span>
+            <span class="funnel-option__sub">Die Position ist bereits vakant</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">In den nächsten zwei bis drei Monaten</span>
+            <span class="funnel-option__sub">Planbare Nachbesetzung oder Wachstum</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Perspektivisch</span>
+            <span class="funnel-option__sub">Vorbereitet sein, bevor es dringend wird</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Vertraulich</span>
+            <span class="funnel-option__sub">Diskrete Nachbesetzung einer besetzten Position</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 5 · Art des Unternehmens ═══════════════════════════════════ -->
+    <section class="funnel-step" data-step="5">
+      <p class="eyebrow">Ihr Unternehmen</p>
+      <h1>Wie lässt sich Ihr Unternehmen beschreiben?</h1>
+      <p class="funnel-lead">
+        So verstehen wir Ihr Umfeld und wissen, welche Persönlichkeiten
+        kulturell zu Ihnen passen.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Projektentwickler</span>
+            <span class="funnel-option__sub">Wohnen, Gewerbe oder gemischte Quartiere</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Investor / Bestandshalter</span>
+            <span class="funnel-option__sub">Fonds, Asset Management und Bestandshaltung</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Bauunternehmen / Generalunternehmer</span>
+            <span class="funnel-option__sub">Hochbau, Tiefbau und TGA</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Verwaltung / Beratung / Sonstige</span>
+            <span class="funnel-option__sub">Property Management, Beratung, öffentliche Hand …</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 6 · Unternehmensgröße ══════════════════════════════════════ -->
+    <section class="funnel-step" data-step="6">
+      <p class="eyebrow">Ihr Unternehmen</p>
+      <h1>Wie groß ist Ihr Unternehmen?</h1>
+      <p class="funnel-lead">
+        Die Größe hilft uns einzuschätzen, welche Strukturen und
+        Entscheidungswege Kandidatinnen und Kandidaten erwarten.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Bis 50 Mitarbeitende</span>
+            <span class="funnel-option__sub">Inhabergeführt oder junges Team</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">51 bis 250 Mitarbeitende</span>
+            <span class="funnel-option__sub">Etablierter Mittelstand</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">251 bis 1.000 Mitarbeitende</span>
+            <span class="funnel-option__sub">Größerer Mittelstand, mehrere Standorte</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Über 1.000 Mitarbeitende</span>
+            <span class="funnel-option__sub">Konzern oder Konzerntochter</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 7 · Gehaltsrahmen (optional beantwortbar) ══════════════════ -->
+    <section class="funnel-step" data-step="7">
+      <p class="eyebrow">Rahmenbedingungen</p>
+      <h1>Welcher Gehaltsrahmen ist vorgesehen?</h1>
+      <p class="funnel-lead">
+        Eine grobe Einschätzung des Jahresgehalts schärft unsere Suche deutlich.
+        Wenn Sie das lieber persönlich besprechen möchten, ist das völlig in Ordnung.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Bis 80.000 €</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">80.000 bis 120.000 €</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">120.000 bis 180.000 €</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Über 180.000 €</span>
+          </span>
+        </button>
+        <button class="funnel-option funnel-option--wide" type="button">
+          <span>
+            <span class="funnel-option__title">Bespreche ich lieber persönlich im Erstgespräch</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ 8 · Kontakt + optionaler Freitext ══════════════════════════ -->
+    <section class="funnel-step" data-step="8">
+      <p class="eyebrow">Letzter Schritt</p>
+      <h1>Ihre Kontaktdaten</h1>
+      <p class="funnel-lead">
+        Füllen Sie hier noch kurz Ihre Daten aus. Wir melden uns innerhalb
+        von 48 Stunden persönlich bei Ihnen. Vertraulich und ohne jede Verpflichtung.
+      </p>
+      <form class="funnel-form" onsubmit="return false;">
+        <div class="funnel-field">
+          <label for="f-name">Ihr Name</label>
+          <input id="f-name" type="text" placeholder="Vor- und Nachname" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-firma">Unternehmen</label>
+          <input id="f-firma" type="text" placeholder="Firmenname" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-mail">E-Mail</label>
+          <input id="f-mail" type="email" placeholder="name@unternehmen.de" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-tel">Telefon <span class="opt">(optional)</span></label>
+          <input id="f-tel" type="tel" placeholder="+49 …" />
+        </div>
+        <div class="funnel-field funnel-field--full">
+          <label for="f-text">Worauf kommt es Ihnen an? <span class="opt">(optional)</span></label>
+          <textarea id="f-text" rows="4" placeholder="Alles, was uns hilft, Sie und die Position zu verstehen. Zum Beispiel wichtige Kriterien oder Besonderheiten."></textarea>
+        </div>
+        <div class="funnel-submit">
+          <button class="btn btn--primary" type="button" data-submit>Unverbindliches Erstgespräch sichern</button>
+          <div class="funnel-trust">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              100&nbsp;% vertraulich
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Antwort in 48&nbsp;h
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              DSGVO-konform
+            </span>
+          </div>
+        </div>
+      </form>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Zurück</button>
+      </div>
+    </section>
+
+    <!-- ══ Danke + „So geht es jetzt weiter" (Wochen-Ablauf) ══════════ -->
+    <section class="funnel-step funnel-done" data-step="9">
+      <div class="funnel-done__badge">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1>Vielen Dank für Ihre Anfrage.</h1>
+      <p class="funnel-lead">
+        Ihre Anfrage ist bei uns angekommen. Wir melden uns innerhalb
+        von 48 Stunden persönlich bei Ihnen.
+      </p>
+
+      <h2>So geht es jetzt weiter</h2>
+      <div class="done-weeks">
+        <div class="done-week">
+          <span class="done-week__badge">Woche 1</span>
+          <p>Wir verstehen Ihre Position und Ihre Anforderungen im persönlichen Gespräch</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Woche 2–3</span>
+          <p>Wir identifizieren geeignete Persönlichkeiten</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Woche 3–4</span>
+          <p>Wir treffen eine Vorauswahl und sprechen gezielt an</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Woche 4–7</span>
+          <p>Wir führen persönliche Gespräche und bewerten sorgfältig</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Woche 8–12</span>
+          <p>Wir präsentieren Ihnen die passenden Kandidatinnen und Kandidaten</p>
+        </div>
+      </div>
+
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-restart>Muster neu starten</button>
+      </div>
+    </section>
+
+  </main>
+
+  <p class="funnel-note">Design-Muster · noch ohne Verknüpfung und ohne Datenübertragung</p>
+
+  <script>
+    /* Muster-Logik: reine Ansichts-Navigation zwischen den Schritten.
+       Keine Datenübertragung, keine Speicherung — nur zum Anschauen. */
+    (function () {
+      "use strict";
+      var steps = Array.prototype.slice.call(document.querySelectorAll(".funnel-step"));
+      var bars = document.querySelectorAll(".funnel-progress__bars span");
+      var progLabel = document.getElementById("prog-current");
+      var progress = document.querySelector(".funnel-progress");
+      var LAST_QUESTION = 8;              /* Schritt 9 = Danke-Seite */
+
+      function show(n) {
+        steps.forEach(function (s) {
+          s.classList.toggle("is-active", Number(s.getAttribute("data-step")) === n);
+        });
+        bars.forEach(function (b, i) { b.classList.toggle("is-done", i < Math.min(n, LAST_QUESTION)); });
+        if (progLabel) progLabel.textContent = Math.min(n, LAST_QUESTION);
+        progress.style.visibility = n > LAST_QUESTION ? "hidden" : "visible";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      steps.forEach(function (step) {
+        var n = Number(step.getAttribute("data-step"));
+        step.querySelectorAll(".funnel-option").forEach(function (opt) {
+          opt.addEventListener("click", function () {
+            step.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
+            opt.classList.add("is-selected");
+            setTimeout(function () { show(n + 1); }, 320);
+          });
+        });
+        var back = step.querySelector("[data-back]");
+        if (back) back.addEventListener("click", function () { show(n - 1); });
+      });
+
+      document.querySelector("[data-submit]").addEventListener("click", function () { show(LAST_QUESTION + 1); });
+      document.querySelector("[data-restart]").addEventListener("click", function () {
+        document.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
+        show(1);
+      });
+    })();
+  </script>
+</body>
+</html>

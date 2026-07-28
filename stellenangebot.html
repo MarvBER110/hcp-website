@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stellenangebot — Holmes Consulting Partners</title>
+  <meta name="description" content="Details zum Stellenangebot bei Holmes Consulting Partners — inklusive Online-Bewerbung." />
+  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+</head>
+<body class="page-jobs page-job-detail">
+
+  <!-- Dünne Kontaktleiste über dem Header -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__contact">
+        <a href="mailto:kontakt@holmes-partners.berlin">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          kontakt@holmes-partners.berlin
+        </a>
+        <a class="topbar__phone" href="tel:+493012345678">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          +49 30 1234 5678
+        </a>
+      </div>
+      <div class="topbar__social">
+        <a href="#" aria-label="Holmes auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg>
+        </a>
+        <a href="#" aria-label="Holmes auf Xing">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Holmes Consulting Partners — Startseite">
+        <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
+        <a class="nav__link" href="ueber-uns.html">Über uns</a>
+        <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
+        <a class="nav__link is-active" href="stellenangebote.html" aria-current="page">Stellenangebote</a>
+        <a class="nav__link" href="index.html#jobfit">Persönlichkeitstest</a>
+        <a class="nav__link" href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+        <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <!-- Ladezustand -->
+        <div id="jd-loading" class="jobs-empty">
+          <p class="jobs-loading">Stellenangebot wird geladen …</p>
+        </div>
+
+        <!-- Stelle nicht gefunden -->
+        <div id="jd-notfound" class="jobdetail-missing" hidden>
+          <h1>Stelle nicht gefunden</h1>
+          <p>Dieses Stellenangebot ist nicht mehr verfügbar oder wurde bereits besetzt.</p>
+          <a href="stellenangebote.html" class="btn btn--primary">Alle Stellenangebote ansehen</a>
+        </div>
+
+        <!-- Detail -->
+        <div id="jd-content" class="jobdetail-layout" hidden>
+          <article class="jobdetail">
+            <a href="stellenangebote.html" class="jobdetail__back">← Zurück zu allen Stellenangeboten</a>
+
+            <div class="jobdetail__head">
+              <div>
+                <h1 class="jobdetail__title" id="jd-title"></h1>
+                <p class="jobdetail__meta" id="jd-meta"></p>
+              </div>
+              <span class="jobdetail__ref" id="jd-ref"></span>
+            </div>
+
+            <div class="chips jobdetail__tags" id="jd-tags"></div>
+
+            <div class="jobdetail__body" id="jd-body"></div>
+
+            <div class="jobdetail__cta">
+              <button type="button" class="btn btn--primary" id="jd-apply-btn">Jetzt bewerben</button>
+            </div>
+          </article>
+
+          <!-- Recruiter-Karte (zuständige Ansprechperson) -->
+          <aside class="recruiter">
+            <div class="recruiter__photo">
+              <img src="assets/img/jason.jpg" alt="Jason Holmes" />
+            </div>
+            <div class="recruiter__body">
+              <h3 class="recruiter__name">Jason Holmes</h3>
+              <p class="recruiter__role">Managing Partner</p>
+              <div class="recruiter__contact">
+                <a href="tel:+493012345678">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                  +49 30 1234 5678
+                </a>
+                <a href="mailto:j.holmes@holmes-partners.berlin">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                  j.holmes@holmes-partners.berlin
+                </a>
+              </div>
+              <a href="#" class="recruiter__apply" id="jd-apply-link">Jetzt bewerben →</a>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Bewerbungsformular -->
+        <div id="apply-wrap" class="applyform" hidden style="margin-top: clamp(48px, 7vw, 88px);">
+          <div class="section__head" style="text-align:left; margin-bottom: 28px; max-width:none;">
+            <h2>Jetzt bewerben</h2>
+            <p style="margin-top:8px;">Pflichtfelder sind mit <span class="req">*</span> markiert.</p>
+          </div>
+
+          <form id="apply-form" novalidate>
+            <div class="applyform__grid">
+              <div class="field">
+                <label for="af-anrede">Anrede</label>
+                <select id="af-anrede" name="anrede">
+                  <option value="">Bitte wählen</option>
+                  <option value="Frau">Frau</option>
+                  <option value="Herr">Herr</option>
+                </select>
+              </div>
+              <div class="field"><!-- Platzhalter für Raster-Symmetrie --></div>
+
+              <div class="field">
+                <label for="af-vorname">Vorname <span class="req">*</span></label>
+                <input type="text" id="af-vorname" name="vorname" autocomplete="given-name" required />
+              </div>
+              <div class="field">
+                <label for="af-nachname">Nachname <span class="req">*</span></label>
+                <input type="text" id="af-nachname" name="nachname" autocomplete="family-name" required />
+              </div>
+
+              <div class="field">
+                <label for="af-geburtsdatum">Geburtsdatum</label>
+                <input type="date" id="af-geburtsdatum" name="geburtsdatum" />
+              </div>
+              <div class="field">
+                <label for="af-email">E-Mail <span class="req">*</span></label>
+                <input type="email" id="af-email" name="email" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label for="af-email-typ">E-Mail-Typ</label>
+                <select id="af-email-typ" name="email_typ">
+                  <option value="Privat">Privat</option>
+                  <option value="Arbeit">Arbeit</option>
+                </select>
+              </div>
+              <div class="field"></div>
+
+              <div class="field">
+                <label for="af-tel-privat">Telefon privat</label>
+                <input type="tel" id="af-tel-privat" name="telefon_privat" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="af-tel-arbeit">Telefon Arbeit</label>
+                <input type="tel" id="af-tel-arbeit" name="telefon_arbeit" />
+              </div>
+
+              <div class="field field--full">
+                <span class="field__label">Lebenslauf (PDF) <span class="req">*</span></span>
+                <input type="file" id="af-cv" name="lebenslauf" accept="application/pdf,.pdf" required />
+                <span class="field__hint">Bitte als PDF, max. 10 MB.</span>
+              </div>
+
+              <div class="field field--full">
+                <span class="field__label">Weitere Dateien (optional)</span>
+                <input type="file" id="af-files" name="zusatz" multiple
+                       accept="application/pdf,.pdf,.doc,.docx,image/png,image/jpeg" />
+                <span class="field__hint">Bis zu 5 Dateien (z. B. Zeugnisse, Zertifikate).</span>
+              </div>
+
+              <div class="field field--full">
+                <label for="af-nachricht">Nachricht</label>
+                <textarea id="af-nachricht" name="nachricht" placeholder="Ihre Nachricht an uns (optional)"></textarea>
+              </div>
+
+              <div class="field field--full">
+                <div class="checkbox">
+                  <input type="checkbox" id="af-datenschutz" name="einwilligung" required />
+                  <label for="af-datenschutz">
+                    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>
+                    gelesen und willige in die Verarbeitung meiner Daten zum Zweck der Bewerbung ein. <span class="req">*</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="applyform__submit">
+              <button type="submit" class="btn btn--primary" id="af-submit">Bewerbung absenden</button>
+            </div>
+            <p class="applyform__status" id="af-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <!-- Bestätigung -->
+        <div id="apply-confirm" class="apply-done" hidden>
+          <div class="apply-done__icon">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" aria-hidden="true">
+              <path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2>Vielen Dank für Ihre Bewerbung!</h2>
+          <p>Wir haben Ihre Unterlagen erhalten und melden uns zeitnah bei Ihnen. Sie erhalten in Kürze eine Bestätigung per E-Mail.</p>
+          <p style="margin-top:28px;"><a href="stellenangebote.html" class="btn btn--primary">Weitere Stellen ansehen</a></p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--home">
+    <div class="container">
+      <div class="footer__grid footer__grid--home">
+        <div class="footer__brand">
+          <a href="index.html" class="brand" aria-label="Holmes Consulting Partners">
+            <img src="assets/img/logo.png" alt="Holmes Consulting Partners" class="brand__logo" />
+          </a>
+          <p class="footer__tagline">Spezialisierte Personalberatung für Bau &amp; Immobilien</p>
+        </div>
+        <div class="footer__col">
+          <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
+          <ul>
+            <li><a href="fuer-unternehmen.html">Mandat anfragen</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4><a href="fuer-kandidaten.html">Für Kandidaten</a></h4>
+          <ul>
+            <li><a href="fuer-kandidaten.html">Initiativ bewerben</a></li>
+            <li><a href="index.html#jobfit">Persönlichkeitstest starten</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4><a href="ueber-uns.html">Über Holmes</a></h4>
+          <ul>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+        <div class="footer__social">
+          <h4>Folgen Sie uns</h4>
+          <div class="social">
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25H4.7V24H.25V8.25ZM8.34 8.25h4.26v2.15h.06c.6-1.12 2.05-2.3 4.22-2.3 4.51 0 5.34 2.97 5.34 6.83V24h-4.45v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.34V8.25Z"/></svg></a>
+            <a href="#" aria-label="Xing"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916a.057.057 0 0 1 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">© 2026 Holmes Consulting Partners. Alle Rechte vorbehalten.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/job-detail.js?v=5"></script>
+</body>
+</html>
