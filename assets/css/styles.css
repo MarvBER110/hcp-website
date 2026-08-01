@@ -1351,7 +1351,7 @@ body.page-plain #positionen .job { background: var(--card); }
 .expertise {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;   /* Textspalte etwas breiter → H2 passt in 2 Zeilen */
-  gap: clamp(40px, 6vw, 80px);
+  gap: clamp(36px, 4vw, 44px);          /* schmalerer Gutter → Chip-Spalte kann Reihen voll ausfüllen */
   align-items: center;
 }
 .expertise__text h2 { font-size: clamp(26px, 2.7vw, 36px); }
@@ -1418,7 +1418,7 @@ body.page-plain #positionen .job { background: var(--card); }
 .values__head h2 em { display: block; font-style: italic; font-weight: 300; color: var(--wood); margin-top: 4px; }
 /* Fließtext: Lato 300 · 16px · lh 22px · Tracking 5 % · zentriert · #585555 */
 .values__head > p:last-child { font-weight: 300; font-size: 16px; line-height: 22px; letter-spacing: 0.05em; color: var(--ink-soft); margin-top: 20px; }
-.value-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.value-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
 .value { border-radius: 14px; overflow: hidden; aspect-ratio: 725 / 1083; }   /* natives Bildformat → Label bleibt sichtbar */
 .value img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
