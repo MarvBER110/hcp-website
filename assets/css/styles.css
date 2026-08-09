@@ -1731,13 +1731,19 @@ html.gsap-anim .weeks-line__rail { transform: scaleX(0); }
 /* ---- Responsive (Startseiten-Komponenten) -------------------------------- */
 @media (max-width: 1000px) {
   .hero--home { grid-template-columns: 1fr; min-height: 0; }
-  .hero--home .hero__media { min-height: 300px; }
+  /* aspect-ratio freigeben: 3/2 + min-height 300px würde sonst eine feste
+     Breite von 450px erzwingen → Seite läuft auf Mobil horizontal über */
+  .hero--home .hero__media { min-height: 300px; aspect-ratio: auto; }
   .team { grid-template-columns: 1fr; max-width: 560px; }
   .expertise { grid-template-columns: 1fr; }
   .duo { grid-template-columns: 1fr; max-width: 560px; }
   .duocard__sub { white-space: normal; }   /* schmale Karten: Subhead darf umbrechen */
   .value-row { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
-  .contact { grid-template-columns: 1fr; }
+  /* .contact ist ein Flex-Container → auf Mobil untereinander stapeln
+     (grid-template-columns wirkt hier nicht) und links ausrichten */
+  .contact { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .contact__left { max-width: 100%; }
+  .contact__rows { width: 100%; }
   .contact__media { order: -1; }
   .footer__grid--home { grid-template-columns: 1fr 1fr 1fr; }
 }
