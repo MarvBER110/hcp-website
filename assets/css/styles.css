@@ -1979,6 +1979,9 @@ body.page-plain #prozess .step:last-child { margin-bottom: 0; }
 .saying--left  { max-width: 64%; }
 .saying--right { max-width: 64%; margin-left: auto; text-align: right; }
 
+/* „Unser Prozess": zweizeilige Überschrift, zweite Zeile kursiv-leicht */
+#prozess .section__head h2 em { display: block; font-style: italic; font-weight: 300; margin-top: 4px; }
+
 /* Hervorhebung in „Unsere Haltung" */
 .highlight { margin-top: 26px; border-left: 3px solid var(--wood); padding: 6px 0 6px 20px; }
 .highlight p {
