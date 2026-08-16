@@ -2365,7 +2365,7 @@ body.page-admin { background-image: none; }
   align-items: start;
 }
 .kontakt-info__name { font-family: var(--font-serif); font-weight: 500; font-size: clamp(22px, 2.6vw, 28px); color: var(--wood); margin-bottom: 24px; }
-.kontakt-info .contact-row { margin-bottom: 20px; }
+.kontakt-info .contact-row { margin-bottom: 10px; }
 .kontakt-info__social { display: flex; gap: 14px; margin-top: 28px; }
 .kontakt-info__social a {
   width: 40px; height: 40px; display: grid; place-items: center;
