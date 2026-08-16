@@ -88,7 +88,7 @@
     }
     .funnel-progress__bars {
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 8px;
     }
     .funnel-progress__bars span {
@@ -320,6 +320,56 @@
       .done-week__badge { padding-inline: 16px; }
     }
 
+    /* ── Finale Seite: E-Mail-Karte ─────────────────────────────────── */
+    .funnel-mailcard {
+      max-width: 640px;
+      margin: clamp(36px, 5vw, 52px) auto 0;
+      background: var(--card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: clamp(30px, 4.5vw, 48px);
+      text-align: center;
+    }
+    .funnel-mailcard label {
+      display: block;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+    .funnel-mailrow { display: flex; gap: 12px; }
+    .funnel-mailrow input {
+      flex: 1;
+      min-width: 0;
+      height: 60px;
+      padding: 0 22px;
+      font-family: var(--font-sans);
+      font-size: 17px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .funnel-mailrow input::placeholder { color: #A9A5A0; }
+    .funnel-mailrow input:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(192, 202, 206, 0.35); }
+    .funnel-mailrow input.is-invalid { border-color: #C0392B; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+    .funnel-mailrow .btn { height: 60px; padding-inline: 34px; white-space: nowrap; }
+    .funnel-mailhint {
+      display: none;
+      margin-top: 12px;
+      font-size: 15px;
+      color: #C0392B;
+    }
+    .funnel-mailhint.is-visible { display: block; }
+    .funnel-mailcard .funnel-trust { margin-top: 26px; justify-content: center; }
+    @media (max-width: 640px) {
+      .funnel-mailrow { flex-direction: column; }
+      .funnel-mailrow .btn { width: 100%; justify-content: center; }
+    }
+
     /* Muster-Hinweis unten */
     .funnel-note {
       text-align: center;
@@ -533,48 +583,32 @@
     <!-- ══ 5 · Kontakt + optionaler Freitext ══════════════════════════ -->
     <section class="funnel-step" data-step="5">
       <p class="eyebrow">Letzter Schritt</p>
-      <h1>Ihre Kontaktdaten</h1>
+      <h1>Fast geschafft.</h1>
       <p class="funnel-lead">
-        Füllen Sie hier noch kurz Ihre Daten aus. Wir melden uns innerhalb
-        von 48 Stunden persönlich bei Ihnen. Vertraulich und ohne jede Verpflichtung.
+        Hinterlassen Sie Ihre E-Mail-Adresse. Wir melden uns innerhalb der
+        nächsten 48 Stunden persönlich bei Ihnen. Vertraulich und ohne jede
+        Verpflichtung.
       </p>
-      <form class="funnel-form" onsubmit="return false;">
-        <div class="funnel-field">
-          <label for="f-name">Ihr Name</label>
-          <input id="f-name" type="text" placeholder="Vor- und Nachname" />
+      <form class="funnel-mailcard" onsubmit="return false;">
+        <label for="f-mail">Ihre E-Mail-Adresse</label>
+        <div class="funnel-mailrow">
+          <input id="f-mail" type="email" placeholder="name@unternehmen.de" autocomplete="email" inputmode="email" />
+          <button class="btn btn--primary" type="submit" data-submit>Erstgespräch sichern</button>
         </div>
-        <div class="funnel-field">
-          <label for="f-firma">Unternehmen</label>
-          <input id="f-firma" type="text" placeholder="Firmenname" />
-        </div>
-        <div class="funnel-field">
-          <label for="f-mail">E-Mail</label>
-          <input id="f-mail" type="email" placeholder="name@unternehmen.de" />
-        </div>
-        <div class="funnel-field">
-          <label for="f-tel">Telefon <span class="opt">(optional)</span></label>
-          <input id="f-tel" type="tel" placeholder="+49 …" />
-        </div>
-        <div class="funnel-field funnel-field--full">
-          <label for="f-text">Worauf kommt es Ihnen an? <span class="opt">(optional)</span></label>
-          <textarea id="f-text" rows="4" placeholder="Alles, was uns hilft, Sie und die Position zu verstehen. Zum Beispiel wichtige Kriterien oder Besonderheiten."></textarea>
-        </div>
-        <div class="funnel-submit">
-          <button class="btn btn--primary" type="button" data-submit>Unverbindliches Erstgespräch sichern</button>
-          <div class="funnel-trust">
-            <span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              100&nbsp;% vertraulich
-            </span>
-            <span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Antwort in 48&nbsp;h
-            </span>
-            <span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              DSGVO-konform
-            </span>
-          </div>
+        <p class="funnel-mailhint" id="f-mail-hint">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+        <div class="funnel-trust">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            100&nbsp;% vertraulich
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Antwort in 48&nbsp;h
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            DSGVO-konform
+          </span>
         </div>
       </form>
       <div class="funnel-nav">
@@ -589,8 +623,8 @@
       </div>
       <h1>Vielen Dank für Ihre Anfrage.</h1>
       <p class="funnel-lead">
-        Ihre Anfrage ist bei uns angekommen. Wir melden uns innerhalb
-        von 48 Stunden persönlich bei Ihnen.
+        Ihre Anfrage ist bei uns angekommen. Wir melden uns innerhalb der
+        nächsten 48 Stunden persönlich bei Ihnen<span id="done-mail"></span>.
       </p>
 
       <h2>So geht es jetzt weiter</h2>
@@ -660,7 +694,22 @@
         if (back) back.addEventListener("click", function () { show(n - 1); });
       });
 
-      document.querySelector("[data-submit]").addEventListener("click", function () { show(LAST_QUESTION + 1); });
+      var mailInput = document.getElementById("f-mail");
+      var mailHint = document.getElementById("f-mail-hint");
+      document.querySelector("[data-submit]").addEventListener("click", function () {
+        var mail = mailInput.value.trim();
+        var valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail);
+        mailInput.classList.toggle("is-invalid", !valid);
+        mailHint.classList.toggle("is-visible", !valid);
+        if (!valid) { mailInput.focus(); return; }
+        var doneMail = document.getElementById("done-mail");
+        if (doneMail) doneMail.textContent = " — an " + mail;
+        show(LAST_QUESTION + 1);
+      });
+      mailInput.addEventListener("input", function () {
+        mailInput.classList.remove("is-invalid");
+        mailHint.classList.remove("is-visible");
+      });
       document.querySelector("[data-restart]").addEventListener("click", function () {
         document.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
         show(1);
