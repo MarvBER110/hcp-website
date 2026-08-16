@@ -314,6 +314,30 @@ p { margin: 0; }
 .section--wall .split__text h2 { color: #ffffff; }
 .section--wall .split__text p { color: rgba(255, 255, 255, 0.92); }
 
+/* „Für wen wir arbeiten" (Spezialisierungen): helle Kopfzeile + weiße Karte
+   mit Kundenliste in zwei Spalten */
+.clients .section__head h2 { color: #ffffff; }
+.clients .section__head p { color: rgba(255, 255, 255, 0.92); }
+.clients__card {
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: clamp(30px, 4.5vw, 56px);
+  max-width: 1040px;
+  margin-inline: auto;
+}
+/* doppelte Klasse schlägt die spätere .card__list-Flex-Regel */
+.clients__card .clients__list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(28px, 4vw, 64px);
+  row-gap: 12px;
+}
+@media (max-width: 720px) {
+  .clients__card .clients__list { grid-template-columns: 1fr; }
+}
+
 /* ---- Buttons ------------------------------------------------------------- */
 .btn {
   display: inline-flex;
