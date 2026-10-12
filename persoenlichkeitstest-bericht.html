@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holmes-Persönlichkeitstest · Deine Auswertung</title>
+<style>
+/* ============================================================
+   Druckvorlage für den Ergebnisbericht (A4)
+
+   Anders als die Auswertungsseite ist dieses Dokument von Beginn
+   an für Papier gebaut: feste Punktgrößen, fester Satzspiegel,
+   feste Seitenfolge. Am Bildschirm wird dieselbe Seite als
+   Vorschau im A4-Format dargestellt.
+
+   Bewusst ohne CSS-Verläufe — Safari druckt die nicht und füllt
+   die Fläche stattdessen schwarz. Alle Flächen sind Volltöne.
+   ============================================================ */
+
+@font-face{ font-family:"Cormorant Garamond"; src:url("assets/fonts/cormorant-var.woff2") format("woff2"); font-weight:300 700; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Lato"; src:url("assets/fonts/lato-300.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Lato"; src:url("assets/fonts/lato-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Lato"; src:url("assets/fonts/lato-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+:root{
+  --paper:#ECECE7;
+  --paper-deep:#E4E3DC;
+  --card:#F4F3EE;
+  --line:#D7D3CB;
+  --linen:#D1CCC4;
+  --wood:#B9A58D;
+  --stone:#8A7969;
+  --subhead:#A6978A;
+  --ink:#26211C;
+  --ink-soft:#585555;
+  --deckblatt:#7C4249;
+
+  --c-impact:#C4462B;
+  --c-clarity:#2E6FA3;
+  --c-connection:#2E7D4C;
+  --c-vision:#7B5FA6;
+
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Lato", Arial, sans-serif;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  padding:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:9.5pt;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Seitengerüst ----------
+   Am Bildschirm eine A4-Vorschau, im Druck der echte Satzspiegel. */
+.blatt{
+  width:210mm;
+  min-height:297mm;
+  margin:14mm auto;
+  padding:18mm 16mm 20mm;
+  background:#fff;
+  box-shadow:0 2px 18px rgba(38,33,28,.14);
+}
+.blatt--deckblatt{ padding:0; }
+
+/* ---------- Typografie ---------- */
+h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; line-height:1.15; margin:0; }
+h2{ font-size:17pt; color:var(--wood); }
+h3{ font-size:13pt; color:var(--ink); }
+h4{ font-size:10.5pt; font-family:var(--sans); font-weight:700; color:var(--ink); }
+p{ margin:0 0 3mm; orphans:3; widows:3; }
+ul,ol{ margin:2mm 0 3mm; padding-left:5mm; }
+li{ margin-bottom:1.2mm; }
+
+.eyebrow{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:7.5pt;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--subhead);
+  margin-bottom:1.5mm;
+}
+.lede{ color:var(--ink-soft); max-width:150mm; }
+.kicker{ font-family:var(--sans); font-weight:700; font-size:8pt; letter-spacing:.1em; text-transform:uppercase; }
+
+/* ---------- Deckblatt ---------- */
+.deckblatt{
+  background:var(--deckblatt);
+  color:#fff;
+  min-height:297mm;
+  padding:34mm 24mm 26mm;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.deckblatt .eyebrow{ color:rgba(255,255,255,.72); }
+.deckblatt h1{
+  font-size:27pt;
+  color:#fff;
+  max-width:20ch;
+  margin-bottom:6mm;
+}
+.deckblatt .archetyp{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  padding:1.6mm 5mm;
+  margin-bottom:8mm;
+}
+.deckblatt .archetyp .label{
+  font-family:var(--sans); font-weight:700; font-size:7pt;
+  letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  margin-right:2mm;
+}
+.deckblatt .archetyp .name{ font-family:var(--serif); font-size:13pt; font-weight:600; }
+.deckblatt .zusammenfassung{ color:rgba(255,255,255,.94); max-width:112mm; font-size:10.5pt; }
+.deckblatt .marken{ display:flex; gap:3mm; flex-wrap:wrap; margin-top:8mm; }
+.deckblatt .marke{
+  font-family:var(--sans); font-size:7.5pt; font-weight:700; letter-spacing:.04em;
+  border:1px solid rgba(255,255,255,.4); border-radius:999px; padding:1.2mm 3.5mm;
+  color:rgba(255,255,255,.9);
+}
+.deckblatt-fuss{ display:flex; align-items:flex-end; justify-content:space-between; gap:8mm; }
+.deckblatt-fuss img{ width:58mm; height:auto; }
+.deckblatt-fuss .datum{
+  font-family:var(--sans); font-size:8pt; color:rgba(255,255,255,.7); text-align:right;
+}
+
+/* ---------- Skalenlegende (fünf Volltonfelder statt Verlauf) ---------- */
+.skala{ margin:6mm 0 7mm; }
+.skala-balken{ display:flex; height:3mm; border-radius:999px; overflow:hidden; }
+.skala-balken span{ flex:1; }
+.skala-balken span:nth-child(1){ background:#E4E3DC; }
+.skala-balken span:nth-child(2){ background:#D1CCC4; }
+.skala-balken span:nth-child(3){ background:#B9A58D; }
+.skala-balken span:nth-child(4){ background:#A08A72; }
+.skala-balken span:nth-child(5){ background:#8A7969; }
+.skala-labels{
+  display:flex; justify-content:space-between; margin-top:2mm;
+  font-family:var(--sans); font-size:7.5pt; color:var(--ink-soft);
+}
+
+/* ---------- Tabelle ---------- */
+.tabelle{ width:100%; border-collapse:collapse; margin:4mm 0 0; }
+.tabelle th,.tabelle td{
+  border-bottom:1px solid var(--line);
+  padding:2.6mm 3mm;
+  text-align:left;
+  vertical-align:middle;
+}
+.tabelle th{
+  font-family:var(--sans); font-weight:700; font-size:7.5pt;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
+  border-bottom:1px solid var(--stone);
+}
+.tabelle td.rang{ width:8mm; font-size:12pt; font-weight:600; color:var(--accent,var(--wood)); }
+.tabelle td.name{ width:42mm; font-family:var(--serif); font-size:13pt; color:var(--accent,var(--ink)); }
+.tabelle td.stufe{ width:44mm; font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); }
+
+/* ---------- Messbalken ---------- */
+.balken{ display:block; position:relative; height:2.6mm; border-radius:999px; background:var(--paper-deep); }
+.balken i{ position:absolute; inset:0 auto 0 0; border-radius:999px; background:var(--accent,var(--stone)); }
+.balken b{
+  position:absolute; top:50%; width:3.4mm; height:3.4mm; margin:-1.7mm 0 0 -1.7mm;
+  border-radius:50%; background:var(--accent,var(--stone)); border:.6mm solid #fff;
+}
+
+/* ---------- Bereichsseiten ---------- */
+.bereich{ margin-bottom:0; }
+.bereich-kopf{ border-left:1.2mm solid var(--accent); padding-left:5mm; margin-bottom:5mm; }
+.bereich-kopf h2{ color:var(--accent); font-size:19pt; }
+.bereich-kopf .stufe{
+  display:inline-block; margin-top:2mm;
+  font-family:var(--sans); font-weight:700; font-size:7.5pt;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:#fff; background:var(--accent); border-radius:999px; padding:1.2mm 3.5mm;
+}
+.tage{ display:grid; grid-template-columns:1fr 1fr; gap:6mm; margin:5mm 0; }
+.tage p{ margin:0; color:var(--ink-soft); font-size:9pt; }
+.tage strong{ color:var(--ink); }
+.ziele{ margin-top:4mm; padding-top:3mm; border-top:1px solid var(--line); }
+.ziele ul{ list-style:none; padding:0; margin:2mm 0 0; columns:2; column-gap:6mm; }
+.ziele li{ font-size:8.5pt; color:var(--ink); break-inside:avoid; padding-left:4.5mm; position:relative; }
+.ziele li::before{ content:"✓"; position:absolute; left:0; color:var(--accent); font-size:8pt; }
+
+/* ---------- Facetten ---------- */
+.facetten{ margin-top:6mm; padding-top:4mm; border-top:1px solid var(--line); }
+.facette{
+  background:var(--card);
+  border-radius:2mm;
+  padding:4mm;
+  margin-bottom:3mm;
+  break-inside:avoid;
+}
+.facette-kopf{ display:flex; align-items:center; gap:5mm; }
+.facette-titel{ flex:0 0 42mm; }
+.facette-titel strong{ display:block; font-family:var(--serif); font-size:12pt; font-weight:600; }
+.facette-titel span{ display:block; font-family:var(--sans); font-size:7pt; color:var(--subhead); }
+.facette-skala{ flex:1 1 auto; }
+.facette-skala .stufe{
+  display:block; margin-top:1.6mm;
+  font-family:var(--sans); font-weight:700; font-size:7pt;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--accent);
+}
+.facette-pole{
+  display:flex; justify-content:space-between; margin-top:2.5mm;
+  font-family:var(--sans); font-size:7pt; font-weight:700; color:var(--ink-soft);
+}
+.facette .tage{ margin:3mm 0 0; gap:5mm; }
+.facette .tage p{ font-size:8.5pt; }
+.facette .ziele{ margin-top:3mm; padding-top:2.5mm; }
+
+/* ---------- Arbeitsstil ---------- */
+.aktionen{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin:5mm 0 6mm; }
+.aktion{
+  background:var(--paper-deep);
+  border-top:.8mm solid var(--accent);
+  border-radius:0 0 2mm 2mm;
+  padding:4mm;
+  break-inside:avoid;
+}
+.aktion .tag{ font-family:var(--sans); font-size:7.5pt; color:var(--ink-soft); }
+.aktion h4{ font-family:var(--serif); font-size:11pt; font-weight:700; margin:.5mm 0 2mm; }
+.aktion p{ margin:0; font-size:8.5pt; color:var(--ink-soft); }
+
+.tipps{
+  background:var(--card);
+  border-left:.8mm solid var(--accent);
+  border-radius:0 2mm 2mm 0;
+  padding:4mm 5mm;
+  break-inside:avoid;
+}
+.tipps ol{ list-style:none; margin:0; padding:0; counter-reset:tipp; }
+.tipps li{
+  counter-increment:tipp;
+  padding:2.5mm 0 2.5mm 8mm;
+  border-top:1px solid var(--line);
+  position:relative;
+  break-inside:avoid;
+}
+.tipps li:first-child{ border-top:none; padding-top:0; }
+.tipps li::before{
+  content:counter(tipp);
+  position:absolute; left:0; top:2.5mm;
+  width:5.5mm; height:5.5mm; border-radius:50%;
+  border:.35mm solid var(--accent); color:var(--accent);
+  font-family:var(--sans); font-size:7.5pt; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.tipps li:first-child::before{ top:0; }
+.tipps strong{ display:block; font-weight:700; font-size:9pt; }
+.tipps span{ display:block; font-size:8.5pt; color:var(--ink-soft); }
+
+/* ---------- Hinweise, Methodik, Fuß ---------- */
+.hinweis{
+  background:var(--paper-deep);
+  border-left:.8mm solid var(--stone);
+  padding:4mm 5mm;
+  margin:5mm 0;
+  font-size:9pt;
+  color:var(--ink-soft);
+  break-inside:avoid;
+}
+.hinweis strong{ color:var(--ink); }
+
+.rollen{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:2mm;
+  padding:5mm;
+  margin:6mm 0;
+  break-inside:avoid;
+}
+.rollen strong{ color:var(--stone); }
+
+.methodik dl{ margin:3mm 0 0; }
+.methodik dt{ font-family:var(--sans); font-weight:700; font-size:8pt; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:3.5mm; }
+.methodik dd{ margin:1mm 0 0; font-size:9pt; }
+
+.fuss{
+  margin-top:8mm;
+  padding-top:4mm;
+  border-top:1px solid var(--line);
+  font-size:8pt;
+  color:var(--ink-soft);
+}
+
+/* ---------- Bildschirm-Leiste (wird nicht gedruckt) ---------- */
+.leiste{
+  position:sticky; top:0; z-index:10;
+  background:var(--ink); color:#fff;
+  padding:3mm 5mm;
+  display:flex; align-items:center; gap:5mm; flex-wrap:wrap;
+  font-family:var(--sans); font-size:9pt;
+}
+.leiste button{
+  font-family:var(--sans); font-size:9pt; font-weight:700;
+  background:#fff; color:var(--ink); border:none; border-radius:2px;
+  padding:2mm 5mm; cursor:pointer;
+}
+.leiste a{ color:#fff; }
+
+/* ============================================================
+   Druck
+   ============================================================ */
+@page{ size:A4; margin:18mm 16mm 20mm; }
+
+@media print{
+  body{ background:#fff; }
+  .leiste{ display:none !important; }
+  .blatt{
+    width:auto; min-height:0; margin:0; padding:0;
+    box-shadow:none;
+    break-after:page; page-break-after:always;
+  }
+  .blatt:last-of-type{ break-after:auto; page-break-after:auto; }
+
+  /* Das Deckblatt füllt den Satzspiegel. Randlos ginge nur über
+     @page :first { margin:0 } — das ignoriert Safari, deshalb bleibt
+     es beim normalen Seitenrand. */
+  .blatt--deckblatt{ padding:0; }
+  .deckblatt{
+    min-height:230mm;
+    padding:26mm 20mm 20mm;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,h4{ break-after:avoid; page-break-after:avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="leiste">
+  <button type="button" id="btn-print">Als PDF speichern</button>
+  <span>Tipp: im Druckdialog „Kopf- und Fußzeilen“ abwählen und „Hintergrundgrafiken“ anhaken.</span>
+  <span id="quelle"></span>
+</div>
+
+<div id="bericht"></div>
+
+<script src="assets/js/bericht-inhalte.js?v=1"></script>
+<script>
+(function(){
+  "use strict";
+
+  var I = window.HCP_INHALTE;
+  var DIMS = ["impact", "clarity", "connection", "vision"];
+  var BAND = [[20,"Deutlich zurückhaltend"],[40,"Eher zurückhaltend"],[60,"Ausgewogen"],[80,"Eher ausgeprägt"],[101,"Deutlich ausgeprägt"]];
+
+  function band(p){
+    for (var i = 0; i < BAND.length; i++){ if (p <= BAND[i][0]) return BAND[i][1]; }
+    return BAND[BAND.length - 1][1];
+  }
+  function esc(t){
+    return String(t == null ? "" : t).replace(/[&<>"]/g, function(c){
+      return ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;" })[c];
+    });
+  }
+  function balken(percent, farbe){
+    return '<span class="balken" style="--accent:' + farbe + '">' +
+             '<i style="width:' + percent + '%"></i>' +
+             '<b style="left:' + percent + '%"></b>' +
+           '</span>';
+  }
+
+  /* ---------------- Beispieldaten, wenn kein Testergebnis vorliegt ---------------- */
+  function demo(){
+    var werte = {
+      drive:88, initiative:75, ownership:82, resilience:70,
+      focus:78, insight:64, structure:71, precision:60,
+      connect:52, empathy:58, teamwork:47, voice:44,
+      curiosity:32, growth:38, adaptability:30, composure:40
+    };
+    var facets = {}, dimensions = {};
+    Object.keys(werte).forEach(function(slug){
+      facets[slug] = { percent: werte[slug], band: band(werte[slug]), pole: werte[slug] >= 50 ? "high" : "low" };
+    });
+    DIMS.forEach(function(dim, i){
+      var slugs = I.DIM_META[dim].facets, sum = 0;
+      slugs.forEach(function(s){ sum += werte[s]; });
+      var p = Math.round(sum / slugs.length);
+      dimensions[dim] = { percent: p, band: band(p), pole: p >= 50 ? "high" : "low", rank: i + 1 };
+    });
+    return {
+      name: "Marvin",
+      completedAt: new Date().toISOString(),
+      dimensions: dimensions,
+      facets: facets,
+      archetypeKey: "clarity-impact",
+      quality: { level: "ok", flags: [], note: "" },
+      istBeispiel: true
+    };
+  }
+
+  function ergebnisLaden(){
+    var raw = null;
+    try { raw = sessionStorage.getItem("hcp_test_result_v1"); } catch(e){ /* nicht verfügbar */ }
+    if (!raw) return demo();
+    try { return JSON.parse(raw); } catch(e){ return demo(); }
+  }
+
+  /* ---------------- Bausteine ---------------- */
+  function deckblatt(r){
+    var arch = I.ARCHETYPES[r.archetypeKey] || { name: "", desc: "" };
+    var top = DIMS.slice().sort(function(a,b){ return r.dimensions[a].rank - r.dimensions[b].rank; });
+    var titel = r.archetypeKey.indexOf("balanced") === 0
+      ? ((r.name ? r.name + ", d" : "D") + "ein Profil ist vielseitig ausgeprägt.")
+      : ((r.name ? r.name + ", d" : "D") + "u verbindest " + I.DIM_LABEL[top[0]] + " mit " + I.DIM_LABEL[top[1]] + ".");
+    var datum = new Date(r.completedAt || Date.now()).toLocaleDateString("de-DE",
+                  { day:"2-digit", month:"long", year:"numeric" });
+    return (
+      '<div class="blatt blatt--deckblatt"><div class="deckblatt">' +
+        '<div>' +
+          '<p class="eyebrow">Holmes-Persönlichkeitstest · Dein Stärkenprofil</p>' +
+          '<h1>' + esc(titel) + '</h1>' +
+          '<div class="archetyp"><span class="label">Archetyp</span><span class="name">' + esc(arch.name) + '</span></div>' +
+          '<p class="zusammenfassung">' + esc(arch.desc) + '</p>' +
+          '<div class="marken">' +
+            '<span class="marke">Selbsteinschätzung</span>' +
+            '<span class="marke">4 Bereiche · 16 Facetten</span>' +
+            '<span class="marke">Persönlicher Bericht</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="deckblatt-fuss">' +
+          '<img src="assets/img/logo.png" alt="Holmes Consulting Partners">' +
+          '<div class="datum">Erstellt am<br>' + esc(datum) + '</div>' +
+        '</div>' +
+      '</div></div>'
+    );
+  }
+
+  function uebersicht(r){
+    var reihen = DIMS.slice().sort(function(a,b){ return r.dimensions[a].rank - r.dimensions[b].rank; })
+      .map(function(dim){
+        var d = r.dimensions[dim], farbe = I.DIM_META[dim].color;
+        var inhalt = I.DIM_CONTENT[dim][d.pole];
+        return '<tr style="--accent:' + farbe + '">' +
+                 '<td class="rang">' + d.rank + '</td>' +
+                 '<td class="name">' + esc(I.DIM_LABEL[dim]) +
+                   '<br><span style="font-family:var(--sans);font-size:7pt;color:var(--subhead)">' + esc(I.DIM_META[dim].de) + '</span></td>' +
+                 '<td>' + balken(d.percent, farbe) + '</td>' +
+                 '<td class="stufe">' + esc(d.band) + '</td>' +
+               '</tr>' +
+               '<tr><td></td><td colspan="3" style="padding-top:0;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:9.5pt">' +
+                 esc(inhalt.desc.split(". ")[0] + ".") + '</td></tr>';
+      }).join("");
+
+    var q = r.quality;
+    var hinweis = (q && q.level && q.level !== "ok" && q.note)
+      ? '<div class="hinweis"><strong>Hinweis zur Einordnung:</strong> ' + esc(q.note) + '</div>' : "";
+
+    return (
+      '<div class="blatt">' +
+        '<p class="eyebrow">Dein Profil auf einen Blick</p>' +
+        '<h2>Vier Bereiche, ein stimmiges Bild.</h2>' +
+        '<p class="lede">Deine Antworten ergeben eine Rangfolge aus vier Holmes-Bereichen. Kein Bereich ist besser oder schlechter, jeder beschreibt eine andere Facette deiner Arbeitsweise.</p>' +
+        hinweis +
+        '<div class="skala">' +
+          '<div class="skala-balken"><span></span><span></span><span></span><span></span><span></span></div>' +
+          '<div class="skala-labels">' +
+            '<span>Deutlich zurückhaltend</span><span>Eher zurückhaltend</span><span>Ausgewogen</span><span>Eher ausgeprägt</span><span>Deutlich ausgeprägt</span>' +
+          '</div>' +
+        '</div>' +
+        '<table class="tabelle">' +
+          '<tr><th>#</th><th>Bereich</th><th>Ausprägung</th><th>Stufe</th></tr>' +
+          reihen +
+        '</table>' +
+        '<div class="rollen">' +
+          '<p style="margin:0"><strong>So liest du diesen Bericht.</strong> Auf den nächsten Seiten findest du zu jedem Bereich eine ausführliche Beschreibung, die vier zugehörigen Facetten mit ihrer jeweiligen Ausprägung und konkrete Ansatzpunkte. Danach folgt für jeden Bereich eine Seite mit Empfehlungen für deinen Arbeitsalltag.</p>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function facette(slug, f, farbe){
+    var m = I.FACET_META[slug];
+    var c = I.FACET_CONTENT[slug][f.pole];
+    return (
+      '<div class="facette" style="--accent:' + farbe + '">' +
+        '<div class="facette-kopf">' +
+          '<div class="facette-titel"><strong>' + esc(m.en) + '</strong><span>' + esc(m.de) + '</span></div>' +
+          '<div class="facette-skala">' + balken(f.percent, farbe) +
+            '<span class="stufe">' + esc(f.band) + '</span></div>' +
+        '</div>' +
+        '<div class="facette-pole"><span>' + esc(m.low) + '</span><span>' + esc(m.high) + '</span></div>' +
+        '<div class="tage">' +
+          '<p><strong>An guten Tagen</strong> ' + esc(c.good) + '</p>' +
+          '<p><strong>An herausfordernden Tagen</strong> ' + esc(c.bad) + '</p>' +
+        '</div>' +
+        '<div class="ziele"><h4>So erreichst du deine Ziele</h4><ul>' +
+          c.goals.map(function(g){ return '<li>' + esc(g) + '</li>'; }).join("") +
+        '</ul></div>' +
+      '</div>'
+    );
+  }
+
+  function bereichsseite(r, dim){
+    var d = r.dimensions[dim], farbe = I.DIM_META[dim].color;
+    var c = I.DIM_CONTENT[dim][d.pole];
+    var facetten = I.DIM_META[dim].facets
+      .map(function(slug){ return facette(slug, r.facets[slug], farbe); }).join("");
+    return (
+      '<div class="blatt bereich" style="--accent:' + farbe + '">' +
+        '<div class="bereich-kopf">' +
+          '<p class="kicker" style="color:' + farbe + '">' + esc(I.DIM_LABEL[dim]) + ' · ' + esc(I.DIM_META[dim].de) + '</p>' +
+          '<h2>' + esc(c.title) + '</h2>' +
+          '<span class="stufe">' + esc(d.band) + '</span>' +
+        '</div>' +
+        '<p class="lede">' + esc(c.desc) + '</p>' +
+        '<div class="tage">' +
+          '<p><strong>An guten Tagen</strong> ' + esc(c.good) + '</p>' +
+          '<p><strong>An herausfordernden Tagen</strong> ' + esc(c.bad) + '</p>' +
+        '</div>' +
+        '<div class="ziele"><h4>So erreichst du deine Ziele</h4><ul>' +
+          c.goals.map(function(g){ return '<li>' + esc(g) + '</li>'; }).join("") +
+        '</ul></div>' +
+        '<div class="facetten"><h3>Deine Facetten im Detail</h3>' + facetten + '</div>' +
+      '</div>'
+    );
+  }
+
+  function arbeitsstil(r, dim){
+    var d = r.dimensions[dim], farbe = I.DIM_META[dim].color;
+    var p = I.PANEL_CONTENT[dim][d.pole];
+    var c = I.DIM_CONTENT[dim][d.pole];
+    var karten = [
+      ["Das solltest du", "weiterhin tun", p.keep],
+      ["Das könntest du", "ändern", p.change],
+      ["Das könntest du", "anfangen", p.start]
+    ].map(function(k){
+      return '<div class="aktion"><p class="tag">' + k[0] + '</p><h4>' + k[1] + '</h4><p>' + esc(k[2]) + '</p></div>';
+    }).join("");
+    var tipps = p.tips.map(function(t){
+      return '<li><strong>' + esc(t.t) + '</strong><span>' + esc(t.p) + '</span></li>';
+    }).join("");
+    return (
+      '<div class="blatt" style="--accent:' + farbe + '">' +
+        '<p class="kicker" style="color:' + farbe + '">' + esc(I.DIM_LABEL[dim]) + ' im Arbeitsalltag</p>' +
+        '<h2>' + esc(c.title) + '</h2>' +
+        '<div class="aktionen">' + karten + '</div>' +
+        '<div class="tipps"><h3 style="margin-bottom:3mm">So kannst du ' + esc(I.DIM_LABEL[dim]) + ' gezielt nutzen</h3>' +
+          '<ol>' + tipps + '</ol></div>' +
+      '</div>'
+    );
+  }
+
+  function schluss(r){
+    var top = DIMS.slice().sort(function(a,b){ return r.dimensions[a].rank - r.dimensions[b].rank; });
+    return (
+      '<div class="blatt">' +
+        '<p class="eyebrow">Zum Schluss</p>' +
+        '<h2>Wie dieses Ergebnis entstanden ist.</h2>' +
+        '<div class="methodik"><dl>' +
+          '<dt>Grundlage</dt><dd>Der Test verbindet die dimensionale Messlogik der Big Five mit einer arbeitsbezogenen Stärkenperspektive. Gemessen werden 16 Facetten, die zu vier Holmes-Bereichen zusammengefasst werden.</dd>' +
+          '<dt>Ablauf</dt><dd>Block 1 erfasst 48 Aussagen auf einer siebenstufigen Skala, Block 2 vergleicht Arbeitspräferenzen in 18 Bildpaaren, Block 3 stellt 18 Arbeitssituationen zur Wahl.</dd>' +
+          '<dt>Berechnung</dt><dd>Die Prozentwerte je Facette und Bereich stammen aus Block 1. Block 2 und Block 3 beeinflussen ausschließlich die Rangfolge der Bereiche, nicht die absoluten Werte.</dd>' +
+          '<dt>Einordnung</dt><dd>Die Werte beschreiben deine Position auf der Skala, nicht einen Vergleich mit anderen Personen. Prozentränge werden bewusst nicht ausgewiesen, solange keine belastbare Normstichprobe vorliegt.</dd>' +
+          '<dt>Deine Schwerpunkte</dt><dd>' + esc(I.DIM_LABEL[top[0]]) + ' und ' + esc(I.DIM_LABEL[top[1]]) + '.</dd>' +
+        '</dl></div>' +
+        '<div class="rollen">' +
+          '<p style="margin:0"><strong>Was du damit machen kannst.</strong> Nutze den Bericht als Gesprächsgrundlage — für dich selbst, im Austausch mit deiner Führungskraft oder in einem Gespräch mit uns. Du entscheidest, ob und wann du uns kontaktierst; dein Ergebnis wird ohne deine ausdrückliche Zustimmung an niemanden weitergegeben.</p>' +
+        '</div>' +
+        '<div class="fuss">' +
+          '<p>Dieser Bericht basiert auf deiner Selbsteinschätzung zum Zeitpunkt der Durchführung. Er dient der persönlichen und beruflichen Orientierung. Er ist weder eine klinische Diagnose noch eine abschließende Aussage über deine Eignung für einen bestimmten Beruf oder eine konkrete Position.</p>' +
+          '<p>Der Test ist ein freiwilliges Self-Assessment von Holmes Consulting Partners und kein medizinisches oder klinisch-diagnostisches Instrument. Die Ergebnisse werden nicht automatisch als Ausschlusskriterium in Auswahlverfahren verwendet.</p>' +
+          '<p>© Holmes Consulting Partners</p>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  /* ---------------- Aufbau ---------------- */
+  var r = ergebnisLaden();
+  var reihenfolge = DIMS.slice().sort(function(a,b){ return r.dimensions[a].rank - r.dimensions[b].rank; });
+
+  var html = deckblatt(r) + uebersicht(r);
+  reihenfolge.forEach(function(dim){ html += bereichsseite(r, dim); });
+  reihenfolge.forEach(function(dim){ html += arbeitsstil(r, dim); });
+  html += schluss(r);
+
+  document.getElementById("bericht").innerHTML = html;
+
+  // Der Dateiname des gespeicherten PDF kommt aus dem Dokumenttitel.
+  var datumKurz = new Date(r.completedAt || Date.now()).toLocaleDateString("de-DE");
+  document.title = "Holmes Staerkenprofil"
+    .replace("Staerkenprofil", "Stärkenprofil")
+    + (r.name ? " – " + r.name : "")
+    + " – " + datumKurz;
+
+  var quelle = document.getElementById("quelle");
+  if (quelle){
+    quelle.textContent = r.istBeispiel
+      ? "Beispielbericht — es liegt kein Testergebnis vor."
+      : "Persönlicher Bericht aus deinem Testergebnis.";
+  }
+
+  var btn = document.getElementById("btn-print");
+  if (btn) btn.addEventListener("click", function(){ window.print(); });
+
+  // Aufruf mit ?print=1 öffnet den Druckdialog sofort — so ruft ihn
+  // später auch der Server-Renderer auf.
+  if (/[?&]print=1\b/.test(window.location.search)){
+    window.addEventListener("load", function(){ setTimeout(function(){ window.print(); }, 300); });
+  }
+})();
+</script>
+</body>
+</html>
