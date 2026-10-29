@@ -7,7 +7,9 @@
   <meta name="description" content="Holmes Consulting Partners besetzt Schlüsselpositionen in der Bau- und Immobilienbranche – mit einem strukturierten, diskreten und datengestützten Prozess. Klar. Effizient. Treffsicher." />
 
   <!-- Brand fonts (Cormorant Garamond + Lato) are self-hosted via @font-face in styles.css -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+  <link rel="alternate" hreflang="de" href="fuer-unternehmen.html" />
+  <link rel="alternate" hreflang="en" href="en/for-companies.html" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=146" />
 
   <!-- Scroll-Reveal vorbereiten: Timeline-Elemente vor dem ersten Paint ausblenden,
        damit sie sauber per GSAP eingeblendet werden. Bei prefers-reduced-motion nichts ausblenden. -->
@@ -57,15 +59,21 @@
       </a>
 
       <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
-        <a class="nav__link" href="ueber-uns.html">Über uns</a>
+        <a class="nav__link" href="ueber-uns.html">Über&nbsp;uns</a>
         <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
         <a class="nav__link" href="stellenangebote.html">Stellenangebote</a>
         <a class="nav__link" href="persoenlichkeitstest.html">Persönlichkeitstest</a>
         <a class="nav__link" href="kontakt.html">Kontakt</a>
+        <div class="nav__lang"><span class="lang-switch"><a href="fuer-unternehmen.html" hreflang="de" aria-current="true">DE</a><span class="lang-switch__sep">/</span><a href="en/for-companies.html" hreflang="en">EN</a></span></div>
+        <div class="nav__actions">
+          <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+          <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+        </div>
       </nav>
 
       <div class="header-actions">
-        <a href="fuer-unternehmen.html" class="btn btn--primary" aria-current="page">Für Unternehmen</a>
+        <span class="lang-switch"><a href="fuer-unternehmen.html" hreflang="de" aria-current="true">DE</a><span class="lang-switch__sep">/</span><a href="en/for-companies.html" hreflang="en">EN</a></span>
+        <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
         <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
       </div>
 
@@ -411,7 +419,6 @@
           <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
           <ul>
             <li><a href="fuer-unternehmen.html">Mandat anfragen</a></li>
-            <li><a href="persoenlichkeitstest.html">Persönlichkeitstest starten</a></li>
           </ul>
         </div>
 
@@ -463,7 +470,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/main.js?v=4"></script>
 
   <!-- GSAP + ScrollTrigger (CDN) — Staggered Fade-up Reveal der Prozess-Timeline -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

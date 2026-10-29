@@ -54,7 +54,7 @@
     if (!telefon.value.trim()) { telefon.classList.add("form-error"); missing.push("Telefon"); }
     if (!nachricht.value.trim()) { nachricht.classList.add("form-error"); missing.push("Nachricht"); }
     if (!datenschutz.checked) { missing.push("Datenschutz-Einwilligung"); }
-    if (missing.length) { setStatus("Bitte ausfüllen: " + missing.join(", ") + ".", true); return; }
+    if (missing.length) { setStatus(HCP_T("Bitte ausfüllen: ") + missing.join(", ") + ".", true); return; }
 
     // Rechenfrage prüfen
     if (parseInt(captcha.value, 10) !== (a + b)) {
@@ -64,13 +64,13 @@
     }
 
     var files = Array.prototype.slice.call(document.getElementById("kf-files").files || []);
-    if (files.length > 3) { setStatus("Bitte maximal 3 Dateien anhängen.", true); return; }
+    if (files.length > 3) { setStatus(HCP_T("Bitte maximal 3 Dateien anhängen."), true); return; }
 
     var submitBtn = document.getElementById("kf-submit");
     submitBtn.disabled = true;
-    setStatus("Ihre Nachricht wird gesendet …");
+    setStatus(HCP_T("Ihre Nachricht wird gesendet …"));
 
-    if (!sb) { submitBtn.disabled = false; setStatus("Verbindung nicht möglich. Bitte später erneut versuchen.", true); return; }
+    if (!sb) { submitBtn.disabled = false; setStatus(HCP_T("Verbindung nicht möglich. Bitte später erneut versuchen."), true); return; }
 
     Promise.all(files.map(uploadFile))
       .then(function (paths) {
@@ -97,9 +97,9 @@
       .catch(function (err) {
         console.error("Kontaktanfrage fehlgeschlagen:", err);
         submitBtn.disabled = false;
-        var msg = "Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.";
+        var msg = HCP_T("Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.");
         if (err && (err.code === "42501" || /row-level security/i.test(err.message || "")))
-          msg = "Senden derzeit nicht möglich. Bitte kontaktieren Sie uns direkt per E-Mail.";
+          msg = HCP_T("Senden derzeit nicht möglich. Bitte kontaktieren Sie uns direkt per E-Mail.");
         setStatus(msg, true);
       });
   });

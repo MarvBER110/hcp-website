@@ -168,17 +168,17 @@
       if (!email.value.trim()) { email.classList.add("form-error"); missing.push("E-Mail"); }
       if (!cv.files || !cv.files.length) { cv.classList.add("form-error"); missing.push("Lebenslauf"); }
       if (!datenschutz.checked) { missing.push("Datenschutz-Einwilligung"); }
-      if (missing.length) { setStatus("Bitte ausfüllen: " + missing.join(", ") + ".", true); return; }
+      if (missing.length) { setStatus(HCP_T("Bitte ausfüllen: ") + missing.join(", ") + ".", true); return; }
 
       var cvFile = cv.files[0];
       if (cvFile.type && cvFile.type.indexOf("pdf") === -1) { setStatus("Der Lebenslauf muss eine PDF-Datei sein.", true); cv.classList.add("form-error"); return; }
 
       var extra = Array.prototype.slice.call(document.getElementById("af-files").files || []);
-      if (extra.length > 5) { setStatus("Bitte maximal 5 zusätzliche Dateien.", true); return; }
+      if (extra.length > 5) { setStatus(HCP_T("Bitte maximal 5 zusätzliche Dateien."), true); return; }
 
       var submitBtn = document.getElementById("af-submit");
       submitBtn.disabled = true;
-      setStatus("Bewerbung wird übermittelt …", false);
+      setStatus(HCP_T("Bewerbung wird übermittelt …"), false);
 
       // 1) Lebenslauf hochladen → 2) Zusatzdateien → 3) Insert
       uploadFile(cvFile)
@@ -217,9 +217,9 @@
         .catch(function (err) {
           console.error("Bewerbung fehlgeschlagen:", err);
           submitBtn.disabled = false;
-          var msg = "Die Bewerbung konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.";
+          var msg = HCP_T("Die Bewerbung konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.");
           if (err && (err.code === "42501" || /row-level security/i.test(err.message || "")))
-            msg = "Senden derzeit nicht möglich (Berechtigung). Bitte kontaktieren Sie uns direkt.";
+            msg = HCP_T("Senden derzeit nicht möglich (Berechtigung). Bitte kontaktieren Sie uns direkt.");
           setStatus(msg, true);
         });
     });

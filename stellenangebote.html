@@ -7,7 +7,9 @@
   <meta name="description" content="Aktuelle Stellenangebote in der Bau- und Immobilienwirtschaft — deutschlandweit und im gesamten DACH-Raum. Fach- und Führungspositionen, kuratiert von Holmes Consulting Partners." />
 
   <!-- Brand fonts (Cormorant Garamond + Lato) are self-hosted via @font-face in styles.css -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=139" />
+  <link rel="alternate" hreflang="de" href="stellenangebote.html" />
+  <link rel="alternate" hreflang="en" href="en/jobs.html" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=146" />
 </head>
 <body class="page-jobs">
 
@@ -45,14 +47,20 @@
       </a>
 
       <nav class="nav" id="primary-nav" aria-label="Hauptnavigation">
-        <a class="nav__link" href="ueber-uns.html">Über uns</a>
+        <a class="nav__link" href="ueber-uns.html">Über&nbsp;uns</a>
         <a class="nav__link" href="spezialisierungen.html">Spezialisierung</a>
         <a class="nav__link is-active" href="stellenangebote.html" aria-current="page">Stellenangebote</a>
         <a class="nav__link" href="persoenlichkeitstest.html">Persönlichkeitstest</a>
         <a class="nav__link" href="kontakt.html">Kontakt</a>
+        <div class="nav__lang"><span class="lang-switch"><a href="stellenangebote.html" hreflang="de" aria-current="true">DE</a><span class="lang-switch__sep">/</span><a href="en/jobs.html" hreflang="en">EN</a></span></div>
+        <div class="nav__actions">
+          <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
+          <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
+        </div>
       </nav>
 
       <div class="header-actions">
+        <span class="lang-switch"><a href="stellenangebote.html" hreflang="de" aria-current="true">DE</a><span class="lang-switch__sep">/</span><a href="en/jobs.html" hreflang="en">EN</a></span>
         <a href="fuer-unternehmen.html" class="btn btn--primary">Für Unternehmen</a>
         <a href="fuer-kandidaten.html" class="btn btn--ghost">Für Kandidaten</a>
       </div>
@@ -135,7 +143,7 @@
           <div class="jobs-main">
             <div class="jobs-main__head">
               <p class="jobs-count"><span class="jobs-count__num" id="job-count">8</span> offene Positionen</p>
-              <a href="stellenangebot.html?initiativ=1" class="btn btn--primary jobs-initiativ">Initiativbewerbung</a>
+              <a href="kandidaten-funnel.html" class="btn btn--primary jobs-initiativ">Initiativbewerbung</a>
             </div>
             <div id="jobs-container">
               <div class="jobs-empty"><p class="jobs-loading">Stellenangebote werden geladen …</p></div>
@@ -171,7 +179,7 @@
       <div class="container cta">
         <h2>Nichts Passendes dabei?</h2>
         <p>Viele Mandate besetzen wir vertraulich ohne öffentliche Ausschreibung. Reichen Sie gerne Ihr Profil ein und wir melden uns, sobald eine passende Position entsteht.</p>
-        <a href="stellenangebot.html?initiativ=1" class="btn btn--primary">Initiativ bewerben</a>
+        <a href="kandidaten-funnel.html" class="btn btn--primary">Initiativ bewerben</a>
         <p class="cta__note">Vertraulich, unverbindlich und kostenfrei.</p>
       </div>
     </section>
@@ -195,7 +203,6 @@
           <h4><a href="fuer-unternehmen.html">Für Unternehmen</a></h4>
           <ul>
             <li><a href="lead-funnel.html">Mandat anfragen</a></li>
-            <li><a href="persoenlichkeitstest.html">Persönlichkeitstest starten</a></li>
           </ul>
         </div>
 
@@ -243,10 +250,10 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/main.js?v=4"></script>
   <!-- Supabase-JS (CDN) + Konfiguration + Datenanbindung der Stellenliste -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase-config.js"></script>
-  <script src="assets/js/jobs-supabase.js?v=3"></script>
+  <script src="assets/js/jobs-supabase.js?v=4"></script>
 </body>
 </html>

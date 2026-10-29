@@ -1,0 +1,683 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Funnel-Oberfläche — gemeinsam genutzt von lead-funnel.html (Unternehmen)
+   und kandidaten-funnel.html (Kandidaten).
+   Farben, Schriften und Radien kommen aus styles.css.
+   ══════════════════════════════════════════════════════════════════════ */
+/* ==================================================================
+   Lead-Funnel „Für Unternehmen" (Muster) — bewusst groß & reduziert.
+   Nutzt ausschließlich die bestehenden Design-Tokens aus styles.css.
+   Die Fragen digitalisieren Phase „Woche 1: Verstehen der Position
+   und Anforderungen" aus dem Recruiting-Prozess der Startseite.
+   ================================================================== */
+body.page-funnel {
+  background-color: #ffffff;          /* wie die Unterseiten: deckend weiß */
+  background-image: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Kopfleiste: „Zurück zur Information" klar sichtbar ─────────── */
+.funnel-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+.funnel-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 18px;
+}
+.funnel-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+.funnel-back svg { width: 22px; height: 22px; flex-shrink: 0; }
+.funnel-back:hover { color: var(--stone); }
+.funnel-topbar__note {
+  font-size: 14px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) { .funnel-topbar__note { display: none; } }
+
+/* ── Marke mittig über dem Funnel ───────────────────────────────── */
+.funnel-brand {
+  display: flex;
+  justify-content: center;
+  padding-block: clamp(28px, 4vw, 48px) 0;
+}
+.funnel-brand img { width: clamp(180px, 22vw, 240px); height: auto; }
+
+/* ── Funnel-Bühne ───────────────────────────────────────────────── */
+.funnel {
+  width: 100%;
+  max-width: 880px;
+  margin-inline: auto;
+  padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(64px, 8vw, 110px);
+  flex: 1;
+}
+
+/* Fortschritt: „Schritt X von 8" + Balken in open sky */
+.funnel-progress { margin-bottom: clamp(36px, 5vw, 56px); }
+.funnel-progress__label {
+  font-size: 16px;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.funnel-progress__bars {
+  display: grid;
+  /* Spalten richten sich nach der Anzahl der Balken im Markup — sonst
+     rutschen Schritte jenseits der fuenften in eine zweite Zeile. */
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+}
+.funnel-progress__bars span {
+  height: 5px;
+  border-radius: 999px;
+  background: var(--paper-deep);
+  transition: background-color .3s ease;
+}
+.funnel-progress__bars span.is-done { background: var(--sky); }
+
+/* Schritt-Panels: nur der aktive ist sichtbar, weicher Fade-up */
+.funnel-step { display: none; }
+.funnel-step.is-active { display: block; animation: funnelIn .45s ease both; }
+@keyframes funnelIn {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Große, klare Typografie */
+.funnel-step .eyebrow { text-align: center; font-size: 15px; }
+.funnel-step h1 {
+  text-align: center;
+  font-size: clamp(34px, 4.6vw, 52px);
+  line-height: 1.1;
+  margin-top: 14px;
+  text-wrap: balance;
+}
+.funnel-step .funnel-lead {
+  text-align: center;
+  font-size: clamp(19px, 2.2vw, 23px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 18px auto 0;
+}
+
+/* Antwort-Karten: große Klickflächen im Karten-Design der Hauptseite */
+.funnel-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 24px);
+  margin-top: clamp(36px, 5vw, 52px);
+}
+@media (max-width: 720px) { .funnel-options { grid-template-columns: 1fr; } }
+.funnel-option {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  text-align: left;
+  padding: clamp(22px, 3vw, 30px) clamp(22px, 3vw, 32px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.funnel-option--wide { grid-column: 1 / -1; justify-content: center; text-align: center; }
+/* Einspaltig steht sie neben gleich breiten Karten — dann muss sie
+   genauso linksbuendig sitzen wie diese, sonst springt die Reihe. */
+@media (max-width: 720px) {
+  .funnel-option--wide { justify-content: flex-start; text-align: left; }
+}
+.funnel-option:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: var(--sky);
+}
+.funnel-option.is-selected {
+  background: var(--sky);
+  border-color: var(--sky);
+}
+.funnel-option.is-selected .funnel-option__title,
+.funnel-option.is-selected .funnel-option__sub { color: #ffffff; }
+.funnel-option.is-selected .funnel-option__chip {
+  background: #ffffff;
+  color: var(--ink);
+  border-color: #ffffff;
+}
+.funnel-option__chip {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink);
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.funnel-option__title {
+  display: block;
+  font-size: clamp(19px, 2vw, 22px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.funnel-option__sub {
+  display: block;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-top: 5px;
+  line-height: 1.45;
+}
+
+/* Navigation unter den Optionen (Zurück innerhalb des Funnels) */
+.funnel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(32px, 4vw, 44px);
+}
+
+/* ── Kontakt-Schritt: große Formularfelder + optionaler Freitext ── */
+.funnel-form {
+  margin-top: clamp(36px, 5vw, 52px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 22px);
+}
+@media (max-width: 720px) { .funnel-form { grid-template-columns: 1fr; } }
+.funnel-field { display: flex; flex-direction: column; gap: 8px; }
+.funnel-field--full { grid-column: 1 / -1; }
+.funnel-field label {
+  font-size: 16px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.funnel-field label .opt { color: var(--ink-soft); }
+.funnel-field input,
+.funnel-field textarea {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--ink);
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .25s ease, box-shadow .25s ease;
+  width: 100%;
+  resize: vertical;
+}
+.funnel-field input::placeholder,
+.funnel-field textarea::placeholder { color: #A9A5A0; }
+.funnel-field input:focus,
+.funnel-field textarea:focus {
+  border-color: var(--sky);
+  box-shadow: 0 0 0 4px rgba(192, 202, 206, 0.35);
+}
+.funnel-field input.is-invalid,
+.funnel-field textarea.is-invalid {
+  border-color: #C0392B;
+  box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.12);
+}
+.funnel-field label .req { color: var(--stone); }
+.funnel-hint {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: -4px;
+  font-size: 15px;
+  color: #C0392B;
+  text-align: center;
+}
+.funnel-hint.is-visible { display: block; }
+.funnel-submit {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+.funnel-submit .btn { font-size: 16px; padding: 19px 56px; }
+.funnel-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 26px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.funnel-trust span { display: inline-flex; align-items: center; gap: 9px; }
+.funnel-trust svg { width: 17px; height: 17px; color: var(--sky); }
+
+/* ── Danke-Schritt inkl. Wochen-Ablauf („So geht es jetzt weiter") ── */
+.funnel-done { text-align: center; }
+.funnel-done__badge {
+  width: 88px; height: 88px;
+  margin: 0 auto clamp(24px, 3vw, 36px);
+  display: grid;
+  place-items: center;
+  background: var(--sky);
+  border-radius: 50%;
+  color: #ffffff;
+}
+.funnel-done__badge svg { width: 40px; height: 40px; }
+.funnel-done h2 {
+  font-size: clamp(24px, 2.6vw, 30px);
+  margin-top: clamp(48px, 6vw, 64px);
+}
+.done-weeks {
+  position: relative;
+  max-width: 620px;
+  margin: clamp(28px, 3.5vw, 40px) auto 0;
+  text-align: left;
+  display: grid;
+  gap: 26px;
+}
+.done-weeks::before {                 /* vertikaler Strahl durch die Wochen-Kästchen */
+  content: "";
+  position: absolute;
+  left: 61px;
+  top: 10px; bottom: 10px;
+  width: 1px;
+  background: var(--line);
+}
+.done-week {
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  column-gap: 24px;
+  align-items: center;
+}
+.done-week__badge {
+  display: grid;
+  place-items: center;
+  height: 46px;
+  background: var(--sky);             /* Wochen-Kästchen wie die Prozess-Quadrate der Unterseite */
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+}
+.done-week p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 560px) {
+  .done-weeks::before { display: none; }
+  .done-week { grid-template-columns: 1fr; row-gap: 8px; justify-items: start; }
+  .done-week__badge { padding-inline: 16px; }
+}
+
+/* ── Finale Seite: E-Mail-Karte ─────────────────────────────────── */
+.funnel-mailcard {
+  max-width: 640px;
+  margin: clamp(36px, 5vw, 52px) auto 0;
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: clamp(30px, 4.5vw, 48px);
+  text-align: center;
+}
+.funnel-mailcard label {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.funnel-mailrow { display: flex; gap: 12px; }
+.funnel-mailrow input {
+  flex: 1;
+  min-width: 0;
+  height: 60px;
+  padding: 0 22px;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.funnel-mailrow input::placeholder { color: #A9A5A0; }
+.funnel-mailrow input:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(192, 202, 206, 0.35); }
+.funnel-mailrow input.is-invalid { border-color: #C0392B; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+.funnel-mailrow .btn { height: 60px; padding-inline: 34px; white-space: nowrap; }
+.funnel-mailhint {
+  display: none;
+  margin-top: 12px;
+  font-size: 15px;
+  color: #C0392B;
+}
+.funnel-mailhint.is-visible { display: block; }
+.funnel-mailcard .funnel-trust { margin-top: 26px; justify-content: center; }
+@media (max-width: 640px) {
+  .funnel-mailrow { flex-direction: column; }
+  .funnel-mailrow .btn { width: 100%; justify-content: center; }
+}
+
+/* Muster-Hinweis unten */
+.funnel-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 26px var(--gutter);
+  border-top: 1px solid var(--line);
+  letter-spacing: 0.03em;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Bausteine für den Kandidaten-Funnel
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Einleitung (Schritt 0) ───────────────────────────────────────────── */
+.funnel-intro { text-align: center; }
+.funnel-intro .funnel-lead { margin-left: auto; margin-right: auto; }
+.funnel-intro__body {
+  max-width: 68ch;
+  margin: clamp(22px, 3vw, 30px) auto 0;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.funnel-checks {
+  list-style: none;
+  margin: clamp(30px, 4vw, 42px) auto 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+.funnel-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ink);
+}
+.funnel-checks svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; color: var(--sky); }
+.funnel-intro__privacy {
+  max-width: 520px;
+  margin: 24px auto 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.funnel-intro__cta { margin-top: clamp(34px, 4.5vw, 46px); }
+.funnel-intro__cta .btn { font-size: 17px; padding: 20px 52px; }
+
+/* ── Freitext, der erst nach Auswahl erscheint ────────────────────────── */
+.funnel-reveal { display: none; margin-top: clamp(18px, 2.5vw, 24px); }
+.funnel-reveal.is-visible { display: block; animation: funnelIn .35s ease both; }
+
+/* ── Ortsangabe mit Umkreis (Schritt 4) ──────────────────────────────── */
+.funnel-radius {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: clamp(20px, 3vw, 26px);
+}
+.funnel-chip {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: border-color .25s ease, background .25s ease, color .25s ease;
+}
+.funnel-chip:hover { border-color: var(--sky); }
+.funnel-chip.is-selected { background: var(--ink); border-color: var(--ink); color: #ffffff; }
+.funnel-chip.is-invalid { border-color: #C0392B; }
+
+/* ── Erreichbarkeit als Chip-Reihe, linksbündig im Formular ──────────── */
+.funnel-field .funnel-radius { justify-content: flex-start; margin-top: 2px; }
+.funnel-field .funnel-chip { padding: 12px 22px; font-size: 16px; }
+
+/* ── Lebenslauf-Upload (Schritt 8) ───────────────────────────────────── */
+.funnel-upload {
+  max-width: 640px;
+  margin: clamp(30px, 4vw, 40px) auto 0;
+}
+.funnel-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(34px, 5vw, 50px) clamp(20px, 4vw, 40px);
+  background: var(--card);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .25s ease, background .25s ease;
+}
+.funnel-drop:hover,
+.funnel-drop.is-hover { border-color: var(--sky); }
+.funnel-drop svg { width: 38px; height: 38px; color: var(--sky); }
+.funnel-drop__main { font-size: 19px; font-weight: 300; color: var(--ink); }
+.funnel-drop__sub { font-size: 15px; color: var(--ink-soft); letter-spacing: 0.02em; }
+.funnel-drop input[type="file"] { display: none; }
+.funnel-drop.has-file { border-style: solid; border-color: var(--sky); }
+/* Zweites Feld (Zeugnisse) braucht Luft zum ersten */
+.funnel-drop + .funnel-filelist + .funnel-drop,
+.funnel-drop + .funnel-drop { margin-top: 16px; }
+
+/* Liste der gewaehlten Dateien (nur bei Mehrfachauswahl befuellt) */
+.funnel-filelist {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.funnel-filelist:empty { display: none; }
+.funnel-filelist li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.funnel-filelist__name {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.funnel-filelist__size {
+  font-size: 14px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.funnel-upload__note {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.funnel-upload__alt { margin-top: clamp(24px, 3vw, 32px); }
+.funnel-upload__alt p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* ── Einwilligung (Schritt 9) ────────────────────────────────────────── */
+.funnel-consent {
+  max-width: 680px;
+  margin: clamp(30px, 4vw, 40px) auto 0;
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: clamp(28px, 4vw, 42px);
+}
+.funnel-consent__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+}
+.funnel-consent input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: 2px;
+  background: #ffffff;
+  border: 1.5px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+  position: relative;
+  transition: border-color .2s ease, background .2s ease;
+}
+.funnel-consent input[type="checkbox"]:checked {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.funnel-consent input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 9px;
+  height: 15px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.funnel-consent input[type="checkbox"]:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
+.funnel-consent input[type="checkbox"].is-invalid { border-color: #C0392B; }
+.funnel-consent__text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.funnel-consent__text a { text-decoration: underline; text-underline-offset: 3px; }
+.funnel-privacy {
+  max-width: 68ch;
+  margin: clamp(22px, 3vw, 28px) auto 0;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Schmale Viewports — der Funnel lief bis hierher mit Desktop-Maßen
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  /* Überschriften: clamp() stoppte bei 34px, was auf ~360px Breite
+     lange Fragen über fünf Zeilen zog. */
+  .funnel-step h1 { font-size: clamp(27px, 7.4vw, 34px); }
+  .funnel-step .funnel-lead { font-size: 17px; }
+  .funnel-step .eyebrow { font-size: 13px; }
+
+  /* Antwort-Karten: etwas kompakter, Kennbuchstabe kleiner */
+  .funnel-option { padding: 18px 16px; gap: 14px; }
+  .funnel-option__chip { width: 38px; height: 38px; font-size: 17px; }
+  .funnel-option__title { font-size: 17px; }
+  .funnel-option__sub { font-size: 15px; }
+
+  /* Buttons: festes Innenabstands-Paar sprengte sonst die Zeile */
+  .funnel-submit .btn,
+  .funnel-intro__cta .btn,
+  .funnel-nav .btn { width: 100%; justify-content: center; padding-inline: 20px; }
+  .funnel-submit, .funnel-intro__cta, .funnel-nav { width: 100%; }
+
+  /* Fortschritt: bei neun Balken frisst der Abstand sonst die Balken auf */
+  .funnel-progress__bars { gap: 5px; }
+  .funnel-progress__label { font-size: 14px; }
+
+  /* Einleitung */
+  .funnel-intro__body { font-size: 16px; }
+  .funnel-checks li { font-size: 16px; gap: 11px; }
+  .funnel-checks { gap: 12px; }
+
+  /* Umkreis- und Erreichbarkeits-Chips */
+  .funnel-chip { padding: 12px 18px; font-size: 16px; }
+
+  /* Formularfelder */
+  .funnel-field input, .funnel-field textarea { font-size: 17px; padding: 15px 16px; }
+  .funnel-field label { font-size: 15px; }
+
+  /* Unterlagen-Felder */
+  .funnel-drop { padding: 26px 16px; }
+  .funnel-filelist li { padding: 10px 13px; gap: 10px; }
+  .funnel-filelist__name { font-size: 15px; }
+  .funnel-upload__note { font-size: 14px; }
+  .funnel-drop__main { font-size: 17px; }
+  .funnel-drop__sub { font-size: 14px; }
+
+  /* Einwilligung */
+  .funnel-consent { padding: 22px 18px; }
+  .funnel-consent__text { font-size: 15px; }
+  .funnel-privacy { font-size: 16px; }
+
+  /* Kopfleiste des Funnels */
+  .funnel-back { font-size: 16px; gap: 9px; }
+  .funnel-brand img { width: 150px; }
+}
+
+/* Sehr schmale Geräte (~320px) */
+@media (max-width: 360px) {
+  .funnel-option { padding: 16px 13px; gap: 11px; }
+  .funnel-option__chip { width: 34px; height: 34px; font-size: 15px; }
+  .funnel-option__title { font-size: 16px; }
+  .funnel-progress__bars { gap: 4px; }
+}
+
+/* Kopfleiste rechts: Hinweis + Sprachumschalter */
+.funnel-topbar__meta { display: flex; align-items: center; gap: 18px; }
+@media (max-width: 640px) { .funnel-topbar__meta { gap: 0; } }

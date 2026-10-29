@@ -1,3 +1,50 @@
+/* ──────────────────────────────────────────────────────────────────────
+   Sprachhilfe fuer die englischen Seiten unter /en/.
+   HCP_T("deutscher Text") liefert auf lang="en" die englische Fassung,
+   sonst unveraendert den deutschen Text. Dadurch bleiben die deutschen
+   Seiten exakt wie bisher.
+   Diese Datei wird auf jeder Seite als erste geladen.
+   ────────────────────────────────────────────────────────────────────── */
+window.HCP_T = (function () {
+  "use strict";
+  var EN = {
+    /* Navigation */
+    "Menü öffnen": "Open menu",
+    "Menü schließen": "Close menu",
+    /* Stellenliste */
+    "Die Stellenangebote konnten nicht geladen werden.": "The openings could not be loaded.",
+    "Für die gewählten Kriterien sind derzeit keine Stellen ausgeschrieben.":
+      "There are currently no openings matching your criteria.",
+    "Verbindung zur Datenbank nicht möglich. Bitte später erneut versuchen.":
+      "Could not connect to the database. Please try again later.",
+    "Stellenangebote werden geladen …": "Loading openings …",
+    "Zum Stellenangebot": "View position",
+    "Alle Bundesländer": "All federal states",
+    /* Stellendetail und Bewerbung */
+    "Stellenangebot": "Position",
+    "Bewerbung wird übermittelt …": "Submitting your application …",
+    "Bitte ausfüllen: ": "Please complete: ",
+    "Bitte maximal 5 zusätzliche Dateien.": "Please attach no more than 5 additional files.",
+    "Die Bewerbung konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.":
+      "Your application could not be sent. Please try again later.",
+    "Senden derzeit nicht möglich (Berechtigung). Bitte kontaktieren Sie uns direkt.":
+      "Sending is currently unavailable. Please contact us directly.",
+    /* Kontaktformular */
+    "Bitte maximal 3 Dateien anhängen.": "Please attach no more than 3 files.",
+    "Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.":
+      "Your message could not be sent. Please try again later.",
+    "Ihre Nachricht wird gesendet …": "Sending your message …",
+    "Senden derzeit nicht möglich. Bitte kontaktieren Sie uns direkt per E-Mail.":
+      "Sending is currently unavailable. Please contact us directly by email.",
+    "Verbindung nicht möglich. Bitte später erneut versuchen.":
+      "Could not connect. Please try again later."
+  };
+  var isEnglish = document.documentElement.getAttribute("lang") === "en";
+  return function (text) {
+    return (isEnglish && EN[text]) ? EN[text] : text;
+  };
+})();
+
 /* Holmes Consulting Partners — minimal interactions.
    Scope: mobile navigation toggle only (no decorative effects). */
 (function () {
@@ -10,7 +57,7 @@
   function setOpen(open) {
     nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+    toggle.setAttribute("aria-label", HCP_T(open ? "Menü schließen" : "Menü öffnen"));
   }
 
   toggle.addEventListener("click", function () {
@@ -24,7 +71,7 @@
 
   // Reset state when resizing back to desktop.
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 900) setOpen(false);
+    if (window.innerWidth > 1000) setOpen(false);   /* Umschaltpunkt wie im CSS */
   });
 })();
 

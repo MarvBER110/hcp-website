@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit your profile · Holmes Consulting Partners</title>
+  <meta name="description" content="Design prototype: candidate funnel for Holmes Consulting Partners. No
+    data is transmitted yet — layout and design concept only." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Design-System der Hauptseite (Fonts, Farben, Buttons) -->
+  <link rel="alternate" hreflang="de" href="../kandidaten-funnel.html" />
+  <link rel="alternate" hreflang="en" href="candidate-funnel.html" />
+  <link rel="stylesheet" href="../assets/css/styles.css?v=146" />
+
+  <link rel="stylesheet" href="../assets/css/funnel.css?v=3" />
+</head>
+<body class="page-funnel">
+
+  <!-- ══ Kopfleiste: jederzeit raus aus dem Funnel ══════════════════════ -->
+  <div class="funnel-topbar">
+    <div class="container funnel-topbar__inner">
+      <a class="funnel-back" href="for-candidates.html">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to site
+      </a>
+      <div class="funnel-topbar__meta">
+        <span class="funnel-topbar__note">Confidential · Non-binding · GDPR compliant</span>
+        <span class="lang-switch"><a href="../kandidaten-funnel.html" hreflang="de">DE</a><span class="lang-switch__sep">/</span><a href="candidate-funnel.html" hreflang="en" aria-current="true">EN</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marke -->
+  <div class="funnel-brand">
+    <img src="../assets/img/logo.png" alt="Holmes Consulting Partners" />
+  </div>
+
+  <main class="funnel">
+
+    <!-- Fortschritt -->
+    <div class="funnel-progress" aria-hidden="true">
+      <p class="funnel-progress__label">Step <span id="prog-current">1</span> of 9</p>
+      <div class="funnel-progress__bars">
+        <span class="is-done"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- ══ 0 · Einleitung ═════════════════════════════════════════════ -->
+    <section class="funnel-step funnel-intro is-active" data-step="0">
+      <p class="eyebrow">For candidates · Recruitment for construction &amp; real estate</p>
+      <h1>Your next career move — without having to search yourself.</h1>
+      <p class="funnel-lead">
+        We place specialists and leaders in the construction and real estate industry with
+        companies that often never advertise publicly. In two minutes we will know what
+        you are looking for.
+      </p>
+      <p class="funnel-intro__body">
+        Many of the best roles never appear on job boards. Our clients come to us
+        directly, and we only put forward candidates who genuinely fit. Answer a few short
+        questions, upload your CV, and we will get in touch personally as soon as a
+        suitable role comes up.
+      </p>
+      <ul class="funnel-checks">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Free of charge and non-binding
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          100&nbsp;% confidential — your current employer will not find out
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Personal, individual advice instead of mass processing
+        </li>
+      </ul>
+      <p class="funnel-intro__privacy">Your data and documents are never shared or forwarded to third parties without your knowledge.</p>
+      <div class="funnel-intro__cta">
+        <button class="btn btn--primary" type="button" data-next>Start now — takes 2 minutes</button>
+      </div>
+    </section>
+
+    <!-- ══ 1 · Fachbereich ════════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="1">
+      <p class="eyebrow">Your field</p>
+      <h1>Which field do you currently work in?</h1>
+      <p class="funnel-lead">
+        This tells us which assignments are relevant for you at all.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Real Estate</span>
+            <span class="funnel-option__sub">commercial</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Construction</span>
+            <span class="funnel-option__sub">technical</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Finance</span>
+            <span class="funnel-option__sub">financial</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button" data-reveal="r-bereich">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Something else</span>
+            <span class="funnel-option__sub">Please describe briefly</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-reveal" id="r-bereich">
+        <div class="funnel-form">
+          <div class="funnel-field funnel-field--full">
+            <label for="f-bereich">Which field do you work in?</label>
+            <input id="f-bereich" name="bereich_sonstiges" type="text" placeholder="e.g. facility management, project control" />
+          </div>
+          <div class="funnel-submit">
+            <button class="btn btn--primary" type="button" data-next>Continue</button>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 2 · Berufserfahrung ════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="2">
+      <p class="eyebrow">Your experience</p>
+      <h1>How much professional experience do you have?</h1>
+      <p class="funnel-lead">
+        Years alone decide nothing, but they help us judge the right level.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span><span class="funnel-option__title">Entry level</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span><span class="funnel-option__title">1 to 3 years</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span><span class="funnel-option__title">3 to 7 years</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span><span class="funnel-option__title">7 to 15 years</span></span>
+        </button>
+        <button class="funnel-option funnel-option--wide" type="button">
+          <span class="funnel-option__chip">E</span>
+          <span><span class="funnel-option__title">More than 15 years</span></span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 3 · Aktuelle Situation ═════════════════════════════════════ -->
+    <section class="funnel-step" data-step="3">
+      <p class="eyebrow">Your situation</p>
+      <h1>What is your current situation?</h1>
+      <p class="funnel-lead">
+        Whatever your answer: we move at your pace and only get in touch when something genuinely fits.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span><span class="funnel-option__title">I am actively looking</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span><span class="funnel-option__title">I am open to the right opportunity</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span><span class="funnel-option__title">I am just exploring</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span><span class="funnel-option__title">I am currently between roles</span></span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 4 · Wunschregion ═══════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="4">
+      <p class="eyebrow">Your location</p>
+      <h1>Where would you like to work?</h1>
+      <p class="funnel-lead">
+        Tell us your preferred location and how far you are willing to travel.
+      </p>
+      <div class="funnel-form">
+        <div class="funnel-field funnel-field--full">
+          <label for="f-ort">Postcode or town <span class="req">*</span></label>
+          <input id="f-ort" name="wunschort" type="text" autocomplete="postal-code"
+                 placeholder="e.g. 10115 or Berlin" required aria-describedby="hint-4" />
+        </div>
+      </div>
+      <div class="funnel-radius" id="g-umkreis" data-chipgroup="umkreis" role="group" aria-label="Radius">
+        <button class="funnel-chip" type="button" data-value="bis 20 km">up to 20&nbsp;km</button>
+        <button class="funnel-chip" type="button" data-value="bis 50 km">up to 50&nbsp;km</button>
+        <button class="funnel-chip" type="button" data-value="bundesweit">nationwide / no preference</button>
+      </div>
+      <p class="funnel-hint" id="hint-4" role="alert">
+        Please enter your preferred location and choose a radius.
+      </p>
+      <div class="funnel-submit">
+        <button class="btn btn--primary" type="button" data-next>Continue</button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 5 · Gehaltswunsch ══════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="5">
+      <p class="eyebrow">Your expectations</p>
+      <h1>What salary are you looking for?</h1>
+      <p class="funnel-lead">
+        Gross per year. A rough band is entirely enough — we will negotiate in your interest later.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span><span class="funnel-option__title">EUR 60,000 to 80,000</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span><span class="funnel-option__title">EUR 80,000 to 100,000</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span><span class="funnel-option__title">More than EUR 100,000</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span><span class="funnel-option__title">I would rather discuss this personally</span></span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 6 · Wechselzeitpunkt ═══════════════════════════════════════ -->
+    <section class="funnel-step" data-step="6">
+      <p class="eyebrow">Your timing</p>
+      <h1>How soon could you move?</h1>
+      <p class="funnel-lead">
+        This lets us plan assignments around your timing.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span><span class="funnel-option__title">Immediately</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span><span class="funnel-option__title">4 weeks to the end of the month</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span><span class="funnel-option__title">3 months to the end of the month</span></span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span><span class="funnel-option__title">6 months to the end of the month</span></span>
+        </button>
+        <button class="funnel-option funnel-option--wide" type="button" data-reveal="r-frist">
+          <span class="funnel-option__chip">E</span>
+          <span>
+            <span class="funnel-option__title">I have a different notice period</span>
+            <span class="funnel-option__sub">Please specify briefly</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-reveal" id="r-frist">
+        <div class="funnel-form">
+          <div class="funnel-field funnel-field--full">
+            <label for="f-frist">Your notice period</label>
+            <input id="f-frist" name="kuendigungsfrist" type="text" placeholder="e.g. 3 months to the end of the quarter" />
+          </div>
+          <div class="funnel-submit">
+            <button class="btn btn--primary" type="button" data-next>Continue</button>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 7 · Kontaktdaten ═══════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="7">
+      <p class="eyebrow">Your contact details</p>
+      <h1>Almost there. How can we reach you?</h1>
+      <p class="funnel-lead">
+        We will get in touch personally. Confidential, discreet and without any obligation.
+      </p>
+      <form class="funnel-form" onsubmit="return false;">
+        <div class="funnel-field">
+          <label for="f-vorname">First name  <span class="req">*</span></label>
+          <input id="f-vorname" name="vorname" type="text" autocomplete="given-name"
+                 placeholder="Your first name" required aria-describedby="hint-7" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-nachname">Last name  <span class="req">*</span></label>
+          <input id="f-nachname" name="nachname" type="text" autocomplete="family-name"
+                 placeholder="Your last name" required aria-describedby="hint-7" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-mail">Email  <span class="req">*</span></label>
+          <input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email"
+                 placeholder="name@example.com" required aria-describedby="hint-7" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-tel">Phone  <span class="req">*</span></label>
+          <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel"
+                 placeholder="+49 30 123456" required aria-describedby="hint-7" />
+        </div>
+        <div class="funnel-field funnel-field--full">
+          <label>Preferred time to reach you  <span class="opt">(optional)</span></label>
+          <div class="funnel-radius" data-chipgroup="erreichbarkeit" role="group" aria-label="Preferred time to reach you">
+            <button class="funnel-chip" type="button" data-value="vormittags">mornings</button>
+            <button class="funnel-chip" type="button" data-value="nachmittags">afternoons</button>
+            <button class="funnel-chip" type="button" data-value="abends">evenings</button>
+          </div>
+        </div>
+        <p class="funnel-hint" id="hint-7" role="alert">
+          Please provide your first name, last name, email address and phone number.
+        </p>
+        <div class="funnel-submit">
+          <button class="btn btn--primary" type="button" data-next>Continue</button>
+        </div>
+      </form>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 8 · Lebenslauf ═════════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="8">
+      <p class="eyebrow">Your documents</p>
+      <h1>Upload your documents</h1>
+      <p class="funnel-lead">
+        So that we only suggest roles that genuinely fit, we look closely at your
+        background. A current CV is enough — we do not need a cover letter.
+      </p>
+      <div class="funnel-upload">
+        <label class="funnel-drop" data-drop for="f-cv">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="funnel-drop__main">Choose your CV</span>
+          <span class="funnel-drop__sub">PDF or Word, up to 10&nbsp;MB</span>
+          <input id="f-cv" name="lebenslauf" type="file" data-upload accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+        </label>
+        <ul class="funnel-filelist" data-filelist-for="f-cv"></ul>
+
+        <label class="funnel-drop" data-drop for="f-zeugnisse">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="funnel-drop__main">Choose references &amp; certificates</span>
+          <span class="funnel-drop__sub">Employment references and qualifications — several at once</span>
+          <input id="f-zeugnisse" name="zeugnisse" type="file" data-upload multiple
+                 accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpg,.jpeg,.png,image/jpeg,image/png" />
+        </label>
+        <ul class="funnel-filelist" data-filelist-for="f-zeugnisse"></ul>
+        <p class="funnel-upload__note">
+          References are optional. Scans or phone photos are fine, as long as they are legible.
+        </p>
+
+        <div class="funnel-upload__alt">
+          <p>No CV to hand? Send us your LinkedIn or XING profile instead.</p>
+          <div class="funnel-form">
+            <div class="funnel-field funnel-field--full">
+              <label for="f-profil">Profile link  <span class="opt">(optional)</span></label>
+              <input id="f-profil" name="profil_url" type="url" inputmode="url"
+                     placeholder="https://www.linkedin.com/in/…" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-submit">
+        <button class="btn btn--primary" type="button" data-next>Continue</button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 9 · Einwilligung ═══════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="9">
+      <p class="eyebrow">Privacy</p>
+      <h1>Your data is safe with us</h1>
+      <p class="funnel-privacy">
+        We process your details and your CV solely in order to find suitable roles for
+        you. We never pass your documents to third parties without your explicit consent.
+        Before we introduce you to a company, we always speak to you first.
+      </p>
+      <div class="funnel-consent">
+        <label class="funnel-consent__row" for="f-consent">
+          <input id="f-consent" name="einwilligung" type="checkbox" required aria-describedby="hint-9" />
+          <span class="funnel-consent__text">
+            I consent to Holmes Consulting Partners GmbH processing my data for this purpose.
+            My documents will not be passed to third parties without my consent. I can
+            withdraw this consent at any time. More in the
+            <a href="../datenschutz.html" target="_blank" rel="noopener">privacy policy</a>.
+          </span>
+        </label>
+      </div>
+      <p class="funnel-hint" id="hint-9" role="alert">
+        Please confirm your consent so that we may review your documents.
+      </p>
+      <div class="funnel-submit">
+        <button class="btn btn--primary" type="submit" data-submit>Submit profile</button>
+        <div class="funnel-trust">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            100&nbsp;% confidential
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Free of charge
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Revocable at any time
+          </span>
+        </div>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ Danke ══════════════════════════════════════════════════════ -->
+    <section class="funnel-step funnel-done" data-step="10">
+      <div class="funnel-done__badge">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1>Thank you for your trust.</h1>
+      <p class="funnel-lead">
+        Your profile has reached us. We will get back to you personally within the next 48 hours<span id="done-mail"></span>.
+      </p>
+
+      <h2>What happens next</h2>
+      <div class="done-weeks">
+        <div class="done-week">
+          <span class="done-week__badge">Step 1</span>
+          <p>We review your background carefully</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Step 2</span>
+          <p>We get in touch to get to know you</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Step 3</span>
+          <p>We match your profile against our current assignments</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Step 4</span>
+          <p>We only introduce you to a company once you agree</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">After that</span>
+          <p>We support you through the whole process up to signing</p>
+        </div>
+      </div>
+
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-restart>Restart request</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Muster-Logik: reine Ansichts-Navigation zwischen den Schritten.
+       Keine Datenübertragung, keine Speicherung — nur zum Anschauen.
+       Schritt 0 ist die Einleitung, Schritt 10 die Danke-Seite. */
+    (function () {
+      "use strict";
+      var steps = Array.prototype.slice.call(document.querySelectorAll(".funnel-step"));
+      var bars = document.querySelectorAll(".funnel-progress__bars span");
+      var progLabel = document.getElementById("prog-current");
+      var progress = document.querySelector(".funnel-progress");
+      var LAST_QUESTION = 9;              /* Schritt 10 = Danke-Seite */
+
+      function show(n) {
+        steps.forEach(function (s) {
+          s.classList.toggle("is-active", Number(s.getAttribute("data-step")) === n);
+        });
+        var shown = Math.min(Math.max(n, 1), LAST_QUESTION);
+        bars.forEach(function (b, i) { b.classList.toggle("is-done", i < shown); });
+        if (progLabel) progLabel.textContent = shown;
+        /* Auf Einleitung und Danke-Seite zeigt der Fortschritt nichts Sinnvolles */
+        progress.style.visibility = (n < 1 || n > LAST_QUESTION) ? "hidden" : "visible";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      /* ── Hinweise ein- und ausblenden ──────────────────────────────── */
+      function hint(step) { return step.querySelector(".funnel-hint"); }
+      function clearHint(step) {
+        var h = hint(step);
+        if (h) h.classList.remove("is-visible");
+      }
+
+      /* ── Prüfungen je Schritt. Nur was hier steht, ist Pflicht. ────── */
+      function mailOk(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      function telOk(v) { return v.replace(/[^0-9]/g, "").length >= 6; }
+      function filled(v) { return v.trim().length >= 2; }
+
+      function checkFields(step, defs) {
+        var firstBad = null;
+        defs.forEach(function (d) {
+          var el = document.getElementById(d.id);
+          var ok = d.ok(el.value.trim());
+          el.classList.toggle("is-invalid", !ok);
+          if (!ok && !firstBad) firstBad = el;
+        });
+        var h = hint(step);
+        if (h) h.classList.toggle("is-visible", !!firstBad);
+        if (firstBad) { firstBad.focus(); return false; }
+        return true;
+      }
+
+      var validators = {
+        4: function (step) {
+          var okOrt = checkFields(step, [{ id: "f-ort", ok: filled }]);
+          var group = step.querySelector('[data-chipgroup="umkreis"]');
+          var okRadius = !!group.querySelector(".funnel-chip.is-selected");
+          group.querySelectorAll(".funnel-chip").forEach(function (c) {
+            c.classList.toggle("is-invalid", !okRadius);
+          });
+          var h = hint(step);
+          if (h) h.classList.toggle("is-visible", !(okOrt && okRadius));
+          return okOrt && okRadius;
+        },
+        7: function (step) {
+          return checkFields(step, [
+            { id: "f-vorname",  ok: filled },
+            { id: "f-nachname", ok: filled },
+            { id: "f-mail",     ok: mailOk },
+            { id: "f-tel",      ok: telOk }
+          ]);
+        },
+        9: function (step) {
+          var box = document.getElementById("f-consent");
+          box.classList.toggle("is-invalid", !box.checked);
+          var h = hint(step);
+          if (h) h.classList.toggle("is-visible", !box.checked);
+          if (!box.checked) { box.focus(); return false; }
+          return true;
+        }
+      };
+
+      function advance(step, n) {
+        if (validators[n] && !validators[n](step)) return;
+        if (n === LAST_QUESTION) {
+          var mail = document.getElementById("f-mail");
+          var doneMail = document.getElementById("done-mail");
+          if (doneMail && mail) doneMail.textContent = " — an " + mail.value.trim();
+        }
+        show(n + 1);
+      }
+
+      /* ── Schritte verdrahten ───────────────────────────────────────── */
+      steps.forEach(function (step) {
+        var n = Number(step.getAttribute("data-step"));
+
+        step.querySelectorAll(".funnel-option").forEach(function (opt) {
+          opt.addEventListener("click", function () {
+            step.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
+            opt.classList.add("is-selected");
+
+            /* Alle Freitext-Felder dieses Schritts zuklappen … */
+            step.querySelectorAll(".funnel-reveal").forEach(function (r) { r.classList.remove("is-visible"); });
+            var revealId = opt.getAttribute("data-reveal");
+            if (revealId) {
+              /* … und nur das zur Auswahl passende öffnen. Hier geht es
+                 nicht automatisch weiter, sonst wäre das Feld sofort weg. */
+              var box = document.getElementById(revealId);
+              box.classList.add("is-visible");
+              var field = box.querySelector("input");
+              if (field) field.focus({ preventScroll: true });
+              return;
+            }
+            setTimeout(function () { advance(step, n); }, 320);
+          });
+        });
+
+        /* Chip-Gruppen: eine Auswahl je Gruppe, kein Sprung nach vorn */
+        step.querySelectorAll("[data-chipgroup]").forEach(function (group) {
+          group.querySelectorAll(".funnel-chip").forEach(function (chip) {
+            chip.addEventListener("click", function () {
+              group.querySelectorAll(".funnel-chip").forEach(function (c) {
+                c.classList.remove("is-selected");
+                c.classList.remove("is-invalid");
+              });
+              chip.classList.add("is-selected");
+              clearHint(step);
+            });
+          });
+        });
+
+        step.querySelectorAll("[data-next], [data-submit]").forEach(function (btn) {
+          btn.addEventListener("click", function () { advance(step, n); });
+        });
+
+        var back = step.querySelector("[data-back]");
+        if (back) back.addEventListener("click", function () { show(n - 1); });
+
+        /* Tippen räumt die Fehlermarkierung wieder weg */
+        step.querySelectorAll("input").forEach(function (el) {
+          el.addEventListener("input", function () {
+            el.classList.remove("is-invalid");
+            clearHint(step);
+          });
+        });
+      });
+
+      /* ── Datei-Felder: Auswahl zurückmelden ───────────────────────
+         Gilt für Lebenslauf (eine Datei) und Zeugnisse (mehrere). */
+      function initUpload(input) {
+        var drop = input.parentNode;
+        var main = drop.querySelector(".funnel-drop__main");
+        var sub = drop.querySelector(".funnel-drop__sub");
+        var list = document.querySelector('[data-filelist-for="' + input.id + '"]');
+        var MAIN = main.textContent;
+        var SUB = sub.textContent;
+        var many = input.hasAttribute("multiple");
+
+        function kb(bytes) { return Math.max(1, Math.round(bytes / 1024)) + " KB"; }
+
+        function render() {
+          var files = input.files ? Array.prototype.slice.call(input.files) : [];
+          if (list) list.textContent = "";
+          if (!files.length) {
+            drop.classList.remove("has-file");
+            main.textContent = MAIN;
+            sub.textContent = SUB;
+            return;
+          }
+          drop.classList.add("has-file");
+          if (many) {
+            main.textContent = files.length === 1
+              ? "1 Datei ausgewählt"
+              : files.length + " Dateien ausgewählt";
+            sub.textContent = "erneut wählen ersetzt die Auswahl";
+            files.forEach(function (f) {
+              var li = document.createElement("li");
+              var nm = document.createElement("span");
+              nm.className = "funnel-filelist__name";
+              nm.textContent = f.name;
+              var sz = document.createElement("span");
+              sz.className = "funnel-filelist__size";
+              sz.textContent = kb(f.size);
+              li.appendChild(nm);
+              li.appendChild(sz);
+              if (list) list.appendChild(li);
+            });
+          } else {
+            main.textContent = files[0].name;
+            sub.textContent = kb(files[0].size) + " · andere Datei wählen";
+          }
+        }
+
+        input.addEventListener("change", render);
+
+        /* Dateien auch per Drag & Drop annehmen */
+        ["dragenter", "dragover"].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("is-hover"); });
+        });
+        ["dragleave", "drop"].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("is-hover"); });
+        });
+        drop.addEventListener("drop", function (e) {
+          if (!e.dataTransfer || !e.dataTransfer.files.length) return;
+          /* Nicht jeder Browser laesst sich .files zuweisen — dann bleibt
+             der Klick-Weg ueber das Feld, statt still nichts zu tun. */
+          try {
+            input.files = e.dataTransfer.files;
+          } catch (err) {
+            sub.textContent = "Bitte über Klick auswählen";
+            return;
+          }
+          render();
+        });
+
+        return render;
+      }
+
+      var resetUploads = Array.prototype.slice
+        .call(document.querySelectorAll("[data-upload]"))
+        .map(initUpload);
+
+      /* ── Von vorn ──────────────────────────────────────────────────── */
+      document.querySelector("[data-restart]").addEventListener("click", function () {
+        document.querySelectorAll(".funnel-option, .funnel-chip").forEach(function (o) {
+          o.classList.remove("is-selected");
+          o.classList.remove("is-invalid");
+        });
+        document.querySelectorAll(".funnel-reveal").forEach(function (r) { r.classList.remove("is-visible"); });
+        document.querySelectorAll(".funnel-hint").forEach(function (h) { h.classList.remove("is-visible"); });
+        document.querySelectorAll("input").forEach(function (el) {
+          if (el.type === "checkbox") { el.checked = false; } else { el.value = ""; }
+          el.classList.remove("is-invalid");
+        });
+        resetUploads.forEach(function (reset) { reset(); });
+        show(0);
+      });
+    })();
+  </script>
+</body>
+</html>

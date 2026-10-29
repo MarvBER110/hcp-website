@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a search · Holmes Consulting Partners</title>
+  <meta name="description" content="Design prototype: “For companies” enquiry funnel for Holmes Consulting
+    Partners. Not yet connected — layout and design concept only." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Design-System der Hauptseite (Fonts, Farben, Buttons) -->
+  <link rel="alternate" hreflang="de" href="../lead-funnel.html" />
+  <link rel="alternate" hreflang="en" href="company-funnel.html" />
+  <link rel="stylesheet" href="../assets/css/styles.css?v=146" />
+
+  <link rel="stylesheet" href="../assets/css/funnel.css?v=3" />
+</head>
+<body class="page-funnel">
+
+  <!-- ══ Kopfleiste: jederzeit raus aus dem Funnel ══════════════════════ -->
+  <div class="funnel-topbar">
+    <div class="container funnel-topbar__inner">
+      <a class="funnel-back" href="for-companies.html">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to site
+      </a>
+      <div class="funnel-topbar__meta">
+        <span class="funnel-topbar__note">Confidential · Non-binding · GDPR compliant</span>
+        <span class="lang-switch"><a href="../lead-funnel.html" hreflang="de">DE</a><span class="lang-switch__sep">/</span><a href="company-funnel.html" hreflang="en" aria-current="true">EN</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marke -->
+  <div class="funnel-brand">
+    <img src="../assets/img/logo.png" alt="Holmes Consulting Partners" />
+  </div>
+
+  <main class="funnel">
+
+    <!-- Fortschritt -->
+    <div class="funnel-progress" aria-hidden="true">
+      <p class="funnel-progress__label">Step <span id="prog-current">1</span> of 7</p>
+      <div class="funnel-progress__bars">
+        <span class="is-done"></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- ══ 1 · Was wird gesucht? ══════════════════════════════════════ -->
+    <section class="funnel-step funnel-intro is-active" data-step="0">
+      <p class="eyebrow">For companies · Recruitment for construction &amp; real estate</p>
+      <h1>The right appointment, without months of searching.</h1>
+      <p class="funnel-lead">
+        We fill demanding roles in the construction and real estate industry — rigorously,
+        sustainably and as a partner. In two minutes we will know who you are looking for.
+      </p>
+      <p class="funnel-intro__body">
+        The better we understand your situation, the more precisely we can search. Answer
+        a few short questions about your vacancy and we will get in touch personally for a
+        no-obligation first conversation. We are interested not only in the professional
+        profile, but in which personality will fit your team for the long run.
+      </p>
+      <ul class="funnel-checks">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Free of charge and non-binding
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          100&nbsp;% confidential, including succession and sensitive appointments
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Personal advice from construction and real estate specialists
+        </li>
+      </ul>
+      <p class="funnel-intro__privacy">Your data and documents are never shared or forwarded to third parties without your knowledge.</p>
+      <div class="funnel-intro__cta">
+        <button class="btn btn--primary" type="button" data-next>Start now — takes 2 minutes</button>
+      </div>
+    </section>
+
+    <section class="funnel-step" data-step="1">
+      <p class="eyebrow">Your vacancy</p>
+      <h1>Who may we find for you?</h1>
+      <p class="funnel-lead">
+        First, tell us what kind of appointment this is.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">A leader</span>
+            <span class="funnel-option__sub">Managing director, division head or head of function</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">A specialist</span>
+            <span class="funnel-option__sub">Experienced experts for key roles</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Several positions</span>
+            <span class="funnel-option__sub">Building a team or ongoing hiring needs</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Not sure yet? Let’s talk it through</span>
+            <span class="funnel-option__sub">We work out together what you actually need</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 2 · Fachbereich ════════════════════════════════════════════ -->
+    <section class="funnel-step" data-step="2">
+      <p class="eyebrow">Your discipline</p>
+      <h1>Which area does the role sit in?</h1>
+      <p class="funnel-lead">
+        We specialise in construction and real estate. Simply pick the area that fits best.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Commercial | Real Estate</span>
+            <span class="funnel-option__sub">Strategic and operational roles with a commercial focus in real estate (incl.
+             asset, fund, investment &amp; property management)</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Construction | Real Estate</span>
+            <span class="funnel-option__sub">Technical and operational roles focused on planning, building and delivering
+             projects (incl. site &amp; project management, development &amp; project control)</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Finance | Real Estate</span>
+            <span class="funnel-option__sub">Strategic and analytical roles within construction and real estate (incl.
+             financing, controlling, accounting and tax)</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">A different area</span>
+            <span class="funnel-option__sub">We will tell you honestly whether we are the right partner</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 3 · Unternehmensgröße ══════════════════════════════════════ -->
+    <section class="funnel-step" data-step="3">
+      <p class="eyebrow">Your company</p>
+      <h1>How large is your company?</h1>
+      <p class="funnel-lead">
+        Size helps us judge what structures and decision-making candidates can expect.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Up to 50 employees</span>
+            <span class="funnel-option__sub">Owner-managed or a young team</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">51 to 250 employees</span>
+            <span class="funnel-option__sub">Established mid-sized business</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">251 to 1,000 employees</span>
+            <span class="funnel-option__sub">Larger mid-sized business, several locations</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">More than 1,000 employees</span>
+            <span class="funnel-option__sub">Corporate group or subsidiary</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 4 · Art des Unternehmens ═══════════════════════════════════ -->
+    <section class="funnel-step" data-step="4">
+      <p class="eyebrow">Your company</p>
+      <h1>How would you describe your company?</h1>
+      <p class="funnel-lead">
+        This tells us about your environment and which personalities fit your culture.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Developer / property developer</span>
+            <span class="funnel-option__sub">Residential, commercial or mixed-use</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">Investor / fund manager / family office / private equity</span>
+            <span class="funnel-option__sub">Operational &amp; strategic management</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">Construction &amp; general contractors / architecture</span>
+            <span class="funnel-option__sub">Building construction, civil engineering or building services</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">Banks &amp; financial services / consulting / industry / other</span>
+            <span class="funnel-option__sub">Financing, sales, consulting or the public sector</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 5 · Kontakt + optionaler Freitext ══════════════════════════ -->
+    <section class="funnel-step" data-step="5">
+      <p class="eyebrow">The role</p>
+      <h1>What is the salary range for this role?</h1>
+      <p class="funnel-lead">
+        The range helps us pitch the search realistically from the start. A rough band is
+        entirely enough.
+      </p>
+      <div class="funnel-options">
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">A</span>
+          <span>
+            <span class="funnel-option__title">Up to EUR 80,000</span>
+            <span class="funnel-option__sub">Specialist roles</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">B</span>
+          <span>
+            <span class="funnel-option__title">EUR 80,000 to 120,000</span>
+            <span class="funnel-option__sub">Experienced specialists and team leads</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">C</span>
+          <span>
+            <span class="funnel-option__title">EUR 120,000 to 180,000</span>
+            <span class="funnel-option__sub">Division and department heads</span>
+          </span>
+        </button>
+        <button class="funnel-option" type="button">
+          <span class="funnel-option__chip">D</span>
+          <span>
+            <span class="funnel-option__title">EUR 180,000 and above</span>
+            <span class="funnel-option__sub">Managing directors and C-level</span>
+          </span>
+        </button>
+      </div>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 6 · Optional details zur Position ════════════════ -->
+    <section class="funnel-step" data-step="6">
+      <p class="eyebrow">Optional details</p>
+      <h1>A few more specific questions.</h1>
+      <p class="funnel-lead">
+        Answering these is entirely optional, but it helps us advise you better. You can
+        answer just some of them and simply leave your contact details in the last step so
+        we can get in touch.
+      </p>
+      <form class="funnel-form" onsubmit="return false;">
+        <div class="funnel-field funnel-field--full">
+          <label for="f-titel">Job title  <span class="opt">(optional)</span></label>
+          <input id="f-titel" name="positionstitel" type="text"
+                 placeholder="e.g. asset management, site management, controlling, development" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-ort">Location  <span class="opt">(optional)</span></label>
+          <input id="f-ort" name="dienstsitz" type="text" placeholder="Town or region" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-grund">Reason for hiring  <span class="opt">(optional)</span></label>
+          <input id="f-grund" name="besetzungsgrund" type="text" placeholder="Replacement or newly created role" />
+        </div>
+        <div class="funnel-field funnel-field--full">
+          <label for="f-team">Team size in the department  <span class="opt">(optional)</span></label>
+          <input id="f-team" name="abteilungsgroesse" type="text" inputmode="numeric" placeholder="e.g. 8" />
+        </div>
+        <div class="funnel-submit">
+          <button class="btn btn--primary" type="button" data-next>Continue</button>
+        </div>
+      </form>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ 7 · Kontaktdaten ═════════════════════════════ -->
+    <section class="funnel-step" data-step="7">
+      <p class="eyebrow">Last step</p>
+      <h1>Almost there.</h1>
+      <p class="funnel-lead">
+        Leave your contact details and we will get back to you personally within 48 hours.
+        Confidential, discreet and without any obligation.
+      </p>
+      <form class="funnel-form" onsubmit="return false;">
+        <div class="funnel-field funnel-field--full">
+          <label for="f-firma">Company name  <span class="req">*</span></label>
+          <input id="f-firma" name="firmenname" type="text" autocomplete="organization"
+                 placeholder="Your company" required aria-describedby="f-hint" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-mail">Email  <span class="req">*</span></label>
+          <input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email"
+                 placeholder="name@company.com" required aria-describedby="f-hint" />
+        </div>
+        <div class="funnel-field">
+          <label for="f-tel">Phone  <span class="req">*</span></label>
+          <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel"
+                 placeholder="+49 30 123456" required aria-describedby="f-hint" />
+        </div>
+        <p class="funnel-hint" id="f-hint" role="alert">
+          Please provide your company name, email address and phone number.
+        </p>
+        <div class="funnel-submit">
+          <button class="btn btn--primary" type="submit" data-submit>Book a first conversation</button>
+          <div class="funnel-trust">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              100&nbsp;% confidential
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reply within 48&nbsp;h
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              GDPR compliant
+            </span>
+          </div>
+        </div>
+      </form>
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-back>Back</button>
+      </div>
+    </section>
+
+    <!-- ══ Danke + “What happens next" (Wochen-Ablauf) ══════════ -->
+    <section class="funnel-step funnel-done" data-step="8">
+      <div class="funnel-done__badge">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1>Thank you for your enquiry.</h1>
+      <p class="funnel-lead">
+        Your enquiry has reached us. We will get back to you personally within the next 48 hours<span id="done-mail"></span>.
+      </p>
+
+      <h2>What happens next</h2>
+      <div class="done-weeks">
+        <div class="done-week">
+          <span class="done-week__badge">Week 1</span>
+          <p>We understand your role and requirements in a personal conversation</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Weeks 2–3</span>
+          <p>We identify suitable people</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Weeks 3–4</span>
+          <p>We shortlist and approach candidates directly</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Weeks 4–7</span>
+          <p>We hold personal interviews and assess carefully</p>
+        </div>
+        <div class="done-week">
+          <span class="done-week__badge">Weeks 8–12</span>
+          <p>We present you the candidates who fit</p>
+        </div>
+      </div>
+
+      <div class="funnel-nav">
+        <button class="btn btn--ghost" type="button" data-restart>Restart request</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Muster-Logik: reine Ansichts-Navigation zwischen den Schritten.
+       Keine Datenübertragung, keine Speicherung — nur zum Anschauen. */
+    (function () {
+      "use strict";
+      var steps = Array.prototype.slice.call(document.querySelectorAll(".funnel-step"));
+      var bars = document.querySelectorAll(".funnel-progress__bars span");
+      var progLabel = document.getElementById("prog-current");
+      var progress = document.querySelector(".funnel-progress");
+      var LAST_QUESTION = 7;              /* Schritt 8 = Danke-Seite */
+
+      function show(n) {
+        steps.forEach(function (s) {
+          s.classList.toggle("is-active", Number(s.getAttribute("data-step")) === n);
+        });
+        var shown = Math.min(Math.max(n, 1), LAST_QUESTION);
+        bars.forEach(function (b, i) { b.classList.toggle("is-done", i < shown); });
+        if (progLabel) progLabel.textContent = shown;
+        /* Auf Einleitung und Danke-Seite zeigt der Fortschritt nichts Sinnvolles */
+        progress.style.visibility = (n < 1 || n > LAST_QUESTION) ? "hidden" : "visible";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      steps.forEach(function (step) {
+        var n = Number(step.getAttribute("data-step"));
+        step.querySelectorAll(".funnel-option").forEach(function (opt) {
+          opt.addEventListener("click", function () {
+            step.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
+            opt.classList.add("is-selected");
+            setTimeout(function () { show(n + 1); }, 320);
+          });
+        });
+        var back = step.querySelector("[data-back]");
+        if (back) back.addEventListener("click", function () { show(n - 1); });
+        var next = step.querySelector("[data-next]");
+        if (next) next.addEventListener("click", function () { show(n + 1); });
+      });
+
+      var hint = document.getElementById("f-hint");
+      var fields = [
+        { el: document.getElementById("f-firma"),
+          ok: function (v) { return v.length >= 2; } },
+        { el: document.getElementById("f-mail"),
+          ok: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); } },
+        { el: document.getElementById("f-tel"),
+          ok: function (v) { return v.replace(/[^0-9]/g, "").length >= 6; } }
+      ];
+
+      document.querySelector("[data-submit]").addEventListener("click", function () {
+        var firstBad = null;
+        fields.forEach(function (f) {
+          var valid = f.ok(f.el.value.trim());
+          f.el.classList.toggle("is-invalid", !valid);
+          if (!valid && !firstBad) firstBad = f.el;
+        });
+        hint.classList.toggle("is-visible", !!firstBad);
+        if (firstBad) { firstBad.focus(); return; }
+        var doneMail = document.getElementById("done-mail");
+        if (doneMail) doneMail.textContent = " \u2014 an " + fields[1].el.value.trim();
+        show(LAST_QUESTION + 1);
+      });
+
+      fields.forEach(function (f) {
+        f.el.addEventListener("input", function () {
+          f.el.classList.remove("is-invalid");
+          hint.classList.remove("is-visible");
+        });
+      });
+
+      document.querySelector("[data-restart]").addEventListener("click", function () {
+        document.querySelectorAll(".funnel-option").forEach(function (o) { o.classList.remove("is-selected"); });
+        document.querySelectorAll(".funnel-form input").forEach(function (i) {
+          i.value = "";
+          i.classList.remove("is-invalid");
+        });
+        hint.classList.remove("is-visible");
+        show(0);
+      });
+    })();
+  </script>
+</body>
+</html>

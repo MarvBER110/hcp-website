@@ -40,7 +40,7 @@
         '<p class="job__meta">' + esc([orte, job.anstellungsart].filter(Boolean).join(" | ")) + "</p>" +
         '<p class="job__desc">' + esc(job.teaser || "") + "</p>" +
         '<span class="job__rule"></span>' +
-        '<a href="' + href + '" class="btn job__btn">Zum Stellenangebot</a>' +
+        '<a href="' + href + '" class="btn job__btn">' + HCP_T("Zum Stellenangebot") + '</a>' +
         "</div>" +
       "</article>"
     );
@@ -58,7 +58,7 @@
 
   function render(jobs) {
     if (!jobs.length) {
-      showMessage("<p>Für die gewählten Kriterien sind derzeit keine Stellen ausgeschrieben.</p>");
+      showMessage("<p>" + HCP_T("Für die gewählten Kriterien sind derzeit keine Stellen ausgeschrieben.") + "</p>");
       return;
     }
     // Nach Bundesland gruppieren (eine Stelle kann in mehreren Ländern erscheinen)
@@ -253,8 +253,8 @@
 
   /* ---- Laden ---- */
   function init() {
-    if (!sb) { showMessage("<p>Verbindung zur Datenbank nicht möglich. Bitte später erneut versuchen.</p>"); return; }
-    showMessage('<p class="jobs-loading">Stellenangebote werden geladen …</p>');
+    if (!sb) { showMessage("<p>" + HCP_T("Verbindung zur Datenbank nicht möglich. Bitte später erneut versuchen.") + "</p>"); return; }
+    showMessage('<p class="jobs-loading">' + HCP_T("Stellenangebote werden geladen …") + '</p>');
     sb.from("stellenangebote")
       .select("*")
       .eq("aktiv", true)
@@ -262,7 +262,7 @@
       .then(function (res) {
         if (res.error) {
           console.error(res.error);
-          showMessage("<p>Die Stellenangebote konnten nicht geladen werden.</p>");
+          showMessage("<p>" + HCP_T("Die Stellenangebote konnten nicht geladen werden.") + "</p>");
           return;
         }
         ALL = res.data || [];
@@ -271,7 +271,7 @@
         var fach = uniqSorted(ALL.reduce(function (a, j) { return a.concat(asArray(j.fachgebiete)); }, []));
         var erf = uniqSorted(ALL.map(function (j) { return j.berufserfahrung; }));
         var arten = uniqSorted(ALL.map(function (j) { return j.anstellungsart; }));
-        fillSelect(regionSelect, laender, "Alle Bundesländer");
+        fillSelect(regionSelect, laender, HCP_T("Alle Bundesländer"));
         buildGroup("opts-field", fach, function (j) { return j.fachgebiete; });
         buildGroup("opts-exp", erf, function (j) { return j.berufserfahrung; });
         buildGroup("opts-type", arten, function (j) { return j.anstellungsart; });
