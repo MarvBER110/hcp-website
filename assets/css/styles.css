@@ -1860,6 +1860,7 @@ body.page-plain #prozess .step:last-child { margin-bottom: 0; }
 /* „Was unsere Kunden sagen“: Sektion in open sky (#C0CACE), die zwei Karten weiß.
    Band um 80px schmaler (dünner) → oben/unten je 40px weniger Innenabstand. */
 #kundenstimmen { background-color: var(--sky); padding-block: calc(var(--section-y) - 40px); }
+#kundenstimmen .section__head h2 { color: #ffffff; }
 #kundenstimmen .testimonial { background: #ffffff; }
 
 /* Trust-Metriken unter dem Hero */
@@ -1901,7 +1902,7 @@ body.page-plain #prozess .step:last-child { margin-bottom: 0; }
 .testimonial__quote {
   margin: 0;
   font-family: var(--font-serif); font-style: italic; font-weight: 300;
-  font-size: 20px; line-height: 1.5; color: var(--ink);
+  font-size: 20px; line-height: 1.5; color: var(--wood);
 }
 .testimonial__foot { display: flex; align-items: center; gap: 14px; margin-top: 24px; }
 .testimonial__avatar {
@@ -2570,26 +2571,6 @@ body.page-admin { background-image: none; }
   .jobs-sidebar { order: -1; }     /* Filter auf Mobil oben */
   .jobs-main .carousel__track > .job { flex-basis: 85%; }
   .job--lg { min-height: 0; }      /* einspaltig: keine künstliche Kartenhöhe */
-}
-
-/* ==========================================================================
-   Dünne Kontaktleiste über dem Header (Top-Utility-Bar)
-   ========================================================================== */
-/* Kontaktleiste über dem Header auf allen Seiten entfernt (ausgeblendet) */
-.topbar { display: none; }
-.topbar--legacy { background: var(--stone); color: #fff; font-family: var(--font-sans); font-size: 13px; }
-.topbar__inner { display: flex; align-items: center; justify-content: flex-end; gap: 24px; min-height: 38px; padding-block: 6px; }
-.topbar__contact { display: flex; flex-wrap: wrap; gap: 22px; order: 2; }   /* Mail/Tel rechts neben den Icons */
-.topbar__contact a { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.92); }
-.topbar__contact a:hover { color: #fff; }
-.topbar__contact svg { width: 15px; height: 15px; }
-.topbar__social { display: flex; gap: 14px; order: 1; }
-.topbar__social a { color: rgba(255,255,255,0.92); display: inline-flex; }
-.topbar__social a:hover { color: #fff; }
-.topbar__social svg { width: 16px; height: 16px; }
-@media (max-width: 640px) {
-  .topbar__contact { gap: 14px; }
-  .topbar__contact .topbar__phone { display: none; }   /* auf Mobil knapp halten */
 }
 
 /* ==========================================================================

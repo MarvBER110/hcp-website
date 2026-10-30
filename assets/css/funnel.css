@@ -385,16 +385,6 @@ body.page-funnel {
   .funnel-mailrow .btn { width: 100%; justify-content: center; }
 }
 
-/* Muster-Hinweis unten */
-.funnel-note {
-  text-align: center;
-  font-size: 14px;
-  color: var(--ink-soft);
-  padding: 26px var(--gutter);
-  border-top: 1px solid var(--line);
-  letter-spacing: 0.03em;
-}
-
 /* ══════════════════════════════════════════════════════════════════════
    Bausteine für den Kandidaten-Funnel
    ══════════════════════════════════════════════════════════════════════ */

@@ -506,9 +506,13 @@
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/funnel-submit.js?v=1"></script>
   <script>
-    /* Muster-Logik: reine Ansichts-Navigation zwischen den Schritten.
-       Keine Datenübertragung, keine Speicherung — nur zum Anschauen.
+    /* Navigation zwischen den Schritten. Beim letzten Schritt werden die
+       Angaben samt Lebenslauf an Supabase übergeben (siehe funnel-submit.js);
+       die Danke-Seite erscheint erst, wenn das Speichern bestätigt ist.
        Schritt 0 ist die Einleitung, Schritt 10 die Danke-Seite. */
     (function () {
       "use strict";
@@ -586,14 +590,48 @@
         }
       };
 
+      /* Eigenes Meldungsfeld fürs Absenden — der vorhandene .funnel-hint
+         gehört der Einwilligungs-Prüfung und wird nicht überschrieben. */
+      function sendStatus(step) {
+        var el = step.querySelector("[data-sendstatus]");
+        if (!el) {
+          el = document.createElement("p");
+          el.className = "funnel-hint";
+          el.setAttribute("data-sendstatus", "");
+          el.setAttribute("role", "alert");
+          var box = step.querySelector(".funnel-submit") || step;
+          box.appendChild(el);
+        }
+        return el;
+      }
+
       function advance(step, n) {
         if (validators[n] && !validators[n](step)) return;
-        if (n === LAST_QUESTION) {
-          var mail = document.getElementById("f-mail");
-          var doneMail = document.getElementById("done-mail");
-          if (doneMail && mail) doneMail.textContent = " — an " + mail.value.trim();
-        }
-        show(n + 1);
+        if (n !== LAST_QUESTION) { show(n + 1); return; }
+
+        /* Letzter Schritt: erst speichern, dann die Danke-Seite zeigen.
+           Scheitert das Speichern, bleibt der Nutzer stehen und sieht den
+           Fehler — sonst ginge die Bewerbung unbemerkt verloren. */
+        var btn = step.querySelector("[data-submit]");
+        var label = btn ? btn.textContent : "";
+        var msg = sendStatus(step);
+        msg.classList.remove("is-visible");
+        if (btn) { btn.disabled = true; btn.textContent = "Wird gesendet …"; }
+
+        window.hcpFunnelSubmit.kandidat()
+          .then(function () {
+            var mail = document.getElementById("f-mail");
+            var doneMail = document.getElementById("done-mail");
+            if (doneMail && mail) doneMail.textContent = " — an " + mail.value.trim();
+            show(n + 1);
+          })
+          .catch(function (err) {
+            console.error("Absenden fehlgeschlagen:", err);
+            if (btn) { btn.disabled = false; btn.textContent = label; }
+            msg.textContent = "Das Absenden hat leider nicht geklappt. Bitte versuchen Sie es noch einmal "
+              + "oder schreiben Sie uns an kontakt@holmes-partners.berlin.";
+            msg.classList.add("is-visible");
+          });
       }
 
       /* ── Schritte verdrahten ───────────────────────────────────────── */

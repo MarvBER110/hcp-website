@@ -358,6 +358,20 @@
         <p class="funnel-hint" id="f-hint" role="alert">
           Please provide your company name, email address and phone number.
         </p>
+        <div class="funnel-consent">
+          <label class="funnel-consent__row" for="f-consent">
+            <input id="f-consent" name="einwilligung" type="checkbox" required aria-describedby="f-consent-hint" />
+            <span class="funnel-consent__text">
+              I consent to Holmes Consulting Partners GmbH processing my details to
+              handle this enquiry. My data will not be passed on to third parties
+              without my knowledge. I can withdraw this consent at any time. More in
+              the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.
+            </span>
+          </label>
+        </div>
+        <p class="funnel-hint" id="f-consent-hint" role="alert">
+          Please confirm your consent so that we may process your enquiry.
+        </p>
         <div class="funnel-submit">
           <button class="btn btn--primary" type="submit" data-submit>Book a first conversation</button>
           <div class="funnel-trust">
@@ -422,9 +436,13 @@
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="../assets/js/funnel-submit.js?v=1"></script>
   <script>
-    /* Muster-Logik: reine Ansichts-Navigation zwischen den Schritten.
-       Keine Datenübertragung, keine Speicherung — nur zum Anschauen. */
+    /* Navigation zwischen den Schritten. Beim Absenden gehen die Angaben an
+       Supabase (siehe funnel-submit.js); die Danke-Seite erscheint erst,
+       wenn das Speichern bestätigt ist. */
     (function () {
       "use strict";
       var steps = Array.prototype.slice.call(document.querySelectorAll(".funnel-step"));
@@ -479,9 +497,47 @@
         });
         hint.classList.toggle("is-visible", !!firstBad);
         if (firstBad) { firstBad.focus(); return; }
-        var doneMail = document.getElementById("done-mail");
-        if (doneMail) doneMail.textContent = " \u2014 an " + fields[1].el.value.trim();
-        show(LAST_QUESTION + 1);
+
+        /* Einwilligung ist Pflicht, sobald die Angaben wirklich \u00fcbertragen werden. */
+        var consent = document.getElementById("f-consent");
+        var consentHint = document.getElementById("f-consent-hint");
+        if (consent && !consent.checked) {
+          if (consentHint) consentHint.classList.add("is-visible");
+          consent.focus();
+          return;
+        }
+        if (consentHint) consentHint.classList.remove("is-visible");
+
+        /* Erst speichern, dann die Danke-Seite zeigen. Scheitert das
+           Speichern, bleibt der Nutzer stehen und sieht den Fehler. */
+        var btn = this;
+        var label = btn.textContent;
+        var msg = document.querySelector("[data-sendstatus]");
+        if (!msg) {
+          msg = document.createElement("p");
+          msg.className = "funnel-hint";
+          msg.setAttribute("data-sendstatus", "");
+          msg.setAttribute("role", "alert");
+          btn.parentNode.appendChild(msg);
+        }
+        msg.classList.remove("is-visible");
+        btn.disabled = true;
+        btn.textContent = "Sending \u2026";
+
+        window.hcpFunnelSubmit.unternehmen()
+          .then(function () {
+            var doneMail = document.getElementById("done-mail");
+            if (doneMail) doneMail.textContent = " \u2014 to " + fields[1].el.value.trim();
+            show(LAST_QUESTION + 1);
+          })
+          .catch(function (err) {
+            console.error("Absenden fehlgeschlagen:", err);
+            btn.disabled = false;
+            btn.textContent = label;
+            msg.textContent = "We could not send your enquiry. Please try again "
+              + "or email us at kontakt@holmes-partners.berlin.";
+            msg.classList.add("is-visible");
+          });
       });
 
       fields.forEach(function (f) {
